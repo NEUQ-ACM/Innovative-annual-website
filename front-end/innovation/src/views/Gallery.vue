@@ -3,7 +3,7 @@
     <el-header height=80>
       <Header></Header>
     </el-header>
-    <el-main>
+    <el-main class="main">
       <div style="margin-top:90px;">
         <a href="">
           <span>学术论文</span>
@@ -24,7 +24,7 @@
       </div>
     </el-main>
     <el-footer>
-      <Footer></Footer>
+      <Footer style="position:fixed;bottom:0;"></Footer>
     </el-footer>
   </el-container>
 </template>
@@ -46,10 +46,10 @@ export default {
   height: 80px;
   padding: 0;
 }
-.el-main {
+.main {
   padding: 0;
 }
-.el-main div {
+.main div {
   display: flex;
   justify-content: space-between;
   width: 75%;
@@ -57,15 +57,15 @@ export default {
   margin: 20px auto;
   border: 1px solid #ccc;
 }
-.el-main div:hover {
+.main div:hover {
   cursor: pointer;
 }
-.el-main div span {
+.main div span {
   line-height: 60px;
   margin-left: 20px;
   font-size: 18px;
 }
-.el-main div i {
+.main div i {
   margin-right: 20px;
   margin-top: 20px;
 }
