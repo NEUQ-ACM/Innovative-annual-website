@@ -5,43 +5,44 @@
         <div class="titlecn">本届创新创业成果展示</div>
       </div>
       <div class="c-tab-head-container">
-        <button type="button" class="c-tab-head active" data-tab-id="学术论文">
+        <button type="button"
+                class="c-tab-head active"
+                data-tab-id="学术论文">
           学术论文
         </button>
-        <button type="button" class="c-tab-head" data-tab-id="改革成果项目">
+        <button type="button"
+                class="c-tab-head"
+                data-tab-id="改革成果项目">
           改革成果项目
         </button>
-        <button type="button" class="c-tab-head" data-tab-id="创业推介项目">
+        <button type="button"
+                class="c-tab-head"
+                data-tab-id="创业推介项目">
           创业推介项目
         </button>
       </div>
       <div class="c-tab-content-container">
-        <div class="c-tab-content active" data-tab-id="学术论文">
+        <div class="c-tab-content active"
+             data-tab-id="学术论文">
           <div class="c--load-PartialView c-index-container">
-            <div
-              class="change-module no-box-shadow"
-              style="background: transparent"
-            >
+            <div class="change-module no-box-shadow"
+                 style="background: transparent">
               <div class="content">
-                <div
-                  class="c-data-empty noselect c-column"
-                  style="height: 324px"
-                >
+                <div class="c-data-empty noselect c-column"
+                     style="height: 324px">
                   <p>
-                    <i class="c-data-empty-icon flaticon-open-box"></i
-                    >暂无<span>学术论文</span>相关信息！
+                    <i class="c-data-empty-icon flaticon-open-box"></i>暂无<span>学术论文</span>相关信息！
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="c-tab-content" data-tab-id="改革成果项目">
+        <div class="c-tab-content"
+             data-tab-id="改革成果项目">
           <div class="c--load-PartialView c-index-container">
-            <div
-              class="change-module no-box-shadow"
-              style="background: transparent"
-            >
+            <div class="change-module no-box-shadow"
+                 style="background: transparent">
               <!-- <div class="content">
                 <div
                   class="c-data-empty noselect c-column"
@@ -56,12 +57,11 @@
             </div>
           </div>
         </div>
-        <div class="c-tab-content" data-tab-id="创业推介项目">
+        <div class="c-tab-content"
+             data-tab-id="创业推介项目">
           <div class="c--load-PartialView c-index-container">
-            <div
-              class="change-module no-box-shadow"
-              style="background: transparent"
-            >
+            <div class="change-module no-box-shadow"
+                 style="background: transparent">
               <!-- <div class="content">
                 <div
                   class="c-data-empty noselect c-column"
@@ -87,7 +87,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .sectionthree {
   background-color: #f6f6f6;
   padding: 20px 0;
@@ -154,7 +154,7 @@ export default {
 }
 
 .c-data-empty > p {
-  color: #e6cbcb !important;;
+  color: #e6cbcb !important;
   flex-wrap: wrap;
   height: auto;
 }

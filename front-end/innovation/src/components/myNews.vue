@@ -14,12 +14,9 @@
               </div>
               <div class="newsbox">
                 <div class="titlenews">
-                  <a
-                    href="/IndexCGView/Notice.aspx?89643F0EFEB651D59FE3FF1BA6A1A051"
-                    data-toggle="m-tooltip"
-                    data-original-title="关于举办第十四届全国大学生创新创业年会的通知"
-                    >关于举办第十四届全国大学生创新创业年会的通知</a
-                  >
+                  <a href="/IndexCGView/Notice.aspx?89643F0EFEB651D59FE3FF1BA6A1A051"
+                     data-toggle="m-tooltip"
+                     data-original-title="关于举办第十四届全国大学生创新创业年会的通知">关于举办第十四届全国大学生创新创业年会的通知</a>
                 </div>
                 <div class="contentnews">请查看附件</div>
               </div>
@@ -36,12 +33,9 @@
               </div>
               <div class="newsbox">
                 <div class="titlenews">
-                  <a
-                    href="/IndexCGView/Notice.aspx?89643F0EFEB651D5C931C150E9BB688C"
-                    data-toggle="m-tooltip"
-                    data-original-title="关于第十四届全国大学生创新创业年会延期举办的通知"
-                    >关于第十四届全国大学生创新创业年会延期举办的通知</a
-                  >
+                  <a href="/IndexCGView/Notice.aspx?89643F0EFEB651D5C931C150E9BB688C"
+                     data-toggle="m-tooltip"
+                     data-original-title="关于第十四届全国大学生创新创业年会延期举办的通知">关于第十四届全国大学生创新创业年会延期举办的通知</a>
                 </div>
                 <div class="contentnews">
                   按照国务院联防联控机制和陕西省委、省政府最新部署要求，减少跨区域聚集性活动，高校原则上不再举办或承办各类线下大型会议、活动。
@@ -64,12 +58,9 @@
               </div>
               <div class="newsbox">
                 <div class="titlenews">
-                  <a
-                    href="/IndexCGView/Notice.aspx?F1A32F0B85A9CDBA5C5D5D05AD0934B9"
-                    data-toggle="m-tooltip"
-                    data-original-title="(第二轮通知)第十四届全国大学生创新创业年会参会须知"
-                    >(第二轮通知)第十四届全国大学生创新创业年会参会须知</a
-                  >
+                  <a href="/IndexCGView/Notice.aspx?F1A32F0B85A9CDBA5C5D5D05AD0934B9"
+                     data-toggle="m-tooltip"
+                     data-original-title="(第二轮通知)第十四届全国大学生创新创业年会参会须知">(第二轮通知)第十四届全国大学生创新创业年会参会须知</a>
                 </div>
                 <div class="contentnews">
                   第十四届全国大学生创新创业年会由教育部主办、西北工业大学承办。本届年会定于2021年11月12日至11月14日于西北工业大学长安校区举行。
@@ -132,12 +123,9 @@
               </div>
               <div class="newsbox">
                 <div class="titlenews">
-                  <a
-                    href="/IndexCGView/Notice.aspx?FB77BFA721887CFA8521F3DC2BB5B928"
-                    data-toggle="m-tooltip"
-                    data-original-title="关于举办第十四届全国大学生创新创业年会的通知"
-                    >关于举办第十四届全国大学生创新创业年会的通知</a
-                  >
+                  <a href="/IndexCGView/Notice.aspx?FB77BFA721887CFA8521F3DC2BB5B928"
+                     data-toggle="m-tooltip"
+                     data-original-title="关于举办第十四届全国大学生创新创业年会的通知">关于举办第十四届全国大学生创新创业年会的通知</a>
                 </div>
                 <div class="contentnews">请查看附件！</div>
               </div>
@@ -146,7 +134,8 @@
         </div>
       </div>
       <div class="c-index--actions">
-        <a class="c-more" href="/IndexCGView/NoticeList.aspx">
+        <a class="c-more"
+           href="/IndexCGView/NoticeList.aspx">
           <span>查看更多</span>
           <i class="fa fa-angle-right"></i>
         </a>
@@ -161,7 +150,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   width: 100%;
   padding-right: 15px;

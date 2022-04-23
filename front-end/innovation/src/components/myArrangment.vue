@@ -7,29 +7,21 @@
           <div class="titletwo">
             <div class="titletwotxt">年会日程</div>
           </div>
-          <div
-            class="col-lg-12 col-md-12 col-sm-12"
-            style="overflow: hidden"
-          >
+          <div class="col-lg-12 col-md-12 col-sm-12"
+               style="overflow: hidden">
             <div class="row">
-              <div
-                class="shadowbg schedule-container"
-                style="min-height: 390px"
-              >
-                <div
-                  class="slimScrollDiv"
-                  style="
+              <div class="shadowbg schedule-container"
+                   style="min-height: 390px">
+                <div class="slimScrollDiv"
+                     style="
                     position: relative;
                     overflow: hidden;
                     width: auto;
                     height: 390px;
-                  "
-                >
-                  <div
-                    id="nh_schedules"
-                    style="height: 390px; overflow: hidden; width: auto"
-                    class="stop"
-                  >
+                  ">
+                  <div id="nh_schedules"
+                       style="height: 390px; overflow: hidden; width: auto"
+                       class="stop">
                     <ul class="timeline-ul">
                       <li class="timeline-li day">
                         <span class="timecircle"></span>
@@ -37,10 +29,8 @@
                           <div class="text">2021年12月10日</div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_606405487881"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_606405487881">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">08:00-19:00</span>
@@ -54,10 +44,8 @@
                           </div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_1261078715166"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_1261078715166">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">08:00-19:00</span>
@@ -77,10 +65,8 @@
                           <div class="text">2021年12月11日</div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_29691335039"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_29691335039">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">08:00-08:30</span>
@@ -94,10 +80,8 @@
                           </div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_253792241346"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_253792241346">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">08:30-09:40</span>
@@ -111,10 +95,8 @@
                           </div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_379198494667"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_379198494667">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">10:00-17:00</span>
@@ -128,10 +110,8 @@
                           </div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_1339449032505"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_1339449032505">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">10:00-17:00</span>
@@ -145,10 +125,8 @@
                           </div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_256448570093"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_256448570093">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">10:00-17:00</span>
@@ -162,10 +140,8 @@
                           </div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_1145912617507"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_1145912617507">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">10:00-17:00</span>
@@ -177,10 +153,8 @@
                           </div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_1310871699271"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_1310871699271">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">19:00-20:00</span>
@@ -200,10 +174,8 @@
                           <div class="text">2021年12月12日</div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_173221963895"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_173221963895">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">08:30-09:00</span>
@@ -217,10 +189,8 @@
                           </div>
                         </div>
                       </li>
-                      <li
-                        class="timeline-li c--li past"
-                        id="schedule_1483253111056"
-                      >
+                      <li class="timeline-li c--li past"
+                          id="schedule_1483253111056">
                         <span class="timecircle"></span>
                         <div class="timeline-info">
                           <span class="c-date">09:00-11:30</span>
@@ -236,9 +206,8 @@
                       </li>
                     </ul>
                   </div>
-                  <div
-                    class="slimScrollBar"
-                    style="
+                  <div class="slimScrollBar"
+                       style="
                       background: rgb(0, 0, 0);
                       width: 7px;
                       position: absolute;
@@ -249,11 +218,9 @@
                       z-index: 99;
                       right: 1px;
                       height: 142.283px;
-                    "
-                  ></div>
-                  <div
-                    class="slimScrollRail"
-                    style="
+                    "></div>
+                  <div class="slimScrollRail"
+                       style="
                       width: 7px;
                       height: 100%;
                       position: absolute;
@@ -264,8 +231,7 @@
                       opacity: 0.2;
                       z-index: 90;
                       right: 1px;
-                    "
-                  ></div>
+                    "></div>
                 </div>
               </div>
             </div>
@@ -285,12 +251,10 @@
           <div class="c--load-PartialView c-index-container">
             <div>
               <div class="c-index--video">
-                <video
-                  class="c-preview-video"
-                  data-video-title="西北工业大学"
-                  src="http://gjcxcy.bjtu.edu.cn/FileResources/UploadFile/2021-12-09/a29f40f3fd4b41299291d98b6eda3674.mp4"
-                  controls="controls"
-                >
+                <video class="c-preview-video"
+                       data-video-title="西北工业大学"
+                       src="http://gjcxcy.bjtu.edu.cn/FileResources/UploadFile/2021-12-09/a29f40f3fd4b41299291d98b6eda3674.mp4"
+                       controls="controls">
                   您的浏览器不支持视频播放。
                 </video>
               </div>
@@ -309,7 +273,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 li {
   list-style: none;
 }
