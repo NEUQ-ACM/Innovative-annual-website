@@ -11,6 +11,7 @@
     <myArrangment></myArrangment>
     <myShow></myShow>
     <myIntroduction></myIntroduction>
+    <organizer-vue></organizer-vue>
     <div class="back-to-top" style="display: block">
       <span class="back-top"><i class="fa fa-angle-up"></i></span>
     </div>
