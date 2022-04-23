@@ -11,7 +11,7 @@
           <span>BJTUICP备 14070101</span>
         </span>
       </div>
-      <div class="visitor">您是第 <span class="number">23,552,691</span> 个访问者</div>
+      <div class="visitor">您是第 <i class="number">23,552,691</i> 个访问者</div>
     </div>
   </footer>
 </template>
@@ -43,9 +43,8 @@ footer {
 .container .information span {
   line-height: 70px;
 }
-.container .visiter .number {
-  font-size: 60px;
-  font-style: italic;
+.number {
+  font-size: 24px;
   font-weight: bold;
 }
 </style>
