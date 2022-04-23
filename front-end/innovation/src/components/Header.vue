@@ -52,6 +52,7 @@ export default {
 <style scoped>
 header {
   height: 80px;
+  box-shadow: #d4d3d3 0px 0px 5px;
 }
 .container {
   width: 70%;
@@ -62,7 +63,8 @@ header {
   margin: 0 auto;
 }
 .headerLogo {
-  margin-right: 40px;
+  margin-right: 80px;
+  width: 400px;
 }
 .headerLogo img {
   margin-right: 8px;
@@ -70,7 +72,7 @@ header {
 }
 .headerLogo span {
   vertical-align: middle;
-  font-size: 20px;
+  font-size: 18px;
   color: #0f41ba;
 }
 a {
@@ -82,6 +84,7 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0;
 }
 nav ul li {
   width: 92.5px;
