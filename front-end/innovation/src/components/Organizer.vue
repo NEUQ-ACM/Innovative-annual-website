@@ -5,15 +5,20 @@
       <h2>主办单位</h2>
       <img src="../assets/images/mainImage.png" alt="主办单位" />
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import myHeader from "./myHeader.vue";
+import myHeader from "./Header.vue";
+import Footer from "./Footer.vue"
 
 export default {
   name: "Organizer",
-  components: { myHeader },
+  components: { 
+    myHeader,
+    Footer
+  },
 };
 </script>
 
@@ -23,6 +28,7 @@ export default {
   max-width: 1105px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
 }
 .orgnizermain h2 {
