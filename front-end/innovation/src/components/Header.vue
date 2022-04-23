@@ -4,7 +4,7 @@
       <div class="headerLogo">
         <a href="">
           <img src="@/assets/images/headerLogo.jpg">
-          <span>第十五届河北省大学生创新创业年会</span>
+          <span>第七届河北省大学生创新创业年会</span>
         </a>
       </div>
       <nav>
