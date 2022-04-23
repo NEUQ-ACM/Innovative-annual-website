@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <myHeader></myHeader>
+
     <div class="mainImage">
       <img src="@/assets/images/mainImage.jpg" alt="" />
     </div>
@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import myHeader from "@/components/myHeader.vue";
+
 import myNews from "./components/myNews.vue";
 import myArrangment from './components/myArrangment.vue'
 import myShow from './components/myShow.vue'
@@ -25,7 +25,7 @@ import myIntroduction from './components/myIntroduction.vue'
 export default {
   name: "App",
   components: {
-    myHeader,
+
     myNews,
     myArrangment,
     myShow,

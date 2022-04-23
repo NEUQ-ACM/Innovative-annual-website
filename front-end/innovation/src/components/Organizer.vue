@@ -1,6 +1,6 @@
 <template>
   <div class="orgnizermain">
-    <myHeader></myHeader>
+    <Header></Header>
     <div class="orgnizercontent">
       <h2>主办单位</h2>
       <img src="../assets/images/mainImage.png" alt="主办单位" />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import myHeader from "./Header.vue";
+import Header from "./Header.vue";
 import Footer from "./Footer.vue"
 
 export default {
