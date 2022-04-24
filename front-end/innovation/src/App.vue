@@ -20,14 +20,12 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Backtop from "./components/Backtop";
-import newHeader from "./components/newHeader";
 export default {
   name: "App",
   components: {
     Footer,
     Header,
     Backtop,
-    newHeader,
   },
 };
 </script>
