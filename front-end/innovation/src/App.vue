@@ -18,11 +18,9 @@ export default {
   name: 'App',
   components: {
     Header,
-    News,
     PreShow,
     ThisShow,
     Slider,
-    Arrangment,
     TeamIntroduction
   }
 }
