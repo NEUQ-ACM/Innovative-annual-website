@@ -4,13 +4,13 @@
       <div class="headerLogo">
         <a href="">
           <img src="@/assets/images/headerLogo.jpg">
-          <span>第七届河北省大学生创新创业年会</span>
+          <span>第十五届河北省大学生创新创业年会</span>
         </a>
       </div>
       <nav>
         <ul>
           <li class="firstLi">
-            <a href="/">
+            <a href="">
               <span>首 页</span>
             </a>
           </li>
@@ -20,12 +20,12 @@
             </a>
           </li>
           <li>
-            <a href="/Gallery">
+            <a href="">
               <span>作品展示</span>
             </a>
           </li>
           <li>
-            <a href="Organizer">
+            <a href="">
               <span>主办单位</span>
             </a>
           </li>
@@ -46,13 +46,12 @@
 </template>
 <script>
 export default {
-  name: 'Header',
+  name: 'myHeader',
 }
 </script>
 <style scoped>
 header {
   height: 80px;
-  box-shadow: #d4d3d3 0px 0px 5px;
 }
 .container {
   width: 70%;
@@ -63,16 +62,15 @@ header {
   margin: 0 auto;
 }
 .headerLogo {
-  margin-right: 80px;
-  width: 400px;
+  margin-right: 30px;
 }
 .headerLogo img {
-  margin-right: 8px;
+  margin-right: 10px;
   vertical-align: middle;
 }
 .headerLogo span {
   vertical-align: middle;
-  font-size: 18px;
+  font-size: 24px;
   color: #0f41ba;
 }
 a {
@@ -84,7 +82,6 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0;
 }
 nav ul li {
   width: 92.5px;
