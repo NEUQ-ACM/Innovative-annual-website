@@ -23,14 +23,10 @@
   </el-container>
 </template>
 <script>
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
 import Backtop from '@/components/Backtop.vue'
 export default {
   name: "Gallery",
   components: {
-    Header,
-    Footer,
     Backtop
   }
 }

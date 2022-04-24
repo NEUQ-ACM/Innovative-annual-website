@@ -1,21 +1,15 @@
 <template>
   <div class="orgnizermain">
-
     <div class="orgnizercontent">
       <h2>主办单位</h2>
-      <img src="../assets/images/mainImage.png"
-           alt="主办单位" />
+      <img src="../assets/images/mainImage.png" alt="主办单位" />
     </div>
-
   </div>
 </template>
 
 <script>
-
-
 export default {
   name: "Organizer",
-
 };
 </script>
 
