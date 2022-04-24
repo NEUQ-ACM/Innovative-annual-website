@@ -5,6 +5,7 @@
     <ThisShow></ThisShow>
     <TeamIntroduction></TeamIntroduction>
     <PreShow></PreShow>
+    <Footer></Footer>
   </div>
 </template>
 <script>
@@ -13,6 +14,7 @@ import PreShow from './components/PreShow.vue'
 import ThisShow from './components/ThisShow.vue'
 import Slider from './components/Slider.vue'
 import TeamIntroduction from './components/TeamIntroduction.vue'
+import Footer from "./components/Footer"
 
 export default {
   name: 'App',
@@ -21,7 +23,8 @@ export default {
     PreShow,
     ThisShow,
     Slider,
-    TeamIntroduction
+    TeamIntroduction,
+    Footer
   }
 }
 </script>

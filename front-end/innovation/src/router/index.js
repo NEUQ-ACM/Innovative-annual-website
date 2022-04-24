@@ -16,17 +16,17 @@ const routes = [
   {
     path: '/News',
     name: 'News',
-    component: Home
+    component: News
   },
   {
     path: '/Gallery',
     name: 'Gallery',
-    component: Home
+    component: Gallery
   },
   {
     path: '/Organizer',
     name: 'Organizer',
-    component: Home
+    component: Organizer
   },
 
 ]
