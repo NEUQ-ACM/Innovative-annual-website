@@ -55,7 +55,7 @@ header {
   box-shadow: #d4d3d3 0px 0px 5px;
 }
 .container {
-  width: 70%;
+  width: 80%;
   height: 100%;
   display: flex;
   /* justify-content: space-between; */
