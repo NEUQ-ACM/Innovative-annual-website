@@ -2,42 +2,40 @@
   <header>
     <div class="container">
       <div class="headerLogo">
-        <a href="">
           <img src="@/assets/images/headerLogo.jpg" >
           <span>第七届河北省大学生创新创业年会</span>
-        </a>
       </div>
       <nav>
         <ul>
-          <li class="firstLi">
-            <a href="/">
+          <li>
+            <router-link to='/Home' active-class="isActive">
               <span>首 页</span>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="/News">
+            <router-link to="/News" active-class="isActive">
               <span>通知公告</span>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="/Gallery">
+            <router-link to="/Gallery" active-class="isActive">
               <span>作品展示</span>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="/Organizer">
+            <router-link to="/Organizer" active-class="isActive">
               <span>主办单位</span>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="">
+           <router-link to="/guochang" active-class="isActive">
               <span>国创平台</span>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="/Login">
+            <router-link to="/Login" active-class="isActive">
               <span>登 录</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -104,10 +102,12 @@ nav ul li:hover {
 nav ul li:hover a {
   color: #fff;
 }
-.firstLi {
+.isActive {
+  display: block;
+  width: 92.5px;
+  height: 80px;
+  line-height: 80px;
   background-color: #352ddb;
-}
-.firstLi a {
   color: #fff;
 }
 </style>
