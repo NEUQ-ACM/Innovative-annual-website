@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import News from "../views/News"
 import Gallery from "../views/Gallery"
 import Organizer from "../views/Organizer"
+import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -28,7 +29,11 @@ const routes = [
     name: 'Organizer',
     component: Organizer
   },
-
+  {
+    path: '/Login',
+    name: 'Login',
+    component: Login
+  },
 ]
 
 const router = new VueRouter({
