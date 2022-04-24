@@ -1,8 +1,16 @@
 <template>
   <div class="home">
-    <div class="mainImage">
-      <img src="@/assets/images/mainImage.jpg" alt="" />
-    </div>
+    <el-carousel :interval="3000" arrow="hover" height="440px">
+      <el-carousel-item>
+        <img src="../assets/images/mainImg.jpg" alt="">
+      </el-carousel-item>
+      <el-carousel-item>
+        <img src="../assets/images/mainImage.png" alt="">
+      </el-carousel-item>
+      <el-carousel-item>
+        <img src="../assets/images/mainImg.jpg" alt="">
+      </el-carousel-item>
+    </el-carousel>
     <section class="sectionThree">
       <div class="container">
         <div class="showTitle">
@@ -87,18 +95,27 @@
     <section class="sectionFive">
       <div class="container">
         <div class="showTitle">
-          <span>本届创新创业成果展示</span>
+          <span>往届创新创业成果展示</span>
         </div>
         <div class="showContent">
           <el-row class="btnGroup">
             <el-col :span="24">
-              <el-button round :class="{ active: btnPreOne }" @click="toPreBtnOne"
+              <el-button
+                round
+                :class="{ active: btnPreOne }"
+                @click="toPreBtnOne"
                 >学术论文</el-button
               >
-              <el-button round :class="{ active: btnPreTwo }" @click="toPreBtnTwo"
+              <el-button
+                round
+                :class="{ active: btnPreTwo }"
+                @click="toPreBtnTwo"
                 >改革成果项目</el-button
               >
-              <el-button round :class="{ active: btnPreThree }" @click="toPreBtnThree"
+              <el-button
+                round
+                :class="{ active: btnPreThree }"
+                @click="toPreBtnThree"
                 >创业推荐项目</el-button
               >
             </el-col>
@@ -127,57 +144,59 @@
 <script>
 export default {
   name: "Home",
-  data(){
-    return{
+  data() {
+    return {
       btnOne: true,
       btnTwo: false,
       btnThree: false,
       btnPreOne: true,
       btnPreTwo: false,
-      btnPreThree: false
-    }
+      btnPreThree: false,
+    };
   },
-  methods:{
-    toBtnOne(){
-      this.btnOne = true
-      this.btnTwo = false
-      this.btnThree = false
+  methods: {
+    toBtnOne() {
+      this.btnOne = true;
+      this.btnTwo = false;
+      this.btnThree = false;
     },
-    toBtnTwo(){
-      this.btnOne = false
-      this.btnTwo = true
-      this.btnThree = false
+    toBtnTwo() {
+      this.btnOne = false;
+      this.btnTwo = true;
+      this.btnThree = false;
     },
-    toBtnThree(){
-      this.btnOne = false
-      this.btnTwo = false
-      this.btnThree = true
+    toBtnThree() {
+      this.btnOne = false;
+      this.btnTwo = false;
+      this.btnThree = true;
     },
-    toPreBtnOne(){
-      this.btnPreOne = true
-      this.btnPreTwo = false
-      this.btnPreThree = false
+    toPreBtnOne() {
+      this.btnPreOne = true;
+      this.btnPreTwo = false;
+      this.btnPreThree = false;
     },
-    toPreBtnTwo(){
-      this.btnPreOne = false
-      this.btnPreTwo = true
-      this.btnPreThree = false
+    toPreBtnTwo() {
+      this.btnPreOne = false;
+      this.btnPreTwo = true;
+      this.btnPreThree = false;
     },
-    toPreBtnThree(){
-      this.btnPreOne = false
-      this.btnPreTwo = false
-      this.btnPreThree = true
+    toPreBtnThree() {
+      this.btnPreOne = false;
+      this.btnPreTwo = false;
+      this.btnPreThree = true;
     },
-  }
+  },
 };
 </script>
 
 <style scoped>
-.mainImage img {
+.el-carousel img {
   width: 100%;
+  height: 440px;
 }
 
-.sectionThree, .sectionFive {
+.sectionThree,
+.sectionFive {
   padding: 20px 0;
   background-color: #f6f6f6;
 }
@@ -196,8 +215,6 @@ div.showTitle {
   font-size: 30px;
   color: #444;
 }
-
-
 
 .el-button {
   outline: 0 none;

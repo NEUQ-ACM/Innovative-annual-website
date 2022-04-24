@@ -3,7 +3,7 @@
 
     <div class="orgnizercontent">
       <h2>主办单位</h2>
-      <img src="../assets/images/mainImage.png"
+      <img src="../assets/images/organizer.png"
            alt="主办单位" />
     </div>
 
