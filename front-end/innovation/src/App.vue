@@ -1,26 +1,31 @@
 <template>
   <div id="app">
-    <el-container>
-      <el-header>
-        <Header></Header>
-      </el-header>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
-      <el-footer style="margin-bottom: 10%">
-
-        <Footer></Footer>
-      </el-footer>
-    </el-container>
+    <Header></Header>
+    <Slider></Slider>
+    <ThisShow></ThisShow>
+    <TeamIntroduction></TeamIntroduction>
+    <PreShow></PreShow>
   </div>
 </template>
 <script>
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from '@/components/Header.vue'
+import PreShow from './components/PreShow.vue'
+import ThisShow from './components/ThisShow.vue'
+import Slider from './components/Slider.vue'
+import TeamIntroduction from './components/TeamIntroduction.vue'
+
 export default {
-  name: "App",
-  components: {Footer, Header},
-};
+  name: 'App',
+  components: {
+    Header,
+    News,
+    PreShow,
+    ThisShow,
+    Slider,
+    Arrangment,
+    TeamIntroduction
+  }
+}
 </script>
 <style>
 #app {
@@ -30,4 +35,6 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+
 </style>
