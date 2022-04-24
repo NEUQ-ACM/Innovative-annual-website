@@ -25,7 +25,7 @@
             </a>
           </li>
           <li>
-            <a href="Organizer">
+            <a href="/Organizer">
               <span>主办单位</span>
             </a>
           </li>
