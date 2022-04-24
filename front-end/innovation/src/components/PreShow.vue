@@ -2,7 +2,7 @@
   <section class="sectionThree">
     <div class="container">
       <div class="showTitle">
-        <span>本届创新创业成果展示</span>
+        <span>创新创业成果展示</span>
       </div>
       <div class="showContent">
         <el-row class="btnGroup"> 
