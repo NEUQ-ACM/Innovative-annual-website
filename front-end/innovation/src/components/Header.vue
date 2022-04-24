@@ -3,7 +3,7 @@
     <div class="container">
       <div class="headerLogo">
         <a href="">
-          <img src="@/assets/images/headerLogo.jpg">
+          <img src="@/assets/images/headerLogo.jpg" >
           <span>第七届河北省大学生创新创业年会</span>
         </a>
       </div>
@@ -35,9 +35,9 @@
             </a>
           </li>
           <li>
-            <span>
+            <a href="/Login">
               <span>登 录</span>
-            </span>
+            </a>
           </li>
         </ul>
       </nav>
@@ -46,8 +46,8 @@
 </template>
 <script>
 export default {
-  name: 'Header',
-}
+  name: "Header",
+};
 </script>
 <style scoped>
 header {
