@@ -33,7 +33,8 @@ footer {
   align-items: center;
 }
 .container .information {
-  margin-right: 30%;
+  margin-left: 15%;
+  margin-right: 25%;
   display: flex;
   justify-content: space-between;
 }
