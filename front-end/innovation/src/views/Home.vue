@@ -1,22 +1,17 @@
 <template>
   <el-container>
-    <el-header>
-      <Header></Header>
-    </el-header>
-    <el-main>
+
+
       <div class="mainImage">
-        <img src="@/assets/images/mainImage.jpg"
+        <img src="@/assets/images/mainImage.png"
              alt="" />
       </div>
-      <myNews></myNews>
+      <News></News>
       <myArrangment></myArrangment>
       <myShow></myShow>
       <myIntroduction></myIntroduction>
       <Backtop></Backtop>
-    </el-main>
-    <el-footer>
-      <Footer></Footer>
-    </el-footer>
+
   </el-container>
 </template>
 
@@ -25,7 +20,7 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Backtop from "@/components/Backtop.vue";
 import myHeader from "@/components/myHeader.vue";
-import myNews from "@/components/myNews.vue";
+import News from "@/components/News.vue";
 import myArrangment from '@/components/myArrangment.vue'
 import myShow from '@/components/myShow.vue'
 import myIntroduction from '@/components/myIntroduction.vue'
@@ -37,7 +32,7 @@ export default {
     Footer,
     Backtop,
     myHeader,
-    myNews,
+
     myArrangment,
     myShow,
     myIntroduction,

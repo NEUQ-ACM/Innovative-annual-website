@@ -39,7 +39,7 @@
                               <li>嘉宾及专家报到</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区南山苑宾馆大厅
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -54,7 +54,7 @@
                               <li>师生代表报到</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区翱翔体育馆
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -75,7 +75,7 @@
                               <li>开幕式入场</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区翱翔学生活动中心
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -90,7 +90,7 @@
                               <li>开幕式</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区翱翔学生活动中心
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -105,7 +105,7 @@
                               <li>大学生创新学术交流答辩</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区教学东楼B座2、3层
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -120,7 +120,7 @@
                               <li>大学生创业项目推介</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区教学东楼B座4层
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -135,7 +135,7 @@
                               <li>大学生创新创业改革成果项目展示</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区翱翔体育馆
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -163,7 +163,7 @@
                               <li>专家组总结会议</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区南山苑宾馆2楼多功能厅
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -184,7 +184,7 @@
                               <li>闭幕式入场</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区翱翔学生活动中心
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -199,7 +199,7 @@
                               <li>闭幕式暨颁奖典礼</li>
                             </ul>
                             <div class="remarks">
-                              西北工业大学长安校区翱翔学生活动中心
+                              东北大学秦皇岛分校
                             </div>
                           </div>
                         </div>
@@ -252,7 +252,7 @@
             <div>
               <div class="c-index--video">
                 <video class="c-preview-video"
-                       data-video-title="西北工业大学"
+                       data-video-title="东北大学秦皇岛分校"
                        src="http://gjcxcy.bjtu.edu.cn/FileResources/UploadFile/2021-12-09/a29f40f3fd4b41299291d98b6eda3674.mp4"
                        controls="controls">
                   您的浏览器不支持视频播放。

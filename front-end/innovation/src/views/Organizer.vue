@@ -1,25 +1,21 @@
 <template>
   <div class="orgnizermain">
-    <myHeader></myHeader>
+
     <div class="orgnizercontent">
       <h2>主办单位</h2>
       <img src="../assets/images/mainImage.png"
            alt="主办单位" />
     </div>
-    <Footer></Footer>
+
   </div>
 </template>
 
 <script>
-import myHeader from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue"
+
 
 export default {
   name: "Organizer",
-  components: {
-    myHeader,
-    Footer
-  },
+
 };
 </script>
 

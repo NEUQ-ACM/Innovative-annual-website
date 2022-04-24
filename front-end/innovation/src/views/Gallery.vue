@@ -1,8 +1,5 @@
 <template>
   <el-container>
-    <el-header height=80>
-      <Header></Header>
-    </el-header>
     <el-main class="main">
       <div style="margin-top:90px;">
         <a href="">
@@ -23,9 +20,6 @@
         <i class="el-icon-arrow-right"></i>
       </div>
     </el-main>
-    <el-footer>
-      <Footer style="position:fixed;bottom:0;"></Footer>
-    </el-footer>
   </el-container>
 </template>
 <script>

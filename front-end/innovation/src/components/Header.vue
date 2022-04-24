@@ -15,7 +15,7 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="/News">
               <span>通知公告</span>
             </a>
           </li>
