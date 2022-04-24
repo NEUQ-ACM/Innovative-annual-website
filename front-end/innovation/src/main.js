@@ -2,10 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { Input} from 'element-ui'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'element-ui/lib/theme-chalk/index.css'
 
+Vue.use(Input)
 
 
 Vue.config.productionTip = false

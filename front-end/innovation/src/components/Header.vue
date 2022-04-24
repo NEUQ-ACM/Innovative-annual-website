@@ -36,7 +36,9 @@
           </li>
           <li>
             <span>
+              <a href="/Login">
               <span>登 录</span>
+              </a>
             </span>
           </li>
         </ul>

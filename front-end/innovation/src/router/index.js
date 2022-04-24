@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue'
 import Gallery from '@/views/Gallery.vue'
 import Organzier from '@/views/Organizer.vue'
 import News from '@/components/News.vue'
+import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/News',
     name: 'News',
     component: News
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    component: Login
   }
 ]
 
