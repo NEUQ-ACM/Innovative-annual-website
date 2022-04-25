@@ -8,81 +8,97 @@
       <nav>
         <ul>
           <li>
-            <router-link to="/Home" active-class="isActive">
+            <router-link to="/Home"
+                         active-class="isActive">
               <span>首 页</span>
             </router-link>
           </li>
           <li @click="mobileShow = !mobileShow">
-                <router-link to="/Arrangment" active-class="isActive">
-                  <span>年会日程</span>
-                </router-link>
-              </li>
+            <router-link to="/Arrangment"
+                         active-class="isActive">
+              <span>年会日程</span>
+            </router-link>
+          </li>
           <li>
-            <router-link to="/News" active-class="isActive">
+            <router-link to="/News"
+                         active-class="isActive">
               <span>通知公告</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/Gallery" active-class="isActive">
+            <router-link to="/Gallery"
+                         active-class="isActive">
               <span>作品展示</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/Organizer" active-class="isActive">
+            <router-link to="/Organizer"
+                         active-class="isActive">
               <span>主办单位</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/guochang" active-class="isActive">
+            <router-link to="/guochang"
+                         active-class="isActive">
               <span>国创平台</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/Login" active-class="isActive">
+            <router-link to="/Login"
+                         active-class="isActive">
               <span>登 录</span>
             </router-link>
           </li>
         </ul>
       </nav>
     </div>
+    <!-- 移动端header下拉菜单 -->
     <nav class="mobileNav">
       <el-button @click="mobileShow = !mobileShow">=</el-button>
       <el-collapse-transition>
-        <div v-show="mobileShow" class="mobileList">
+        <div v-show="mobileShow"
+             class="mobileList">
           <nav>
             <ul>
               <li @click="mobileShow = !mobileShow">
-                <router-link to="/Home" active-class="isActive">
+                <router-link to="/Home"
+                             active-class="isActive">
                   <span>首 页</span>
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
-                <router-link to="/Arrangment" active-class="isActive">
+                <router-link to="/Arrangment"
+                             active-class="isActive">
                   <span>年会日程</span>
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
-                <router-link to="/News" active-class="isActive">
+                <router-link to="/News"
+                             active-class="isActive">
                   <span>通知公告</span>
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
-                <router-link to="/Gallery" active-class="isActive">
+                <router-link to="/Gallery"
+                             active-class="isActive">
                   <span>作品展示</span>
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
-                <router-link to="/Organizer" active-class="isActive">
+                <router-link to="/Organizer"
+                             active-class="isActive">
                   <span>主办单位</span>
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
-                <router-link to="/guochang" active-class="isActive">
+                <router-link to="/guochang"
+                             active-class="isActive">
                   <span>国创平台</span>
                 </router-link>
               </li>
-              <li  @click="mobileShow = !mobileShow">
-                <router-link to="/Login" active-class="isActive">
+              <li @click="mobileShow = !mobileShow">
+                <router-link to="/Login"
+                             active-class="isActive">
                   <span>登 录</span>
                 </router-link>
               </li>
@@ -100,7 +116,7 @@
 <script>
 export default {
   name: "Header",
-  data() {
+  data () {
     return {
       mobileShow: false,
     };
@@ -113,7 +129,6 @@ header {
   height: 70px;
   width: 100%;
   z-index: 500;
-  box-shadow: #d4d3d3 0px 0px 5px;
   background-color: #fff;
 }
 .navMain {
@@ -209,7 +224,7 @@ nav ul li:hover a {
   height: 100%;
   width: 100%;
 }
-.mobileNav .headerLogo img{
+.mobileNav .headerLogo img {
   width: 40px;
 }
 .mobileNav .mobileList nav ul {
