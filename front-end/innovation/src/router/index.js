@@ -6,6 +6,7 @@ import Gallery from "../views/Gallery"
 import Organizer from "../views/Organizer"
 import Login from '@/views/Login.vue'
 import Arrangment from '@/views/Arrangment.vue'
+import Itemlist from '@/views/ItemList.vue'
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,7 @@ const routes = [
   {
     path: '/Gallery',
     name: 'Gallery',
-    component: Gallery
+    component: Gallery,
   },
   {
     path: '/Organizer',
@@ -43,6 +44,11 @@ const routes = [
     path: '/Arrangment',
     name: 'Arrangment',
     component: Arrangment
+  },
+  {
+    path: '/itemlist',
+    name: 'Itemlist',
+    component: Itemlist
   },
 ]
 
