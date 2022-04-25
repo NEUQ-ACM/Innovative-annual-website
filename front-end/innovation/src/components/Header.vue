@@ -12,6 +12,11 @@
               <span>首 页</span>
             </router-link>
           </li>
+          <li @click="mobileShow = !mobileShow">
+                <router-link to="/Arrangment" active-class="isActive">
+                  <span>年会日程</span>
+                </router-link>
+              </li>
           <li>
             <router-link to="/News" active-class="isActive">
               <span>通知公告</span>
@@ -30,11 +35,6 @@
           <li>
             <router-link to="/guochang" active-class="isActive">
               <span>国创平台</span>
-            </router-link>
-          </li>
-          <li @click="mobileShow = !mobileShow">
-            <router-link to="/Arrangment" active-class="isActive">
-              <span>年会日常</span>
             </router-link>
           </li>
           <li>
@@ -57,6 +57,11 @@
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
+                <router-link to="/Arrangment" active-class="isActive">
+                  <span>年会日程</span>
+                </router-link>
+              </li>
+              <li @click="mobileShow = !mobileShow">
                 <router-link to="/News" active-class="isActive">
                   <span>通知公告</span>
                 </router-link>
@@ -76,12 +81,7 @@
                   <span>国创平台</span>
                 </router-link>
               </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/Arrangment" active-class="isActive">
-                  <span>年会日常</span>
-                </router-link>
-              </li>
-              <li>
+              <li  @click="mobileShow = !mobileShow">
                 <router-link to="/Login" active-class="isActive">
                   <span>登 录</span>
                 </router-link>
