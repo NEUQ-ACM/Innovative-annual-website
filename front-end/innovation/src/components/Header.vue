@@ -1,14 +1,14 @@
 <template>
   <header>
-     <div class="navMain">
+    <div class="navMain">
       <div class="headerLogo">
-          <img src="@/assets/images/headerLogo.jpg" >
-          <span>第七届河北省大学生创新创业年会</span>
+        <img src="@/assets/images/headerLogo.jpg" />
+        <span>第七届河北省大学生创新创业年会</span>
       </div>
       <nav>
         <ul>
           <li>
-            <router-link to='/Home' active-class="isActive">
+            <router-link to="/Home" active-class="isActive">
               <span>首 页</span>
             </router-link>
           </li>
@@ -28,8 +28,13 @@
             </router-link>
           </li>
           <li>
-           <router-link to="/guochang" active-class="isActive">
+            <router-link to="/guochang" active-class="isActive">
               <span>国创平台</span>
+            </router-link>
+          </li>
+          <li @click="mobileShow = !mobileShow">
+            <router-link to="/Arrangment" active-class="isActive">
+              <span>年会日常</span>
             </router-link>
           </li>
           <li>
@@ -39,7 +44,7 @@
           </li>
         </ul>
       </nav>
-      </div> 
+    </div>
     <nav class="mobileNav">
       <el-button @click="mobileShow = !mobileShow">=</el-button>
       <el-collapse-transition>
@@ -72,6 +77,11 @@
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
+                <router-link to="/Arrangment" active-class="isActive">
+                  <span>年会日常</span>
+                </router-link>
+              </li>
+              <li>
                 <router-link to="/Login" active-class="isActive">
                   <span>登 录</span>
                 </router-link>
@@ -100,7 +110,7 @@ export default {
 <style scoped>
 header {
   position: fixed;
-  height: 80px;
+  height: 70px;
   width: 100%;
   z-index: 500;
   box-shadow: #d4d3d3 0px 0px 5px;
@@ -116,11 +126,13 @@ header {
   margin: 0 auto;
 }
 .headerLogo {
+  margin-top: 20px;
   margin-right: 80px;
   width: 400px;
 }
 .headerLogo img {
   margin-right: 8px;
+  width: 60px;
   vertical-align: middle;
 }
 .headerLogo span {
@@ -152,6 +164,9 @@ a {
   list-style: none;
   color: #666666;
 }
+.navMain nav ul li span {
+  line-height: 92.5px;
+}
 nav ul li a {
   color: #666666;
 }
@@ -163,16 +178,24 @@ nav ul li:hover a {
   color: #fff;
 }
 .mobileNav {
+  height: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
-.el-header .mobileNav{
-display: none;
+.el-header .mobileNav {
+  display: none;
 }
 .mobileNav .el-button {
+  margin-top: 10px;
+  margin-left: 3px;
   font-size: 50px;
   border: none;
+  padding: 0;
   flex: 1;
+}
+.mobileNav .headerLogo {
+  margin: 8px auto;
 }
 .mobileNav .mobileList {
   position: absolute;
@@ -186,7 +209,11 @@ display: none;
   height: 100%;
   width: 100%;
 }
+.mobileNav .headerLogo img{
+  width: 40px;
+}
 .mobileNav .mobileList nav ul {
+  padding: 0;
   height: 100%;
   width: 100%;
   z-index: 501;
