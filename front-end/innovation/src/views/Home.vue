@@ -2,13 +2,13 @@
   <div class="home">
     <el-carousel :interval="3000" arrow="hover" height="607px" trigger="click">
       <el-carousel-item>
-        <img src="../assets/images/mainImg.jpg" alt="" />
+        <img src="../assets/images/mainImg.jpg" alt="">
       </el-carousel-item>
       <el-carousel-item>
-        <img src="../assets/images/mainImage.png" alt="" />
+        <img src="../assets/images/mainImage.png" alt="">
       </el-carousel-item>
       <el-carousel-item>
-        <img src="../assets/images/mainImg.jpg" alt="" />
+        <img src="../assets/images/mainImg.jpg" alt="">
       </el-carousel-item>
     </el-carousel>
     <section class="sectionThree">
