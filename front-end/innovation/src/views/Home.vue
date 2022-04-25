@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <el-carousel :interval="3000" arrow="hover" height="440px">
+    <el-carousel :interval="3000" arrow="hover" height="607px" trigger="click">
       <el-carousel-item>
         <img src="../assets/images/mainImg.jpg" alt="">
       </el-carousel-item>
@@ -17,34 +17,21 @@
           <span>本届创新创业成果展示</span>
         </div>
         <div class="showContent">
-          <el-row class="btnGroup">
-            <el-col :span="24">
-              <el-button round :class="{ active: btnOne }" @click="toBtnOne"
-                >学术论文</el-button
-              >
-              <el-button round :class="{ active: btnTwo }" @click="toBtnTwo"
-                >改革成果项目</el-button
-              >
-              <el-button round :class="{ active: btnThree }" @click="toBtnThree"
-                >创业推荐项目</el-button
-              >
-            </el-col>
-          </el-row>
-          <el-row class="content" v-show="btnOne">
-            <el-col :span="24">
-              <p>暂无学术论文相关信息</p>
-            </el-col>
-          </el-row>
-          <el-row class="content" v-show="btnTwo">
-            <el-col :span="24">
-              <p>暂无改革成果相关信息</p>
-            </el-col>
-          </el-row>
-          <el-row class="content" v-show="btnThree">
-            <el-col :span="24">
-              <p>暂无创新创业相关信息</p>
-            </el-col>
-          </el-row>
+          <el-tabs
+            v-model="thisActiveName"
+            type="card"
+            @tab-click="handleThisClick"
+          >
+            <el-tab-pane label="学术论文" name="first"
+              >暂无学术论文相关信息</el-tab-pane
+            >
+            <el-tab-pane label="改革成果项目" name="second"
+              >暂无改革成果相关信息</el-tab-pane
+            >
+            <el-tab-pane label="创业推荐项目" name="third"
+              >暂无学术论文相关信息</el-tab-pane
+            >
+          </el-tabs>
         </div>
       </div>
     </section>
@@ -98,43 +85,21 @@
           <span>往届创新创业成果展示</span>
         </div>
         <div class="showContent">
-          <el-row class="btnGroup">
-            <el-col :span="24">
-              <el-button
-                round
-                :class="{ active: btnPreOne }"
-                @click="toPreBtnOne"
-                >学术论文</el-button
-              >
-              <el-button
-                round
-                :class="{ active: btnPreTwo }"
-                @click="toPreBtnTwo"
-                >改革成果项目</el-button
-              >
-              <el-button
-                round
-                :class="{ active: btnPreThree }"
-                @click="toPreBtnThree"
-                >创业推荐项目</el-button
-              >
-            </el-col>
-          </el-row>
-          <el-row class="content" v-show="btnPreOne">
-            <el-col :span="24">
-              <p>暂无学术论文相关信息</p>
-            </el-col>
-          </el-row>
-          <el-row class="content" v-show="btnPreTwo">
-            <el-col :span="24">
-              <p>暂无改革成果相关信息</p>
-            </el-col>
-          </el-row>
-          <el-row class="content" v-show="btnPreThree">
-            <el-col :span="24">
-              <p>暂无创新创业相关信息</p>
-            </el-col>
-          </el-row>
+          <el-tabs
+            v-model="preActiveName"
+            type="card"
+            @tab-click="handlePreClick"
+          >
+            <el-tab-pane label="学术论文" name="first"
+              >暂无学术论文相关信息</el-tab-pane
+            >
+            <el-tab-pane label="改革成果项目" name="second"
+              >暂无改革成果相关信息</el-tab-pane
+            >
+            <el-tab-pane label="创业推荐项目" name="third"
+              >暂无学术论文相关信息</el-tab-pane
+            >
+          </el-tabs>
         </div>
       </div>
     </section>
@@ -146,44 +111,16 @@ export default {
   name: "Home",
   data() {
     return {
-      btnOne: true,
-      btnTwo: false,
-      btnThree: false,
-      btnPreOne: true,
-      btnPreTwo: false,
-      btnPreThree: false,
+      preActiveName: "first",
+      thisActiveName: "first",
     };
   },
   methods: {
-    toBtnOne() {
-      this.btnOne = true;
-      this.btnTwo = false;
-      this.btnThree = false;
+    handlePreClick(tab, event) {
+      console.log(tab, event);
     },
-    toBtnTwo() {
-      this.btnOne = false;
-      this.btnTwo = true;
-      this.btnThree = false;
-    },
-    toBtnThree() {
-      this.btnOne = false;
-      this.btnTwo = false;
-      this.btnThree = true;
-    },
-    toPreBtnOne() {
-      this.btnPreOne = true;
-      this.btnPreTwo = false;
-      this.btnPreThree = false;
-    },
-    toPreBtnTwo() {
-      this.btnPreOne = false;
-      this.btnPreTwo = true;
-      this.btnPreThree = false;
-    },
-    toPreBtnThree() {
-      this.btnPreOne = false;
-      this.btnPreTwo = false;
-      this.btnPreThree = true;
+    handleThisClick(tab, event) {
+      console.log(tab, event);
     },
   },
 };
@@ -192,7 +129,60 @@ export default {
 <style scoped>
 .el-carousel img {
   width: 100%;
-  height: 440px;
+  height: 100%;
+}
+
+.el-carousel /deep/ .el-carousel__arrow {
+  height: 60px !important;
+  width: 60px !important;
+  font-size: 52px !important;
+}
+
+.el-carousel /deep/ .el-carousel__button {
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 50% !important;
+}
+
+.el-tabs /deep/ .el-tabs__item {
+  outline: 0 none;
+  margin: 4px 6px;
+  border-radius: 20px;
+  height: 40px;
+  width: 170px;
+  border: 1px solid #d6d6d6;
+  background-color: #fff;
+  color: #333;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s all ease-out;
+}
+
+.el-tabs /deep/ .el-tabs__item:hover,
+.el-tabs /deep/ .el-tabs__item.is-active {
+  background-color: #352ddb;
+  color: #fff;
+}
+
+.el-tabs /deep/ .el-tabs__nav-scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.el-tabs /deep/ .el-tabs__nav,
+.el-tabs /deep/ .el-tabs__header {
+  border: none !important;
+}
+
+.el-tab-pane {
+  background-color: #fff;
+  height: 324px;
+  color: #e6cbcb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
 
 .sectionThree,
