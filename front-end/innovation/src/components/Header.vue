@@ -100,7 +100,7 @@ export default {
 <style scoped>
 header {
   position: fixed;
-  height: 80px;
+  height: 70px;
   width: 100%;
   z-index: 500;
   box-shadow: #d4d3d3 0px 0px 5px;
@@ -116,11 +116,13 @@ header {
   margin: 0 auto;
 }
 .headerLogo {
+  margin-top:20px;
   margin-right: 80px;
   width: 400px;
 }
 .headerLogo img {
   margin-right: 8px;
+  width: 60px;
   vertical-align: middle;
 }
 .headerLogo span {
@@ -152,6 +154,9 @@ a {
   list-style: none;
   color: #666666;
 }
+.navMain nav ul li span{
+  line-height: 92.5px;
+}
 nav ul li a {
   color: #666666;
 }
@@ -170,9 +175,15 @@ nav ul li:hover a {
 display: none;
 }
 .mobileNav .el-button {
+  margin-top:10px;
+  margin-left: 3px;
   font-size: 50px;
   border: none;
+  padding: 0;
   flex: 1;
+}
+.mobileNav .headerLogo{
+  margin: 8px auto;
 }
 .mobileNav .mobileList {
   position: absolute;
@@ -187,6 +198,7 @@ display: none;
   width: 100%;
 }
 .mobileNav .mobileList nav ul {
+  padding: 0;
   height: 100%;
   width: 100%;
   z-index: 501;
