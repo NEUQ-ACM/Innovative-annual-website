@@ -2,7 +2,6 @@
   <header>
     <div class="navMain">
       <div class="headerLogo">
-        <img src="@/assets/images/headerLogo.jpg" />
         <span>第七届河北省大学生创新创业年会</span>
       </div>
       <nav>
@@ -14,39 +13,21 @@
             </router-link>
           </li>
           <li @click="mobileShow = !mobileShow">
+                <router-link to="/News"
+                             active-class="isActive">
+                  <span>通知公告</span>
+                </router-link>
+              </li>
+          <li @click="mobileShow = !mobileShow">
             <router-link to="/Arrangment"
                          active-class="isActive">
               <span>年会日程</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/News"
-                         active-class="isActive">
-              <span>通知公告</span>
-            </router-link>
-          </li>
-          <li>
             <router-link to="/Gallery"
                          active-class="isActive">
               <span>作品展示</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/Organizer"
-                         active-class="isActive">
-              <span>主办单位</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/guochang"
-                         active-class="isActive">
-              <span>国创平台</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/Login"
-                         active-class="isActive">
-              <span>登 录</span>
             </router-link>
           </li>
         </ul>
@@ -67,15 +48,15 @@
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
-                <router-link to="/Arrangment"
-                             active-class="isActive">
-                  <span>年会日程</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
                 <router-link to="/News"
                              active-class="isActive">
                   <span>通知公告</span>
+                </router-link>
+              </li>
+              <li @click="mobileShow = !mobileShow">
+                <router-link to="/Arrangment"
+                             active-class="isActive">
+                  <span>年会日程</span>
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
@@ -84,30 +65,11 @@
                   <span>作品展示</span>
                 </router-link>
               </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/Organizer"
-                             active-class="isActive">
-                  <span>主办单位</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/guochang"
-                             active-class="isActive">
-                  <span>国创平台</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/Login"
-                             active-class="isActive">
-                  <span>登 录</span>
-                </router-link>
-              </li>
             </ul>
           </nav>
         </div>
       </el-collapse-transition>
       <div class="headerLogo">
-        <img src="@/assets/images/headerLogo.jpg" />
         <span>第七届河北省大学生创新创业年会</span>
       </div>
     </nav>
@@ -125,6 +87,7 @@ export default {
 </script>
 <style scoped>
 header {
+  /*background-image:url('../assets/images/logo_bg.png');*/
   position: fixed;
   height: 70px;
   width: 100%;
@@ -132,18 +95,22 @@ header {
   background-color: #fff;
 }
 .navMain {
-  width: 80%;
+  width: 20%;
   height: 50px;
   display: flex;
-  /* justify-content: space-between; */
+   justify-content: center; 
   align-items: center;
   flex-direction: row;
   margin: 0 auto;
 }
 .headerLogo {
+  flex: 1;
   margin-top: 20px;
-  margin-right: 80px;
-  width: 400px;
+  margin-right: 0px;
+  width: 300px;
+}
+nav{
+  flex: 1;
 }
 .headerLogo img {
   margin-right: 8px;
