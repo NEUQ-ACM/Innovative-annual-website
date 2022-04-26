@@ -87,14 +87,15 @@ export default {
 </script>
 <style scoped>
 header {
-  /*background-image:url('../assets/images/logo_bg.png');*/
+  background-image:url('../assets/images/logo_bg.png');
   position: fixed;
-  height: 70px;
+  height: 80px;
   width: 100%;
   z-index: 500;
-  background-color: #fff;
+  background-color: #004ea1;
 }
 .navMain {
+  transform: translateY(6px);
   width: 20%;
   height: 50px;
   display: flex;
@@ -119,13 +120,13 @@ nav{
 }
 .headerLogo span {
   display: inline-block;
-  width: 270px;
-  height: 20px;
+  width: 300px;
+  height: 30px;
   white-space: normal;
   word-wrap: break-word;
   vertical-align: middle;
-  font-size: 18px;
-  color: #0f41ba;
+  font-size: 20px;
+  color: #ffffff;
 }
 a {
   text-decoration: none;
@@ -147,17 +148,17 @@ a {
   color: #666666;
 }
 .navMain nav ul li span {
-  line-height: 92.5px;
+  line-height: 80px;
 }
 nav ul li a {
-  color: #666666;
+  color: #fffff9;
 }
 nav ul li:hover {
-  color: #fff;
-  background-color: #352ddb;
+  color: #fffff9;
+  background-color: #063c77;
 }
 nav ul li:hover a {
-  color: #fff;
+  color: #fffff9;
 }
 .mobileNav {
   height: 100%;
@@ -175,13 +176,14 @@ nav ul li:hover a {
   border: none;
   padding: 0;
   flex: 1;
+  background-color: #004ea1;
 }
 .mobileNav .headerLogo {
   margin: 8px auto;
 }
 .mobileNav .mobileList {
   position: absolute;
-  background-color: aliceblue;
+  background-color: #004ea1;
   top: 55px;
   width: 100%;
   height: 1000px;
@@ -216,8 +218,8 @@ nav ul li:hover a {
   width: 92.5px;
   height: 80px;
   line-height: 80px;
-  background-color: #352ddb;
-  color: #fff;
+  background-color: #063c77;
+  color: #fffff9;
 }
 @media screen and (max-width: 1105px) {
   .el-header .mobileNav {
