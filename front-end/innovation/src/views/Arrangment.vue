@@ -1,51 +1,96 @@
 <template>
-  <section class="sectionTwo">
-    <div class="arrangmentWrap">
-      <div class="arrangment">
-        <div class="contentWrap">
-          <div class="meetingSchedule">
-            <div class="title">会议日程</div>
-          </div>
-        </div>
-        <div class="contentWrap">
-          <div class="meetingVideo">
-            <div class="title">会议日程</div>
-          </div>
-        </div>
-      </div>
+  <el-card class="box-card">
+    <div class="block">
+      <el-timeline>
+        <el-timeline-item timestamp="2018/4/12"
+                          placement="top"
+                          type="warning"
+                          size="large"
+                          class="dayTime">
+        </el-timeline-item>
+        <el-timeline-item timestamp="08:00-19:00"
+                          placement="top">
+          <div class="member">嘉宾及专家报到</div>
+          <div class="location">东北大学秦皇岛分校</div>
+        </el-timeline-item>
+        <el-timeline-item timestamp="08:00-19:00"
+                          placement="top">
+          <div class="member">师生代表报到</div>
+          <div class="location">东北大学秦皇岛分校</div>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2018/4/3"
+                          placement="top"
+                          type="warning"
+                          size="large"
+                          class="dayTime">
+        </el-timeline-item>
+        <el-timeline-item timestamp="08:00-19:00"
+                          placement="top">
+          <div class="member">嘉宾及专家报到</div>
+          <div class="location">东北大学秦皇岛分校</div>
+        </el-timeline-item>
+        <el-timeline-item timestamp="08:00-19:00"
+                          placement="top">
+          <div class="member">师生代表报到</div>
+          <div class="location">东北大学秦皇岛分校</div>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2018/4/2"
+                          placement="top"
+                          type="warning"
+                          size="large"
+                          class="dayTime">
+        </el-timeline-item>
+        <el-timeline-item timestamp="08:00-19:00"
+                          placement="top">
+          <div class="member">嘉宾及专家报到</div>
+          <div class="location">东北大学秦皇岛分校</div>
+
+        </el-timeline-item>
+        <el-timeline-item timestamp="08:00-19:00"
+                          placement="top">
+          <div class="member">师生代表报到</div>
+          <div class="location">东北大学秦皇岛分校</div>
+        </el-timeline-item>
+      </el-timeline>
     </div>
-  </section>
+  </el-card>
+
 </template>
 
 <script>
-export default {};
+export default {
+  data () {
+    return {
+    };
+  }
+};
 </script>
 
 <style scoped>
-div.arrangmentWrap {
-  background: url("../assets/images/bg-2.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
-  padding-bottom: 40px;
-  padding-top: 10px;
-}
-
-div.arrangment {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-div.contentWrap {
-  width: 50%;
-  padding: 0 15px;
+.block {
   margin-top: 20px;
+  text-align: left;
 }
-
-div.title {
-  margin-bottom: 30px;
-  color: #fff;
-  font-size: 30px;
-  letter-spacing: 2px;
+.box-card {
+  margin: 0 auto;
+  width: 560px;
+}
+.block .el-timeline .dayTime {
+  padding-bottom: 1px;
+}
+.block .el-timeline .dayTime /deep/ .el-timeline-item__timestamp {
+  font-size: 20px;
+  color: #e6a23c;
+  padding-top: 0;
+}
+.block .el-timeline .member {
+  font-size: 16px;
+  width: 400px;
+}
+.block .el-timeline .location {
+  text-align: right;
+  border-top: 1px solid #e6a23c;
+  color: #afc0d6;
+  width: 400px;
 }
 </style>
