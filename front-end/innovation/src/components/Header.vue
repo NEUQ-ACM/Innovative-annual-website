@@ -2,7 +2,6 @@
   <header>
     <div class="navMain">
       <div class="headerLogo">
-        <img src="@/assets/images/headerLogo.jpg" />
         <span>第七届河北省大学生创新创业年会</span>
       </div>
       <nav>
@@ -14,39 +13,21 @@
             </router-link>
           </li>
           <li @click="mobileShow = !mobileShow">
+                <router-link to="/News"
+                             active-class="isActive">
+                  <span>通知公告</span>
+                </router-link>
+              </li>
+          <li @click="mobileShow = !mobileShow">
             <router-link to="/Arrangment"
                          active-class="isActive">
               <span>年会日程</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/News"
-                         active-class="isActive">
-              <span>通知公告</span>
-            </router-link>
-          </li>
-          <li>
             <router-link to="/Gallery"
                          active-class="isActive">
               <span>作品展示</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/Organizer"
-                         active-class="isActive">
-              <span>主办单位</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/guochang"
-                         active-class="isActive">
-              <span>国创平台</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/Login"
-                         active-class="isActive">
-              <span>登 录</span>
             </router-link>
           </li>
         </ul>
@@ -67,15 +48,15 @@
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
-                <router-link to="/Arrangment"
-                             active-class="isActive">
-                  <span>年会日程</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
                 <router-link to="/News"
                              active-class="isActive">
                   <span>通知公告</span>
+                </router-link>
+              </li>
+              <li @click="mobileShow = !mobileShow">
+                <router-link to="/Arrangment"
+                             active-class="isActive">
+                  <span>年会日程</span>
                 </router-link>
               </li>
               <li @click="mobileShow = !mobileShow">
@@ -84,30 +65,11 @@
                   <span>作品展示</span>
                 </router-link>
               </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/Organizer"
-                             active-class="isActive">
-                  <span>主办单位</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/guochang"
-                             active-class="isActive">
-                  <span>国创平台</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/Login"
-                             active-class="isActive">
-                  <span>登 录</span>
-                </router-link>
-              </li>
             </ul>
           </nav>
         </div>
       </el-collapse-transition>
       <div class="headerLogo">
-        <img src="@/assets/images/headerLogo.jpg" />
         <span>第七届河北省大学生创新创业年会</span>
       </div>
     </nav>
@@ -125,25 +87,31 @@ export default {
 </script>
 <style scoped>
 header {
+  background-image:url('../assets/images/logo_bg.png');
   position: fixed;
-  height: 70px;
+  height: 80px;
   width: 100%;
   z-index: 500;
-  background-color: #fff;
+  background-color: #004ea1;
 }
 .navMain {
-  width: 80%;
+  transform: translateY(6px);
+  width: 20%;
   height: 50px;
   display: flex;
-  /* justify-content: space-between; */
+   justify-content: center; 
   align-items: center;
   flex-direction: row;
   margin: 0 auto;
 }
 .headerLogo {
+  flex: 1;
   margin-top: 20px;
-  margin-right: 80px;
-  width: 400px;
+  margin-right: 0px;
+  width: 300px;
+}
+nav{
+  flex: 1;
 }
 .headerLogo img {
   margin-right: 8px;
@@ -152,13 +120,13 @@ header {
 }
 .headerLogo span {
   display: inline-block;
-  width: 270px;
-  height: 20px;
+  width: 300px;
+  height: 30px;
   white-space: normal;
   word-wrap: break-word;
   vertical-align: middle;
-  font-size: 18px;
-  color: #0f41ba;
+  font-size: 20px;
+  color: #ffffff;
 }
 a {
   text-decoration: none;
@@ -180,17 +148,17 @@ a {
   color: #666666;
 }
 .navMain nav ul li span {
-  line-height: 92.5px;
+  line-height: 80px;
 }
 nav ul li a {
-  color: #666666;
+  color: #fffff9;
 }
 nav ul li:hover {
-  color: #fff;
-  background-color: #352ddb;
+  color: #fffff9;
+  background-color: #063c77;
 }
 nav ul li:hover a {
-  color: #fff;
+  color: #fffff9;
 }
 .mobileNav {
   height: 100%;
@@ -208,13 +176,14 @@ nav ul li:hover a {
   border: none;
   padding: 0;
   flex: 1;
+  background-color: #004ea1;
 }
 .mobileNav .headerLogo {
   margin: 8px auto;
 }
 .mobileNav .mobileList {
   position: absolute;
-  background-color: aliceblue;
+  background-color: #004ea1;
   top: 55px;
   width: 100%;
   height: 1000px;
@@ -249,8 +218,8 @@ nav ul li:hover a {
   width: 92.5px;
   height: 80px;
   line-height: 80px;
-  background-color: #352ddb;
-  color: #fff;
+  background-color: #063c77;
+  color: #fffff9;
 }
 @media screen and (max-width: 1105px) {
   .el-header .mobileNav {

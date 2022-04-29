@@ -53,11 +53,8 @@ export default {
   overflow: hidden;
 }
 #app .el-container .el-footer {
-  padding: 0px;
-  display: flex;
-  height: 4vh;
   width: 100%;
-  align-items: center;
+  padding: 0;
 }
 #app .el-container {
   width: 100%;
