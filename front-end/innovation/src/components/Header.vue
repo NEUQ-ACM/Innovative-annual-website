@@ -23,7 +23,7 @@
             <ul>
               <li v-for="(items, index) in navData" :key="index">
             <router-link :to="items.routerLink" active-class="isActive">
-              <span>{{ items.spanValue }}</span>
+              <span @click="mobileShow = !mobileShow">{{ items.spanValue }}</span>
             </router-link>
           </li>
             </ul>
