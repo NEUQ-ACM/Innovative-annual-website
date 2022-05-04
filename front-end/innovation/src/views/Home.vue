@@ -66,7 +66,7 @@ export default {
           url: 'img/mainImg.57e2a7c6.jpg'
         },
         {
-          id: '2',
+          id: '3',
           url: 'img/mainImg.57e2a7c6.jpg'
         },
       ],
@@ -94,15 +94,10 @@ export default {
         }
       )
     },
-    // getDate(){
-    //   let date = new Date()
-    //   this.notices[0].update_time = date
-    // }
   },
   mounted(){
     // this.queryRotation()
     // this.queryRotation()
-    // getDate()
   }
 };
 </script>
