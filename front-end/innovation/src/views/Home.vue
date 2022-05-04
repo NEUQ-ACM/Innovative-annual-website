@@ -2,15 +2,215 @@
   <div class="home">
     <el-carousel :interval="3000" arrow="hover" height="607px" trigger="click">
       <el-carousel-item>
-        <img src="../assets/images/mainImg.jpg" alt="">
+        <img src="../assets/images/mainImg.jpg" alt="" />
       </el-carousel-item>
       <el-carousel-item>
-        <img src="../assets/images/mainImage.png" alt="">
+        <img src="../assets/images/mainImage.png" alt="" />
       </el-carousel-item>
       <el-carousel-item>
-        <img src="../assets/images/mainImg.jpg" alt="">
+        <img src="../assets/images/mainImg.jpg" alt="" />
       </el-carousel-item>
     </el-carousel>
+    <section class="sectionThree-new">
+      <div class="announment">
+        <div class="announmentSider">
+          <span class="announmentTitle">通知公告</span>
+          <i class="el-icon-arrow-right"></i>
+        </div>
+
+        <div class="announmentItemList">
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="announmentItem">
+            <!-- <div class="announmentText"></div> -->
+            <a href="#">
+              <div class="announmentWrap">
+                <div class="announmentText" style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">03</span>
+                    <span class="year">2021.12</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                    </span>
+                    <span class="newsContent">
+                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="sectionThree">
       <div class="container">
         <div class="showTitle">
@@ -42,39 +242,50 @@
             <span>往届优秀团队介绍</span>
           </el-col>
         </el-row>
-        <el-row>
-          <el-col :span="8">
-            <el-link>
+        <el-row :gutter="20">
+          <el-col :span="6">
+            <a href="#" class="itemBox">
               <img src="../assets/images/wu.jpg" alt="" />
               <div class="text">
                 <span class="headerline"
-                  >高效紧凑型宽带大功率毫米波传输弯头设计</span
+                  >高效紧凑型宽带大功率毫米波传输弯头设计毫米波传输弯头设计</span
                 >
                 <span class="intro">项目成员：李鼎</span>
               </div>
-            </el-link>
+            </a>
           </el-col>
-          <el-col :span="8">
-            <el-link>
+          <el-col :span="6">
+            <a href="#" class="itemBox">
               <img src="../assets/images/wu.jpg" alt="" />
               <div class="text">
                 <span class="headerline"
-                  >高效紧凑型宽带大功率毫米波传输弯头设计</span
+                  >高效紧凑型宽带大功率毫米波传输弯头设计毫米波传输弯头设计</span
                 >
                 <span class="intro">项目成员：李鼎</span>
               </div>
-            </el-link>
+            </a>
           </el-col>
-          <el-col :span="8">
-            <el-link>
+          <el-col :span="6">
+            <a href="#" class="itemBox">
               <img src="../assets/images/wu.jpg" alt="" />
               <div class="text">
                 <span class="headerline"
-                  >高效紧凑型宽带大功率毫米波传输弯头设计</span
+                  >高效紧凑型宽带大功率毫米波传输弯头设计毫米波传输弯头设计</span
                 >
                 <span class="intro">项目成员：李鼎</span>
               </div>
-            </el-link>
+            </a>
+          </el-col>
+          <el-col :span="6">
+            <a href="#" class="itemBox">
+              <img src="../assets/images/wu.jpg" alt="" />
+              <div class="text">
+                <span class="headerline"
+                  >高效紧凑型宽带大功率毫米波传输弯头设计毫米波传输弯头设计</span
+                >
+                <span class="intro">项目成员：李鼎</span>
+              </div>
+            </a>
           </el-col>
         </el-row>
       </div>
@@ -185,6 +396,143 @@ export default {
   font-size: 18px;
 }
 
+.announment {
+  padding: 20px 20px 50px 20px;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.announment .announmentSider {
+  height: 220px;
+  width: 220px;
+  box-sizing: border-box;
+  font-size: 50px;
+  border: 1px solid #999;
+  display: flex;
+  color: #4261aa;
+  padding: 30px 10px 30px 30px;
+  margin-right: 15px;
+  flex: none;
+}
+
+.announment .announmentSider span {
+  line-height: 80px;
+  letter-spacing: 10px;
+}
+
+.announment .announmentSider i {
+  line-height: 160px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.announmentItemList {
+  display: flex;
+  overflow: auto;
+}
+
+.announmentItemList::-webkit-scrollbar {
+  height: 8px;
+  background-color: transparent;
+  width: 0;
+}
+
+.announmentItemList::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 30px;
+  /* display: none; */
+}
+
+.announmentItemList .announmentItem {
+  background-color: #d3d1d1;
+  padding: 10px 10px 2px 10px;
+  box-sizing: border-box;
+  flex: none;
+}
+
+.announment a {
+  text-decoration: none;
+}
+
+.announment .announmentWrap {
+  display: flex;
+  background-image: url("https://picsum.photos/id/29/200/200");
+  width: 500px;
+  height: 200px;
+  background-size: cover;
+  flex-direction: column-reverse;
+}
+
+.announmentItem .announmentText {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 40%;
+  color: white !important;
+  display: flex;
+  align-items: center;
+}
+
+div.date {
+  min-width: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  border-right: 1px solid #ddd;
+  justify-content: center;
+  align-items: center;
+}
+
+span.day {
+  /* color: #282828; */
+  font-size: 40px;
+  line-height: 40px;
+  margin-bottom: 5px;
+}
+
+span.year {
+  /* color: #999; */
+  font-size: 14px;
+}
+
+div.news {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* .announmentText > div {
+  flex: none;
+} */
+
+.news span {
+  display: block;
+}
+
+span.newsTitle {
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* color: #333; */
+  /* width: 100%; */
+  min-width: 0;
+  height: 28px;
+  text-align: left;
+}
+
+span.newsContent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  /* color: #999; */
+  font-size: 14px;
+}
+
 .sectionThree,
 .sectionFive {
   padding: 20px 0;
@@ -198,6 +546,7 @@ export default {
 div.container {
   width: 90%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 div.showTitle {
@@ -248,6 +597,35 @@ div.container {
   margin: 40px auto 20px;
 }
 
+.itemBox {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.itemBox:hover::after {
+  transform: translateX(0%);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in;
+}
+
+.itemBox::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 100%;
+  background-color: rgb(34, 140, 210);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in;
+}
+
 span.headerline {
   font-size: 16px;
   line-height: 1.5rem;
@@ -257,6 +635,7 @@ span.headerline {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  display: block;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
@@ -269,7 +648,7 @@ span.intro {
   margin-bottom: 0px;
   color: #999;
   line-height: 1.5rem;
-  text-align: left;
+  text-align: left !important;
   width: 100%;
   height: 3rem;
   overflow: hidden;
