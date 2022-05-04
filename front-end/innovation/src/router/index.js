@@ -16,6 +16,8 @@ import Rotation from '../views/Backstage/Rotation.vue'
 import Timeline from '../views/Backstage/Timeline.vue'
 import IndexManage from '../views/Backstage/IndexManage.vue'
 import Team from '../views/Backstage/Team.vue'
+import Error from '../views/State/Error.vue'
+import Forbidden from '../views/State/Forbidden.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -102,6 +104,16 @@ const routes = [
     path: '/Team',
     name: 'Team',
     component: Team
+  },
+  {
+    path: '/Error',
+    name: 'Error',
+    component: Error
+  },
+  {
+    path: '/Forbidden',
+    name: 'Forbidden',
+    component: Forbidden
   },
 ]
 
