@@ -34,7 +34,7 @@ export default {
 .footerMain {
   width: 100%;
   height: 70px;
-  background-color: #1e16bf;
+  background-color: #004EA1;
 }
 .container {
   color: #fff;

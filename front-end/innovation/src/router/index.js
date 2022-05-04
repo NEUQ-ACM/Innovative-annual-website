@@ -7,7 +7,15 @@ import Organizer from "../views/Organizer"
 import Login from '@/views/Login.vue'
 import Arrangment from '@/views/Arrangment.vue'
 import Itemlist from '@/views/ItemList.vue'
-
+import BackstageLogin from '../views/Backstage/BackstageLogin.vue'
+import Notice from '../views/Backstage/Notice.vue'
+import Paper from '../views/Backstage/Paper.vue'
+import Recommend from '../views/Backstage/Recommend.vue'
+import Reform from '../views/Backstage/Reform.vue'
+import Rotation from '../views/Backstage/Rotation.vue'
+import Timeline from '../views/Backstage/Timeline.vue'
+import IndexManage from '../views/Backstage/IndexManage.vue'
+import Team from '../views/Backstage/Team.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -49,6 +57,51 @@ const routes = [
     path: '/itemlist',
     name: 'Itemlist',
     component: Itemlist
+  },
+  {
+    path: '/BackstageLogin',
+    name: 'BackstageLogin',
+    component: BackstageLogin
+  },
+  {
+    path: '/Notice',
+    name: 'Notice',
+    component: Notice
+  },
+  {
+    path: '/Paper',
+    name: 'Paper',
+    component: Paper
+  },
+  {
+    path: '/Recommend',
+    name: 'Recommend',
+    component: Recommend
+  },
+  {
+    path: '/Reform',
+    name: 'Reform',
+    component: Reform
+  },
+  {
+    path: '/Rotation',
+    name: 'Rotation',
+    component: Rotation
+  },
+  {
+    path: '/Timeline',
+    name: 'Timeline',
+    component: Timeline
+  },
+  {
+    path: '/IndexManage',
+    name: 'IndexManage',
+    component: IndexManage
+  },
+  {
+    path: '/Team',
+    name: 'Team',
+    component: Team
   },
 ]
 
