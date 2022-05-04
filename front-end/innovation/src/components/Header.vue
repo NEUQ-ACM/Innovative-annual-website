@@ -6,28 +6,9 @@
       </div>
       <nav>
         <ul>
-          <li>
-            <router-link to="/Home"
-                         active-class="isActive">
-              <span>首 页</span>
-            </router-link>
-          </li>
-          <li @click="mobileShow = !mobileShow">
-                <router-link to="/News"
-                             active-class="isActive">
-                  <span>通知公告</span>
-                </router-link>
-              </li>
-          <li @click="mobileShow = !mobileShow">
-            <router-link to="/Arrangment"
-                         active-class="isActive">
-              <span>年会日程</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/Gallery"
-                         active-class="isActive">
-              <span>作品展示</span>
+          <li v-for="(items, index) in navData" :key="index">
+            <router-link :to="items.routerLink" active-class="isActive">
+              <span>{{ items.spanValue }}</span>
             </router-link>
           </li>
         </ul>
@@ -37,34 +18,14 @@
     <nav class="mobileNav">
       <el-button @click="mobileShow = !mobileShow">=</el-button>
       <el-collapse-transition>
-        <div v-show="mobileShow"
-             class="mobileList">
+        <div v-show="mobileShow" class="mobileList">
           <nav>
             <ul>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/Home"
-                             active-class="isActive">
-                  <span>首 页</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/News"
-                             active-class="isActive">
-                  <span>通知公告</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/Arrangment"
-                             active-class="isActive">
-                  <span>年会日程</span>
-                </router-link>
-              </li>
-              <li @click="mobileShow = !mobileShow">
-                <router-link to="/Gallery"
-                             active-class="isActive">
-                  <span>作品展示</span>
-                </router-link>
-              </li>
+              <li v-for="(items, index) in navData" :key="index">
+            <router-link :to="items.routerLink" active-class="isActive">
+              <span>{{ items.spanValue }}</span>
+            </router-link>
+          </li>
             </ul>
           </nav>
         </div>
@@ -78,16 +39,22 @@
 <script>
 export default {
   name: "Header",
-  data () {
+  data() {
     return {
       mobileShow: false,
+      navData: [
+        { routerLink: "/Home", spanValue: "首 页" },
+       { routerLink: "/News", spanValue: "通知公告" },
+        { routerLink: "/Arrangment", spanValue: "年会日程" },
+        { routerLink: "/Gallery", spanValue: "作品展示" },
+        ],
     };
   },
 };
 </script>
 <style scoped>
 header {
-  background-image:url('../assets/images/logo_bg.png');
+  background-image: url("../assets/images/logo_bg.png");
   position: fixed;
   height: 80px;
   width: 100%;
@@ -99,7 +66,7 @@ header {
   width: 20%;
   height: 50px;
   display: flex;
-   justify-content: center; 
+  justify-content: center;
   align-items: center;
   flex-direction: row;
   margin: 0 auto;
@@ -110,7 +77,7 @@ header {
   margin-right: 0px;
   width: 300px;
 }
-nav{
+nav {
   flex: 1;
 }
 .headerLogo img {
@@ -145,10 +112,12 @@ a {
   line-height: 80px;
   /* margin: 0 25px; */
   list-style: none;
-  color: #666666;
 }
 .navMain nav ul li span {
+  display: inline-block;
   line-height: 80px;
+  height: 100%;
+  width: 100%;
 }
 nav ul li a {
   color: #fffff9;
