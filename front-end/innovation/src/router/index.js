@@ -16,6 +16,7 @@ import Rotation from '../views/Backstage/Rotation.vue'
 import Timeline from '../views/Backstage/Timeline.vue'
 import IndexManage from '../views/Backstage/IndexManage.vue'
 import Team from '../views/Backstage/Team.vue'
+import NoticeDetail from '../views/NoticeDetail'
 Vue.use(VueRouter)
 
 const routes = [
@@ -103,6 +104,11 @@ const routes = [
     name: 'Team',
     component: Team
   },
+  {
+    path: '/NoticeDetail',
+    name: 'NoticeDetail',
+    component: NoticeDetail
+  }
 ]
 
 const router = new VueRouter({
