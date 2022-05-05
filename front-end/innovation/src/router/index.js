@@ -16,6 +16,8 @@ import Rotation from '../views/Backstage/Rotation.vue'
 import Timeline from '../views/Backstage/Timeline.vue'
 import IndexManage from '../views/Backstage/IndexManage.vue'
 import Team from '../views/Backstage/Team.vue'
+import RecommendDt from '../views/Backstage/RecommendDt.vue'
+import RecommendNew from '../views/Backstage/RecommendNew.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -77,6 +79,16 @@ const routes = [
     path: '/Recommend',
     name: 'Recommend',
     component: Recommend
+  },
+  {
+    path: '/RecommendDt',
+    name: 'RecommendDt',
+    component: RecommendDt
+  },
+  {
+    path: '/RecommendNew',
+    name: 'RecommendNew',
+    component: RecommendNew
   },
   {
     path: '/Reform',
