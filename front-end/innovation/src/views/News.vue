@@ -61,10 +61,10 @@
             </div>
           </div>
         </div>
-        <div class="btnLine">
+      </el-main>
+      <div class="btnLine">
           <button>查看更多</button>
         </div>
-      </el-main>
     </el-container>
   </section>
 </template>
