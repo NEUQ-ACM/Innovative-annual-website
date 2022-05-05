@@ -93,4 +93,18 @@ export default {
   color: #afc0d6;
   width: 400px;
 }
+@media screen and (max-width:768px ){
+  .box-card{
+    position: relative;
+   /* top: -68px;
+    left: -64px;*/
+    width: 100%;
+  }
+  .el-timeline{
+    padding: 0px;
+  }
+  .block .el-timeline .location{
+    width: 300px;
+  }
+}
 </style>
