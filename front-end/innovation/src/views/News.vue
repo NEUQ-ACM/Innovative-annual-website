@@ -189,7 +189,7 @@ div.btnLine button:hover {
   color: #fff;
   background-color: #352ddb;
 }
-@media screen and (max-width: 580px){
+@media screen and (max-width: 768px){
   .el-main .boxWrap{
     min-width: none;
     width: 100%;
