@@ -189,4 +189,18 @@ div.btnLine button:hover {
   color: #fff;
   background-color: #352ddb;
 }
+@media screen and (max-width: 580px){
+  .el-main .boxWrap{
+    min-width: none;
+    width: 100%;
+  }
+  .el-main .boxWrap{
+    width: 100%;
+  }
+ .el-main .boxWrap .newsTitle{
+   width: 100%;
+   display: block;
+   min-width: none;
+ }
+}
 </style>
