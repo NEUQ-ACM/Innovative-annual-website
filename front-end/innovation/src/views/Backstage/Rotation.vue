@@ -1,78 +1,66 @@
 <template>
   <div class="maincontainer">
-    <el-upload
-      class="upload-demo"
-      drag
-      :on-success="changeUpload"
-      action="/updateRotation"
-      :file-list="fileList"
-      v-show="upLoad"
-    >
-      <i class="el-icon-upload"></i>
-      <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-      <div class="el-upload__tip" slot="tip">
-        只能上传jpg/png文件，且不超过500kb
-        <el-button type="danger" @click="changeUpload">取消</el-button>
-      </div>
-    </el-upload>
-    <!-- <el-container>
-		  <el-aside style="height: 50vh;" width="200px" ><Sidebar></Sidebar></el-aside>
-		  <el-main>Main</el-main>
-		</el-container> -->
     <el-row :gutter="20" class="el-row">
       <el-col :span="4"><Sidebar></Sidebar></el-col>
-      <el-col :span="20"> 首页轮播图 </el-col>
-      <el-col :span="20">
-        <el-carousel :interval="4000" type="card" height="200px">
-          <el-carousel-item v-for="(item, id) in rotationDate" :key="id">
-            <img :src="item.url" />
-          </el-carousel-item>
-        </el-carousel>
-      </el-col>
-      <el-col :span="16">
-        <el-table
-          :data="rotationDate"
-          style="width: 100%"
-          @click="console.log('1')"
-        >
-          <el-table-column label="图片" width="400px">
-            <template slot-scope="scope">
-              <img :src="scope.row.url" />
-            </template>
-          </el-table-column>
-          <el-table-column label="操作权限" width="400px">
-            <el-tag :type="success" effect="dark"> 管理员 </el-tag>
-          </el-table-column>
-          <el-table-column label="操作" width="400px">
-            <template slot-scope="scope">
-              <el-button
-                type="primary"
-                @click="handleEdit(scope.$index, scope.row)"
-                >修改图片</el-button
-              >
-              <el-button
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)"
-                >删除图片</el-button
-              >
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-col>
-      <el-col :span="4" type="flex" justify="center">
-        <el-upload
-  class="upload-add"
-  ref="upload"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :file-list="fileList"
-  :auto-upload="false">
-  <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-</el-upload>
-         </el-col>
+      <el-col :span="20"> 
+	  <div class="backstagetitle">首页轮播图</div>
+	  <el-col :span="20">
+	    <el-carousel :interval="4000" type="card" height="200px">
+	      <el-carousel-item v-for="(item, id) in rotationDate" :key="id">
+	        <img :src="item.url" />
+	      </el-carousel-item>
+	    </el-carousel>
+	  </el-col>
+	  <el-col :span="20" style="margin-top: 2%;margin-bottom: 2%;">
+	  		  <el-upload
+	  		    :action="uploadurl"
+	  		    :on-preview="handlePreview"
+	  		    :on-remove="handleRemove"
+	  		    :before-remove="beforeRemove"
+	  			:on-success='uploadSuccess'
+	  			:on-error="uploadError"
+	  		    multiple
+	  		    :limit="1"
+	  		    :on-exceed="handleExceed"
+	  		    :file-list="fileList">
+	  		    <el-button type="primary" >新增轮播图<i class="el-icon-upload el-icon--right"></i></el-button>
+	  		    <div slot="tip" class="el-upload__tip">只能上传1个jpg/png文件，且不超过500kb</div>
+	  		  </el-upload>
+	  </el-col>
+	  <el-col :span="20">
+	    <el-table
+	      :data="rotationDate"
+	      style="width: 100%"
+	      @click="console.log('1')"
+	    >
+	      <el-table-column label="图片" width="400px">
+	        <template slot-scope="scope">
+	          <img :src="scope.row.url" />
+	        </template>
+	      </el-table-column>
+	      <el-table-column label="操作权限" width="200px">
+	        <el-tag :type="success" effect="dark"> 管理员 </el-tag>
+	      </el-table-column>
+	      <el-table-column label="操作" width="400px">
+	        <template slot-scope="scope">
+	  				<el-button
+	  				  type="info"
+	  				  @click="handleDelete(scope.$index, scope.row)"
+	  				  >修改轮播图</el-button
+	  				>
+	          <el-button
+	            type="danger"
+	            @click="handleDelete(scope.$index, scope.row)"
+	            >删除图片</el-button
+	          >
+	        </template>
+	      </el-table-column>
+	    </el-table>
+	  </el-col>
+	  <el-col :span="4" type="flex" justify="center">
+	     </el-col>
+	  </el-col>
+      
     </el-row>
   </div>
 </template>
@@ -89,6 +77,10 @@ export default {
       upLoad: false,
       roationNum: 0,
       fileList:[],
+	  uploadurl:'',
+	  showmodel1:false,
+	  newImgRes:'',
+	  changeImgUrl:'',
       rotationDate: [
         {
           id: "1",
@@ -112,8 +104,7 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
-      axios
-        .get("/delNotice" + row.id)
+      this.$axios.get("/delNotice" + row.id)
         .then((response) => {
           this.roationNum = response.pageNumber;
           this.rotationDate = response.data;
@@ -123,13 +114,43 @@ export default {
           alert("网络错误，不能访问");
         });
     },
+	uploadError(err, file, fileList){
+		this.$message.error('出错了'+err);
+	},
+	uploadSuccess(response, file, fileList){
+		this.newImgRes=response.data
+		this.$message({
+		          message: '上传成功',
+		          type: 'success'
+		        });
+	},
+	addImgurl(){
+		var that=this
+			this.$axios.post('/rotation/addNotice',Qs.stringify({
+    		'userid':this.newImgUrl,
+    		'id':'123456',
+			'name':''
+    	}))
+	},
     changeUpload() {
       this.upLoad = false;
       console.log(this.fileList)
     },
+	handleRemove(file, fileList) {
+	        console.log(file, fileList);
+	      },
+	      handlePreview(file) {
+	        console.log(file);
+	      },
+	      handleExceed(files, fileList) {
+	        this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+	      },
+	      beforeRemove(file, fileList) {
+	        return this.$confirm(`确定移除 ${ file.name }？`);
+	      }
   },
   mounted() {
-    axios.get("/rotation")
+    this.$axios.get("/rotation")
       .then((response) => {
         this.roationNum = response.pageNumber;
         this.rotationDate = response.data;
@@ -143,6 +164,15 @@ export default {
 </script>
 
 <style scoped>
+.backstagetitle{
+	 font-size: 20px;
+	 margin-top: 2%;
+	 padding-bottom: 1%;
+	 margin-bottom: 1%;
+	 border-bottom: 1px solid lightgray;
+	 width: 90%;
+	 text-align: left;
+}
 .maincontainer .upload-demo {
   width: 700px;
   height: 400px;

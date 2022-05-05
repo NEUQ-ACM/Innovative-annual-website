@@ -11,17 +11,9 @@
 		        <i class="el-icon-menu"></i>
 		        <span slot="title">首页轮播图</span>
 		      </el-menu-item>
-			  <el-menu-item index="Timeline">
-			    <i class="el-icon-menu"></i>
-			    <span slot="title">年会日程</span>
-			  </el-menu-item>
 			  <el-menu-item index="Recommend">
 			    <i class="el-icon-menu"></i>
 			    <span slot="title">创业推荐项目</span>
-			  </el-menu-item>
-			  <el-menu-item index="Team">
-			    <i class="el-icon-menu"></i>
-			    <span slot="title">优秀团队</span>
 			  </el-menu-item>
 		      <el-menu-item index="Notice">
 		        <i class="el-icon-menu"></i>
