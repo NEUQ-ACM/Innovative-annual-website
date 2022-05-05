@@ -93,7 +93,7 @@ export default {
   color: #afc0d6;
   width: 400px;
 }
-@media screen and (max-width:570px ){
+@media screen and (max-width:768px ){
   .box-card{
     position: relative;
    /* top: -68px;
