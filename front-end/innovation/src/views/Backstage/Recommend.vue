@@ -27,9 +27,6 @@
 	.el-row {
 	    margin-bottom: 20px;
 		height: 500px;
-	    &:last-child {
-	      margin-bottom: 0;
-	    }
 	  }
 	.maincontainer{
 		height: 100%;
