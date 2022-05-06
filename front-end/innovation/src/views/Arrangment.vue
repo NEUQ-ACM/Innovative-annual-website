@@ -96,7 +96,7 @@ export default {
 @media screen and (max-width:768px ){
   .box-card{
     position: relative;
-   /* top: -68px;
+   /*top: -68px;
     left: -64px;*/
     width: 100%;
   }
