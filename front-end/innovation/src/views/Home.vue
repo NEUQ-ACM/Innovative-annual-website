@@ -1,13 +1,7 @@
 <template>
   <div class="home">
     <el-carousel :interval="3000" arrow="hover" height="607px" trigger="click">
-      <el-carousel-item>
-        <img src="../assets/images/mainImg.jpg" alt="" />
-      </el-carousel-item>
-      <el-carousel-item>
-        <img src="../assets/images/mainImage.png" alt="" />
-      </el-carousel-item>
-      <el-carousel-item>
+      <el-carousel-item v-for="r in rotation" :key="r.id">
         <img src="../assets/images/mainImg.jpg" alt="" />
       </el-carousel-item>
     </el-carousel>
@@ -19,298 +13,27 @@
         </div>
 
         <div class="announmentItemList">
-          <div class="announmentItem">
+          <div class="announmentItem" v-for="(notice , index) in notices" :key="index">
             <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
+            <router-link :to="`/NoticeDetail?id=${notice.id}`">
+              <div class="announmentWrap" :style="{backgroundImage: 'url('+notice.background_image+')'}">
                 <div class="announmentText" style="overflow: hidden">
                   <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
+                    <span class="day">{{notice.update_time[2]}}</span>
+                    <span class="year">{{notice.update_time[0]}}.{{notice.update_time[1]}}</span>
                   </div>
                   <div class="news">
                     <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
+                      {{notice.title}}
                     </span>
                     <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
+                      {{notice.description}}
                     </span>
                   </div>
                 </div>
               </div>
-            </a>
+            </router-link>
           </div>
-          <div class="announmentItem">
-            <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
-                    </span>
-                    <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="announmentItem">
-            <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
-                    </span>
-                    <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="announmentItem">
-            <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
-                    </span>
-                    <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="announmentItem">
-            <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
-                    </span>
-                    <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="announmentItem">
-            <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
-                    </span>
-                    <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="announmentItem">
-            <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
-                    </span>
-                    <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="announmentItem">
-            <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
-                    </span>
-                    <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="announmentItem">
-            <!-- <div class="announmentText"></div> -->
-            <a href="#">
-              <div class="announmentWrap">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">03</span>
-                    <span class="year">2021.12</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      关于举办第十四届河北省大学生创新创业年会的通知关于举办第十四届河北省大学生创新创业年会的通知
-                    </span>
-                    <span class="newsContent">
-                      请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件请查看附件
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="sectionThree">
-      <div class="container">
-        <div class="showTitle">
-          <span>本届创新创业成果展示</span>
-        </div>
-        <div class="showContent">
-          <el-tabs
-            v-model="thisActiveName"
-            type="card"
-            @tab-click="handleThisClick"
-          >
-            <el-tab-pane label="学术论文" name="first"
-              >暂无学术论文相关信息</el-tab-pane
-            >
-            <el-tab-pane label="改革成果项目" name="second"
-              >暂无改革成果相关信息</el-tab-pane
-            >
-            <el-tab-pane label="创业推荐项目" name="third"
-              >暂无学术论文相关信息</el-tab-pane
-            >
-          </el-tabs>
-        </div>
-      </div>
-    </section>
-    <section class="sectionFour">
-      <div class="container">
-        <el-row class="title">
-          <el-col :span="24">
-            <span>往届优秀团队介绍</span>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <a href="#" class="itemBox">
-              <img src="../assets/images/wu.jpg" alt="" />
-              <div class="text">
-                <span class="headerline"
-                  >高效紧凑型宽带大功率毫米波传输弯头设计毫米波传输弯头设计</span
-                >
-                <span class="intro">项目成员：李鼎</span>
-              </div>
-            </a>
-          </el-col>
-          <el-col :span="6">
-            <a href="#" class="itemBox">
-              <img src="../assets/images/wu.jpg" alt="" />
-              <div class="text">
-                <span class="headerline"
-                  >高效紧凑型宽带大功率毫米波传输弯头设计毫米波传输弯头设计</span
-                >
-                <span class="intro">项目成员：李鼎</span>
-              </div>
-            </a>
-          </el-col>
-          <el-col :span="6">
-            <a href="#" class="itemBox">
-              <img src="../assets/images/wu.jpg" alt="" />
-              <div class="text">
-                <span class="headerline"
-                  >高效紧凑型宽带大功率毫米波传输弯头设计毫米波传输弯头设计</span
-                >
-                <span class="intro">项目成员：李鼎</span>
-              </div>
-            </a>
-          </el-col>
-          <el-col :span="6">
-            <a href="#" class="itemBox">
-              <img src="../assets/images/wu.jpg" alt="" />
-              <div class="text">
-                <span class="headerline"
-                  >高效紧凑型宽带大功率毫米波传输弯头设计毫米波传输弯头设计</span
-                >
-                <span class="intro">项目成员：李鼎</span>
-              </div>
-            </a>
-          </el-col>
-        </el-row>
-      </div>
-    </section>
-    <section class="sectionFive">
-      <div class="container">
-        <div class="showTitle">
-          <span>往届创新创业成果展示</span>
-        </div>
-        <div class="showContent">
-          <el-tabs
-            v-model="preActiveName"
-            type="card"
-            @tab-click="handlePreClick"
-          >
-            <el-tab-pane label="学术论文" name="first"
-              >暂无学术论文相关信息</el-tab-pane
-            >
-            <el-tab-pane label="改革成果项目" name="second"
-              >暂无改革成果相关信息</el-tab-pane
-            >
-            <el-tab-pane label="创业推荐项目" name="third"
-              >暂无学术论文相关信息</el-tab-pane
-            >
-          </el-tabs>
         </div>
       </div>
     </section>
@@ -318,12 +41,43 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "Home",
   data() {
     return {
       preActiveName: "first",
       thisActiveName: "first",
+      notices: [
+        {
+          id: '1',
+          title: '酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷',
+          description: 'bbbbbbbbbbbb',
+          background_image: 'https://picsum.photos/id/29/200/200',
+          update_time: '2021-12-01',
+        },
+        {
+          id: '2',
+          title: '酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷',
+          description: 'bbbbbbbbbbbb',
+          background_image: 'https://picsum.photos/id/29/200/200',
+          update_time: '2021-12-01',
+        },
+      ],
+      rotation: [
+        {
+          id: '1',
+          url: 'img/mainImg.57e2a7c6.jpg'
+        },
+        {
+          id: '2',
+          url: 'img/mainImg.57e2a7c6.jpg'
+        },
+        {
+          id: '3',
+          url: 'img/mainImg.57e2a7c6.jpg'
+        },
+      ],
     };
   },
   methods: {
@@ -333,7 +87,34 @@ export default {
     handleThisClick(tab, event) {
       console.log(tab, event);
     },
+    queryNotice(){
+      axios.get('/notice/getall').then(
+        res => {
+          console.log(res)
+          this.notices = res.data.noticeList
+        }
+      )
+    },
+    queryRotation(){
+      axios.get('/rotation/getall').then(
+        res => {
+          console.log(res)
+          this.rotation = res.data.rotationList
+          this.rotationPageNumber = res.data.pageNumber
+        }
+      )
+    },
+    changeDateForm(){
+      this.notices.forEach(item => {
+        item.update_time = item.update_time.split('-')
+      })
+    }
   },
+  mounted(){
+    this.queryRotation()
+    this.queryRotation()
+    this.changeDateForm()
+  }
 };
 </script>
 
@@ -458,7 +239,6 @@ export default {
 
 .announment .announmentWrap {
   display: flex;
-  background-image: url("https://picsum.photos/id/29/200/200");
   width: 500px;
   height: 200px;
   background-size: cover;
@@ -475,6 +255,7 @@ export default {
 
 div.date {
   min-width: 80px;
+  max-width: 80px;
   display: flex;
   flex-wrap: wrap;
   border-right: 1px solid #ddd;
@@ -528,7 +309,7 @@ span.newsContent {
   min-width: 0;
   height: 40px;
   line-height: 40px;
-  text-align: center;
+  text-align: left;
   /* color: #999; */
   font-size: 14px;
 }
