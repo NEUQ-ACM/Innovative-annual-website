@@ -13,8 +13,8 @@
         >
           <div class="newsBoxOne newsBox">
             <div class="date">
-              <span class="day">03</span>
-              <span class="year">2021.12</span>
+              <span class="day">{{item.updateTime.substring(8,10)}}</span>
+              <span class="year">{{item.updateTime.substring(0,7)}}</span>
             </div>
             <div class="news">
               <span class="newsTitle">{{ item.title }}</span>
@@ -50,6 +50,7 @@ export default {
         console.log(error);
         alert("网络错误，不能访问");
       });
+      console.log(this.noticeData);
   },
 };
 </script>
