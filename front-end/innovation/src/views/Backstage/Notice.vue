@@ -8,6 +8,9 @@
       <el-col :span="4"><Sidebar></Sidebar></el-col>
       <el-col :span="20"> 通知公告 </el-col>
       <el-col :span="20">
+        <el-button type="success" @click="handleAdd">添加通知</el-button>
+      </el-col>
+      <el-col :span="20">
         <el-table :data="noticeDate" style="width: 100%">
           <el-table-column label="id" width="180">
             <template slot-scope="scope">
@@ -29,55 +32,42 @@
           <el-table-column label="上传日期" width="180">
             <template slot-scope="scope">
               <i class="el-icon-time"></i>
-              <span style="margin-left: 10px">{{ scope.row.update_time }}</span>
+              <span style="margin-left: 10px">{{ scope.row.createTime }}</span>
             </template>
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
                 size="mini"
-                @click="handleEdit(scope.$index, scope.row)"
-                >编辑</el-button
+                @click="handleDetail(scope.$index, scope.row)"
+                >查看</el-button
               >
-              <el-dialog title="公告修改" :visible.sync="NoticeEdit">
-                <el-form ref="form" :model="form" label-width="80px">
-                  <el-form-item label="标题">
-                    <el-input v-model="nowEdit.title"></el-input>
-                  </el-form-item>
-                  <el-form-item label="描述">
-                    <el-input v-model="nowEdit.description"></el-input>
-                  </el-form-item>
-                </el-form>
-                <el-button type="primary" @click="editSubmit"
-                  >确定修改</el-button
+              <el-dialog title="查看通知" :visible.sync="dialogTableVisible">
+                <el-input
+                  type="textarea"
+                  :autosize="{ minRows: 5, maxRows: 30 }"
+                  v-model="nowContent"
                 >
+                </el-input>
               </el-dialog>
               <el-button
                 size="mini"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)"
-                >删除</el-button
+                @click="handleEdit(scope.$index, scope.row)"
+                >编辑</el-button
               >
+              <el-popconfirm title="这是一段内容确定删除吗？">
+                <el-button
+                  size="mini"
+                  type="danger"
+                  @click="handleDelete(scope.$index, scope.row)"
+                  slot="reference"
+                  >删除</el-button
+                >
+              </el-popconfirm>
             </template>
           </el-table-column>
         </el-table>
       </el-col>
-	  <el-col :span="20">
-		  <el-button type="success" @click="NoticeAdd=true">添加通知</el-button>
-		  <el-dialog title="公告添加" :visible.sync="NoticeAdd">
-                <el-form ref="form" :model="form" label-width="80px">
-                  <el-form-item label="标题">
-                    <el-input v-model="nowAdd.title"></el-input>
-                  </el-form-item>
-                  <el-form-item label="描述">
-                    <el-input v-model="nowAdd.description"></el-input>
-                  </el-form-item>
-                </el-form>
-                <el-button type="primary" @click="addSubmit"
-                  >确定添加</el-button
-                >
-              </el-dialog>
-	  </el-col>
     </el-row>
   </div>
 </template>
@@ -90,43 +80,46 @@ export default {
   },
   data() {
     return {
-      nowEdit: { id: "", title: "", content: "" },
-	  nowAdd:{title:'',content:''},
-      NoticeEdit: false,
-	  NoticeAdd:false,
+      dialogTableVisible: false,
+      nowContent: "",
       noticeNum: 0,
       noticeDate: [
         {
-          id: 1,
-          title: "法法师阿发 按时发生 ",
+          id: '',
+          title: "",
           description:
-            "法发顺丰啊沙发沙发上大发顺丰啊发顺丰按时发顺丰安抚安抚安抚萨沙发阿发十三分芬安抚撒发 ",
-          update_time: " 2021-05-08",
+            "",
+          update_time: "",
+          content: ``,
+          view_counts: "",
         },
       ],
     };
   },
   methods: {
+    handleDetail(index, row) {
+      (this.dialogTableVisible = true), (this.nowContent = row.content);
+    },
     handleEdit(index, row) {
-      this.NoticeEdit = true;
-      this.nowEdit.id = row.id;
+      this.$router.push({
+        path: "/NoticeEdit",
+        query: { type: false, id: row.id },
+      }); //type参数 true为修改 false为添加
     },
-    editSubmit() {
-      axios.post('/updateNotice',this.nowEdit)
+    handleAdd(index, row) {
+      this.$router.push({ path: "/NoticeEdit", query: { type: true } });
     },
-	handleDelete(index,row){
-		axios.get('/delNotice',row.id)
-	},
-	addSubmit(){
-		axios.post('/addNotice',this.nowEdit)
-	}
+    handleDelete(index, row) {
+      this.$axios.get("/notice/delNotice", row.id);
+    },
   },
   mounted() {
-    axios
-      .get("/notice")
+    this.$axios
+      .get("/notice/getAll")
       .then((response) => {
-        this.noticeNum = response.pageNumber;
-        this.noticeDate = response.data;
+        this.noticeNum = response.data.data.pageNumber;
+        this.noticeDate = response.data.data.records;
+        console.log(this.noticeDate);
       })
       .catch((error) => {
         console.log(error);
@@ -148,7 +141,7 @@ export default {
 }
 .rightside {
 }
-.el-button--success{
-	margin-top: 20px;
+.el-button--success {
+  margin-top: 20px;
 }
 </style>
