@@ -15,61 +15,21 @@
         <el-divider></el-divider>
       </el-col>
       <!-- 条件筛选表单区 -->
-      <el-col :span="16" :offset="4">
-        <div class="formBox">
-          <el-form
-            ref="form"
-            :model="searchForm"
-            label-width="80px"
-            :inline="true"
-            label-position="left"
-          >
-            <el-form-item label="项目编号">
-              <el-input v-model="searchForm.a"></el-input>
-            </el-form-item>
-            <el-form-item label="项目名称">
-              <el-input v-model="searchForm.b"></el-input>
-            </el-form-item>
-            <el-form-item label="项目类型">
-              <el-select v-model="searchForm.c" placeholder="请选择">
-                <el-option label="创新训练项目" value="1"></el-option>
-                <el-option label="创业训练项目" value="2"></el-option>
-                <el-option label="创业实践项目" value="3"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="学校名称">
-              <el-input v-model="searchForm.d"></el-input>
-            </el-form-item>
-            <el-form-item label="学科门类">
-              <el-select v-model="searchForm.e" placeholder="请选择学科门类">
-                <el-option label="哲学" value="1"></el-option>
-                <el-option label="经济学" value="2"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="专业大类">
-              <el-select v-model="searchForm.f" placeholder="请选择专业大类">
-                <el-option label="区域一" value="shanghai"></el-option>
-                <el-option label="区域二" value="beijing"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="指导教师">
-              <el-input v-model="searchForm.g"></el-input>
-            </el-form-item>
-            <el-form-item label="项目成员">
-              <el-input v-model="searchForm.h"></el-input>
-            </el-form-item>
-            <el-form-item label="年份">
-              <el-select v-model="searchForm.i" placeholder="请选择活动区域">
-                <el-option label="2022年" value="2022"></el-option>
-                <el-option label="2021年" value="2021"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="search">查询</el-button>
-              <el-button @click="backToHome">返回</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
+      <el-col :span="14" :offset="5">
+        <el-table :data="projectList" stripe fit>
+          <el-table-column prop="project_name" label="作品名" width="180">
+          </el-table-column>
+          <el-table-column prop="description" label="介绍" width="600">
+          </el-table-column>
+          <el-table-column label="操作">
+          <template slot-scope="scope" width="180px">
+            <!-- 查看详情 -->
+            <el-tooltip effect="dark" content="点击查看详情" placement="top">
+              <el-button type="primary" icon="el-icon-tickets" size="mini" @click="showDetail(scope.row.id)"></el-button>
+            </el-tooltip>
+          </template>
+        </el-table-column>
+        </el-table>
       </el-col>
     </el-row>
   </div>
@@ -80,33 +40,60 @@ export default {
   name: "",
   data() {
     return {
-      // 筛选表单项
-      searchForm: {
-        a: "",
-        b: "",
-        c: "",
-        d: "",
-        e: "",
-        f: "",
-        g: "",
-        h: "",
-        i: "", //等后端确认接收参数后改名
-      },
       // 面包屑导航显示内容
       crumb: {
         Academic: "学术论文",
         Achievements: "改革项目成果",
         Business: "创业推介项目",
       },
+      // 获取到的作品列表
+      projectList: [
+        {
+          id: 111,
+          project_name: "test1",
+          description: "test1",
+        },
+        {
+          id: 222,
+          project_name: "test2",
+          description: "test2",
+        },
+      ],
     };
   },
   methods: {
+    // 请求作品大类列表
+    async getProjectList() {
+      const index = {
+       'Business': 1,
+       'Academic': 2,
+       'Achievements': 3,
+      }
+      const typeNum = index[this.$route.query.itemType]
+      const { data:res } = await this.$axios.get(`/project/getbyType/${typeNum}`)
+      if(res.status === 200) {
+        console.log(res.data)
+        return this.projectList = res.data.records
+      }
+      else {
+        return this.$message.error('请求作品列表失败')
+      }
+    },
     // 放弃查询，返回主页
     backToHome() {
-      this.$router.push('/')
+      this.$router.push("/");
+    },
+    // 查询具体作品内容
+    showDetail(id) {
+      console.log('作品id为'+id)
+      this.$router.push({ path: `/itemdetail`, query: { itemid: id } });
     }
   },
-  mounted() {},
+  mounted() {
+    // 获取查询作品的分类
+    console.log('作品分类为',this.$route.query.itemType)
+    this.getProjectList()
+  },
 };
 </script>
 

@@ -24,7 +24,7 @@
     <!-- 校徽 -->
     <el-row>
       <el-col :span="14" :offset="5">
-        <el-avatar shape="circle" :size="150" :fit="fit" :src="url"></el-avatar>
+        <el-avatar shape="circle" :size="150" :src="project.badgeUrl"></el-avatar>
       </el-col>
     </el-row>
 
@@ -150,9 +150,21 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    // 请求作品信息
+    async getProject() {
+      let id = Number(this.$route.query.itemid)
+      const { data: res } = await this.$axios.get(`/project/getbyId/${id}`)
+      if(res.status === 200) {
+        this.project = res.data
+        return this.$message.success('请求成功')
+      }
+      else return this.$message.error('请求作品详情失败')
+      console.log(res)
+    }
+  },
   mounted() {
-    console.log(this.$route.query.itemId);
+    this.getProject()
   },
 };
 </script>

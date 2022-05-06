@@ -7,6 +7,7 @@ import Organizer from "../views/Organizer"
 import Login from '@/views/Login.vue'
 import Arrangment from '@/views/Arrangment.vue'
 import Itemlist from '@/views/ItemList.vue'
+import ItemDetail from '@/views/ItemDetail.vue'
 import BackstageLogin from '../views/Backstage/BackstageLogin.vue'
 import Notice from '../views/Backstage/Notice.vue'
 import Paper from '../views/Backstage/Paper.vue'
@@ -65,6 +66,11 @@ const routes = [
     path: '/itemlist',
     name: 'Itemlist',
     component: Itemlist
+  },
+  {
+    path: '/itemdetail',
+    name: 'ItemDetail',
+    component: ItemDetail
   },
   {
     path: '/BackstageLogin',
