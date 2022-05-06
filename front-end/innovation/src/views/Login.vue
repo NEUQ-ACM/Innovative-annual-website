@@ -49,8 +49,7 @@ export default {
       nameValidateForm:
       {
         name: '',
-        password: '',
-        ipp: 'http://192.168.101.55/',
+        password: ''
       },
       radio: false,
       rules: {
@@ -59,10 +58,7 @@ export default {
         ],
         password: [
           { required: true, message: '密码不能为空', trigger: 'blur' },
-        ],
-        ipp: [
-          { required: true, message: '后端IP地址不能为空', trigger: 'blur' },
-        ],
+        ]
       },
     };
   },
@@ -70,9 +66,27 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          // alert('Name:' + this.nameValidateForm.name + ';Password:' + this.nameValidateForm.password);
-          // alert(this.nameValidateForm.ipp + this.nameValidateForm.name);
-          this.$router.push('/IndexManage');
+          this.$axios
+            .post('/login', {
+              "username": this.nameValidateForm.name,
+              "password": this.nameValidateForm.password
+            })
+            .then((data) => {
+              console.log(data);
+              if (data.data.status === 200) {
+                this.$message({
+                  message: '登录成功',
+                  type: 'success'
+                });
+                this.$router.push('/Rotation');
+              } else {
+                this.$message({
+                  message: '登录失败',
+                  type: 'error'
+                });
+              }
+            })
+            .catch((err) => console.log(err));
         } else {
           console.log('error submit!!');
           return false;
