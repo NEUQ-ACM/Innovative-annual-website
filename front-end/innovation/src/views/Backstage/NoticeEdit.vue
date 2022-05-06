@@ -55,7 +55,6 @@ export default {
       this.$router.push("/Notice");
     },
     onSubmit() {
-        console.log(JSON.stringify(this.noticeEdit));
       this.$axios({
           method:'post',
           url:this.url,
@@ -64,6 +63,7 @@ export default {
       })
         .then((response) => {
           alert('发送成功')
+          this.back()
         })
         .catch((error) => {
           console.log(error);
@@ -72,6 +72,10 @@ export default {
     },
   },
   mounted() {
+      this.$axios.get(`/notice/${this.$route.query.id}`)
+      .then(res=>{
+          this.noticeEdit=res.data.data.notice;
+      })
     if (!JSON.parse(this.$route.query.type)) {
       this.url = "/notice/updateNotice";
       this.noticeEdit.id=this.$route.query.id;

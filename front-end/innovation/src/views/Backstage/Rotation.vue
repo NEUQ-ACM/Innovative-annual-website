@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
   <div class="maincontainer">
     <el-row :gutter="20"
