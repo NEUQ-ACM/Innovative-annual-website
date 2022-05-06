@@ -403,6 +403,7 @@
 			},
 			submitForm(formName) {
 			let that=this
+			console.log(JSON.stringify(that.newdataform));
 			  this.$refs[formName].validate((valid) => {
 			    if (valid) {
 				  that.$axios({

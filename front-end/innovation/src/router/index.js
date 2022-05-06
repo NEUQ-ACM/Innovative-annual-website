@@ -24,6 +24,7 @@ import ReformDt from '../views/Backstage/ReformDt.vue'
 import ReformNew from '../views/Backstage/ReformNew.vue'
 import NoticeEdit from '../views/Backstage/NoticeEdit.vue'
 import NoticeDetail from '../views/NoticeDetail'
+import annex from '../views/Backstage/annex'
 Vue.use(VueRouter)
 
 const routes = [
@@ -85,6 +86,11 @@ const routes = [
     path: '/NoticeEdit',
     name: 'NoticeEdit',
     component: NoticeEdit
+  },
+  {
+    path: '/annex',
+    name: 'annex',
+    component: annex
   },
   {
     path: '/Paper',

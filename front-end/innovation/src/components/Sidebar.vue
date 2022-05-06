@@ -26,6 +26,10 @@
 		      <i class="el-icon-setting"></i>
 		      <span slot="title">改革成果项目</span>
 		    </el-menu-item>
+			<el-menu-item index="annex">
+		      <i class="el-icon-setting"></i>
+		      <span slot="title">附件管理</span>
+		    </el-menu-item>
 		    </el-menu>
 	</div>
 </template>
