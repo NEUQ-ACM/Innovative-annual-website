@@ -161,8 +161,8 @@ export default {
     },
   },
   mounted() {
-    axios
-      .get("/notice")
+    this.$axios
+      .get("/notice/getall")
       .then((response) => {
         this.noticeNum = response.pageNumber;
         this.noticeDate = response.data;

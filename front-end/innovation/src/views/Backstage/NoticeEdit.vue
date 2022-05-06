@@ -48,18 +48,24 @@ export default {
     return {
       buttonText: "创建",
       url: "",
-      noticeEdit: {
-        id: 0,
-        title: "test",
-        content: "test",
-        description: "test",
-      },
+      noticeEdit: {},
     };
   },
   methods: {
-      back(){
-          this.$router.push('/Notice')
-      }
+    back() {
+      this.$router.push("/Notice");
+    },
+    onSubmit() {
+      this.$axios
+        .post(url, this.noticeEdit)
+        .then((response) => {
+          alert('发送成功')
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("网络错误，不能访问");
+        });
+    },
   },
   mounted() {
     console.log(JSON.parse(this.$route.query.type));
