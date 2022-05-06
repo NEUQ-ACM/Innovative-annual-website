@@ -99,7 +99,7 @@
 			        this.$router.push({name:'RecommendDt',query:{id:row.id}})
 			      },
 			      handleDelete(index, row) {
-			        this.$axios.get("/project/delProject/1"+row.id ).then((res) => {
+			        this.$axios.get("/project/delProject/"+row.id ).then((res) => {
 			        		if(res.data.status=="200"){
 								this.$message.success('删除成功')
 								this.getData()
