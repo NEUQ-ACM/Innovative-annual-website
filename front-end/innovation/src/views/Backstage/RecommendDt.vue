@@ -2,12 +2,12 @@
 	<div class="maincontainer">
 		<el-card class="box-card">
 			<div slot="header" >
-			    <span style="font-size: 25px;">修改推荐项目</span>
+			    <span style="font-size: 25px;">新建推荐项目</span>
 			  </div>
 			<div style="width: 100%;">
 				<el-form :model="newdataform.project" :rules="rules" ref="newdataform.project" label-width="100px" class="demo-ruleForm">
 				  <el-form-item label="项目ID" prop="projectId" style="width: 100%;" >
-				    <el-input v-model="newdataform.project.projectId"  ></el-input>
+				    <el-input v-model="newdataform.project.projectId"  type="number" placeholder="输入数字" ></el-input>
 				  </el-form-item>
 				  <el-form-item label="项目名称" prop="projectName" style="width: 100%;" >
 				    <el-input v-model="newdataform.project.projectName"></el-input>
@@ -296,7 +296,6 @@
 			isaddStu:false,
 			isaddTch:false,
 			addstuItem:{
-				
 				name:'',
 				grade:'',
 				specialty:'',
@@ -305,7 +304,6 @@
 				isDel: 0,
 			},
 			addTchItem:{
-				
 				name:'',
 				job:'',
 				direction:'',
@@ -313,7 +311,6 @@
 				isDel: 0,
 			},
 			editstuItem:{
-				
 				name:'',
 				grade:'',
 				specialty:'',
@@ -322,7 +319,6 @@
 				isDel: 0,
 			},
 			editTchItem:{
-				
 				name:'',
 				job:'',
 				direction:'',
@@ -337,7 +333,7 @@
 							projectType: "",
 							category: "",
 							type: 1,
-							viewCounts:'',
+							viewCounts:0,
 							previewImageUrl: "",
 							badgeUrl: "",
 							years: "",
@@ -394,17 +390,29 @@
 			console.log(that.newdataform)
 			  this.$refs[formName].validate((valid) => {
 			    if (valid) {
+					let data1=JSON.stringify(that.newdataform)
+					console.log(data1)
 				  that.$axios({
 				           method:"post",//请求方式
 				           url:'/project/addProject',//请求接口
 				           headers:{
-				           'Content-Type': 'application/json '
+				           'Vary':'Origin',
+				           'Vary':'Access-Control-Request-Method',
+				           'Vary':'Access-Control-Request-Headers',
+				           'Content-Type':'application/json',
+				           'Transfer-Encoding':'chunked',
+				           'Connection':'keep-alive'
 				           },//请求头参数
-				           data:that.newdataform//数据
+				           data:data1//数据
 				         	})
 				  .then(function(res){
-				    that.$message.success('增加成功')
-					console.log(res)
+					if(res.data.status==200){
+						that.$message.success('增加成功')
+						that.$router.push('/Recommend')
+					}
+					else{
+						 that.$message.error('增加失败');
+					}
 				  })
 				  .catch(function(err){
 				    that.$message.error('增加失败');
@@ -544,13 +552,14 @@
 					 this.$message.error('添加信息不能为空');
 				}
 				else{
+					let id=this.newdataform.project.projectId
 					this.newdataform.studentList.push(this.addstuItem)
 					this.addstuItem={
 						name:'',
 						grade:'',
 						specialty:'',
 						isPresenter:'',
-						projectId:'',
+						projectId:id,
 						isDel:0
 					}
 					this.isaddStu=false
@@ -567,11 +576,12 @@
 				}
 				else{
 					this.newdataform.teacherList.push(this.addTchItem)
+					let id=this.newdataform.project.projectId
 					this.addTchItem={
 						name:'',
 						job:'',
 						direction:'',
-						projectId:'',
+						projectId:id,
 						isDel:0
 					}
 					this.isaddTch=false
@@ -585,16 +595,16 @@
 				this.$router.push('/Recommend')
 			},
 			getdata(){
-													let that = this
-													this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
-													        this.newdataform=res.data.data
-															this.$message.success('获取信息成功')
-													      });
-												}
+			let that = this
+				this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
+				        this.newdataform=res.data.data
+						this.$message.success('获取信息成功')
+				      });
+			}
 		},
 		mounted() {
-					this.getdata()
-				}
+			this.getdata()
+		}
 	  }
 </script>
 
@@ -613,18 +623,4 @@
 	}
 </style>
 
-<style scoped>
-	.maincontainer{
-		width: 100%;
-		height: auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.box-card{
-		width: 50%;
-		margin-top: 2%;
-		margin-bottom: 2%;
-	}
-</style>
 
