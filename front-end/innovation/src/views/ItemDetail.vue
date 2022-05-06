@@ -24,7 +24,7 @@
     <!-- 校徽 -->
     <el-row>
       <el-col :span="14" :offset="5">
-        <el-avatar shape="circle" :size="150" :fit="fit" :src="url"></el-avatar>
+        <el-avatar shape="circle" :size="150" :src="project.badgeUrl"></el-avatar>
       </el-col>
     </el-row>
 
