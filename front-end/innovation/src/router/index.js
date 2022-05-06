@@ -18,8 +18,15 @@ import IndexManage from '../views/Backstage/IndexManage.vue'
 import Team from '../views/Backstage/Team.vue'
 import RecommendDt from '../views/Backstage/RecommendDt.vue'
 import RecommendNew from '../views/Backstage/RecommendNew.vue'
+<<<<<<< HEAD
+import PaperDt from '../views/Backstage/PaperDt.vue'
+import PaperNew from '../views/Backstage/PaperNew.vue'
+import ReformDt from '../views/Backstage/ReformDt.vue'
+import ReformNew from '../views/Backstage/ReformNew.vue'
+=======
 import NoticeEdit from '../views/Backstage/NoticeEdit.vue'
 import NoticeDetail from '../views/NoticeDetail'
+>>>>>>> 75b2d5b14af868e4f73767a0467f2b5d7d19101e
 Vue.use(VueRouter)
 
 const routes = [
@@ -92,16 +99,7 @@ const routes = [
     name: 'Recommend',
     component: Recommend
   },
-  {
-    path: '/RecommendDt',
-    name: 'RecommendDt',
-    component: RecommendDt
-  },
-  {
-    path: '/RecommendNew',
-    name: 'RecommendNew',
-    component: RecommendNew
-  },
+  
   {
     path: '/Reform',
     name: 'Reform',
@@ -126,6 +124,35 @@ const routes = [
     path: '/Team',
     name: 'Team',
     component: Team
+  },{
+    path: '/RecommendDt',
+    name: 'RecommendDt',
+    component: RecommendDt
+  },
+  {
+    path: '/RecommendNew',
+    name: 'RecommendNew',
+    component: RecommendNew
+  },
+  {
+    path: '/ReformDt',
+    name: 'ReformDt',
+    component: ReformDt
+  },
+  {
+    path: '/ReformNew',
+    name: 'ReformNew',
+    component: ReformNew
+  },
+  {
+    path: '/PaperDt',
+    name: 'PaperDt',
+    component: PaperDt
+  },
+  {
+    path: '/PaperNew',
+    name: 'PaperNew',
+    component: PaperNew
   },
 ]
 

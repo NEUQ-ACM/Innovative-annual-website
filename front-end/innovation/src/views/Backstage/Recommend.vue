@@ -22,13 +22,9 @@
 				        width="180">
 				      </el-table-column>
 				      <el-table-column
-				        prop="project_name"
+				        prop="projectName"
 				        label="项目名称"
 				        width="180">
-				      </el-table-column>
-				      <el-table-column
-				        prop="project_type"
-				        label="项目类型">
 				      </el-table-column>
 					  <el-table-column
 					    prop="category"
@@ -46,16 +42,7 @@
 					        </template>
 					      </el-table-column>
 				    </el-table>
-					<el-table-column label="操作">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-        <el-button
-          size="mini"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-      </template>
+					
     </el-table-column>
 			   </div>
 		  </el-col>
@@ -103,7 +90,17 @@
 			      },
 			      handleDelete(index, row) {
 			        console.log(index, row);
-			      }
+			      },
+			getData(){
+				this.$axios.get("/project/getbyType/1" ).then((res) => {
+				        // console.log(res);
+				        this.tableData=res.data.data.records
+						this.$message.success('获取列表成功')
+				      });
+			},
+		},
+		mounted(){
+			this.getData()
 		}
 	}
 </script>
