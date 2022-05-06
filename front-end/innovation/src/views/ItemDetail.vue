@@ -14,7 +14,7 @@
     <el-row>
       <el-col :span="14" :offset="5">
         <div class="titleBox">
-          <span class="itemTitle">{{ project.project_name }}</span>
+          <span class="itemTitle">{{ newdataform.project.projectName }}</span>
         </div>
       </el-col>
     </el-row>
@@ -24,11 +24,9 @@
     <!-- 校徽 -->
     <el-row>
       <el-col :span="14" :offset="5">
-        <el-avatar shape="circle" :size="150" :src="project.badgeUrl"></el-avatar>
+        <el-avatar shape="circle" :size="150" :src="newdataform.project.badgeUrl"></el-avatar>
       </el-col>
     </el-row>
-
-
   <!-- 作品详情 -->
     <!-- 基本信息 -->
     <el-row>
@@ -39,18 +37,18 @@
           border
         >
           <el-descriptions-item label="论文题目"
-            >{{project.project_name}}</el-descriptions-item
+            >{{newdataform.project.projectName}}</el-descriptions-item
           >
           <el-descriptions-item label="项目类型"
-            >{{project.project_type}}</el-descriptions-item
+            >{{newdataform.project.projectType}}</el-descriptions-item
           >
           <el-descriptions-item label="学科类别" :span="2"
-            >{{project.category}}</el-descriptions-item
+            >{{newdataform.project.category}}</el-descriptions-item
           >
           <el-descriptions-item label="项目编号">
-            <el-tag size="small">{{project.projectId}}</el-tag>
+            <el-tag size="small">{{newdataform.project.projectId}}</el-tag>
           </el-descriptions-item>
-          <el-descriptions-item label="学校">{{project.school}}</el-descriptions-item>
+          <el-descriptions-item label="学校">{{newdataform.project.school}}</el-descriptions-item>
         </el-descriptions>
       </el-col>
     </el-row>
@@ -104,6 +102,26 @@ export default {
   name: "",
   data() {
     return {
+		newdataform:{
+			 project: {
+						projectId: "",
+						projectName: "",
+						description: "",
+						projectType: "",
+						category: "",
+						type: 1,
+						viewCounts:0,
+						previewImageUrl: "",
+						badgeUrl: "",
+						years: "",
+						school: "",
+						isDel: 0
+					},
+			studentList:[
+			],
+			teacherList:[
+			],
+		},
       project: {
         id: "",
         projectId: "",
@@ -156,7 +174,8 @@ export default {
       let id = Number(this.$route.query.itemid)
       const { data: res } = await this.$axios.get(`/project/getbyId/${id}`)
       if(res.status === 200) {
-        this.project = res.data
+		console.log(res)
+        this.newdataform = res.data
         return this.$message.success('请求成功')
       }
       else return this.$message.error('请求作品详情失败')
