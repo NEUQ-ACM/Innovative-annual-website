@@ -5,27 +5,27 @@
 			    <span style="font-size: 25px;">修改推荐项目</span>
 			  </div>
 			<div style="width: 100%;">
-				<el-form :model="newdataform" :rules="rules" ref="newdataform" label-width="100px" class="demo-ruleForm">
+				<el-form :model="newdataform.project" :rules="rules" ref="newdataform.project" label-width="100px" class="demo-ruleForm">
 				  <el-form-item label="项目ID" prop="projectId" style="width: 100%;" >
-				    <el-input v-model="newdataform.projectId"  ></el-input>
+				    <el-input v-model="newdataform.project.projectId"  ></el-input>
 				  </el-form-item>
 				  <el-form-item label="项目名称" prop="projectName" style="width: 100%;" >
-				    <el-input v-model="newdataform.project_name"></el-input>
+				    <el-input v-model="newdataform.project.projectName"></el-input>
 				  </el-form-item>
 				  <el-form-item label="项目描述" style="width: 100%;" prop="description">
-				    <el-input type="textarea" v-model="newdataform.description"></el-input>
+				    <el-input type="textarea" v-model="newdataform.project.description"></el-input>
 				  </el-form-item>
 				  <el-form-item label="项目类型" style="width: 100%;" prop="projectType">
-				    <el-input v-model="newdataform.project_type"></el-input>
+				    <el-input v-model="newdataform.project.projectType"></el-input>
 				  </el-form-item>
 				  <el-form-item label="专业大类" style="width: 100%;" prop="category">
-				    <el-input v-model="newdataform.category"></el-input>
+				    <el-input v-model="newdataform.project.category"></el-input>
 				  </el-form-item>
 				  <el-form-item style="width: 100%;" label="年份" prop="years">
-				    <el-input v-model="newdataform.years"></el-input>
+				    <el-input v-model="newdataform.project.years"></el-input>
 				  </el-form-item>
 				  <el-form-item style="width: 100%;" label="学校" prop="school">
-				    <el-input  v-model="newdataform.school"></el-input>
+				    <el-input  v-model="newdataform.project.school"></el-input>
 				  </el-form-item>
 				  <!-- <el-form-item label="上传缩略图" style="margin: 10% 0;" >
 				    <el-upload
@@ -115,7 +115,7 @@
 					 </div>
 					 <div style="margin: 3% 0;">
 						  <el-table
-						     :data="newdataform.student"
+						     :data="newdataform.studentList"
 						     border
 						     style="width: 100%">
 						     <el-table-column
@@ -156,7 +156,7 @@
 				     </div>
 				     <div style="margin: 3% 0;">
 				     					  <el-table
-				     					     :data="newdataform.teacher"
+				     					     :data="newdataform.teacherList"
 				     					     border
 				     					     style="width: 100%">
 				     					     <el-table-column
@@ -188,8 +188,9 @@
 				     </div>
 				  </el-form-item>
 				  <el-form-item style="width: 100%;">
-				    <el-button type="primary" @click="uploadfile()">立即修改</el-button>
-					<el-button @click="cancelback()">取消修改</el-button>
+				    <el-button type="primary" @click="uploadfile()">立即创建</el-button>
+				    <el-button @click="resetForm('newdataform')">重置项目</el-button>
+					<el-button @click="cancelback()">取消创建</el-button>
 				  </el-form-item>
 				</el-form>
 			</div>
@@ -295,48 +296,55 @@
 			isaddStu:false,
 			isaddTch:false,
 			addstuItem:{
-				id:'',
+				
 				name:'',
 				grade:'',
 				specialty:'',
 				isPresenter:'',
 				projectId:'',
+				isDel: 0,
 			},
 			addTchItem:{
-				id:'',
+				
 				name:'',
 				job:'',
 				direction:'',
 				projectId:'',
+				isDel: 0,
 			},
 			editstuItem:{
-				id:'',
+				
 				name:'',
 				grade:'',
 				specialty:'',
 				isPresenter:'',
 				projectId:'',
+				isDel: 0,
 			},
 			editTchItem:{
-				id:'',
+				
 				name:'',
 				job:'',
 				direction:'',
 				projectId:'',
+				isDel: 0,
 			},
 			newdataform:{
-				id:'',
-				projectId:'',
-				projectName:'',
-				description:'',
-				projectType:'',
-				category:'',
-				type:1,
-				previewImageUrl:'',
-				badgeUrl:'',
-				years:'',
-				school:'',
-				student:[
+				 project: {
+							projectId: "",
+							projectName: "",
+							description: "",
+							projectType: "",
+							category: "",
+							type: 1,
+							viewCounts:'',
+							previewImageUrl: "",
+							badgeUrl: "",
+							years: "",
+							school: "",
+							isDel: 0
+						},
+				studentList:[
 				// 	{
 				// 	id:'',
 				// 	name:'',
@@ -346,7 +354,7 @@
 				// 	projectId:'',
 				// },
 				],
-				teacher:[
+				teacherList:[
 					// {
 					// 	id:'',
 					// 	name:'',
@@ -388,7 +396,6 @@
 			  school: [
 			    { required: true, message: '请输入学校', trigger: 'blur' },
 			  ],
-	          
 	        }
 	      };
 	    },
@@ -397,7 +404,9 @@
 					this.$refs.upload2.submit()
 			},
 			submitForm(formName) {
+				
 			let that=this
+			console.log(that.newdataform)
 			  this.$refs[formName].validate((valid) => {
 			    if (valid) {
 				  that.$axios({
@@ -429,14 +438,13 @@
 			     },
 			handlePictureCardPreview1(file) {
 			  this.dialogImageUrl = file.url;
-	
 			  this.dialogVisible = true;
 			},
 			handleDownload1(file) {
 			  console.log(file);
 			},
 			handleAvatarSuccess1(res, file) {
-				   this.newdataform.previewImageUrl=res.data.url
+				   this.newdataform.project.previewImageUrl=res.data.url
 				   this.$refs.upload2.submit()
 			},
 			handleAvatarErr1(err, file, fileList) {
@@ -465,9 +473,9 @@
 			       this.$message.error('图片上传失败')
 			},
 			handleAvatarSuccess2(res, file) {
-			       this.newdataform.badgeUrl=res.data.url
+			       this.newdataform.project.badgeUrl=res.data.url
 				    this.$message.success('图片上传成功')
-				   this.submitForm('newdataform')
+				   this.submitForm('newdataform.project')
 			     },
 			beforeAvatarUpload2(file) {
 			  const isJPG = file.type === 'image/jpeg';
@@ -488,16 +496,16 @@
 					this.isEditStu=true
 			      },
 			handleDelete1(index, row) {
-			       this.newdataform.student.splice(index,1)
+			       this.newdataform.studentList.splice(index,1)
 			      },
 			savestuedit(){
-				if(this.editstuItem.name==''||this.editstuItem.grade==''||
-				this.editstuItem.specialty==''||
-				this.editstuItem.isPresenter==''){
+				if(this.editstuItem.project.name==''||this.editstuItem.project.grade==''||
+				this.editstuItem.project.specialty==''||
+				this.editstuItem.project.isPresenter==''){
 					 this.$message.error('修改信息不能为空');
 				}
 				else{
-					this.newdataform.student[this.editStuIndex]=this.editstuItem
+					this.newdataform.studentList[this.editStuIndex]=this.editstuItem
 					this.isEditStu=false
 					this.$message({
 					          message: '修改成功',
@@ -512,7 +520,7 @@
 					this.isEditTch=true
 			      },
 			      handleDelete2(index, row) {
-			        this.newdataform.teacher.splice(index,1)
+			        this.newdataform.teacherList.splice(index,1)
 			      },
 			savesTchedit(){
 				if(this.editTchItem.name==''||this.editTchItem.job==''||
@@ -520,7 +528,7 @@
 					 this.$message.error('修改信息不能为空');
 				}
 				else{
-					this.newdataform.teacher[this.editTchIndex]=this.editTchItem
+					this.newdataform.teacherList[this.editTchIndex]=this.editTchItem
 					this.isEditTch=false
 					this.$message({
 					          message: '修改成功',
@@ -529,7 +537,7 @@
 				}
 			},
 			addStu(){
-				if(this.newdataform.projectId==''){
+				if(this.newdataform.project.projectId==''){
 					this.$message.error('请先设置项目ID');
 				}
 				else{
@@ -537,7 +545,7 @@
 				}
 			},
 			addTch(){
-				if(this.newdataform.projectId==''){
+				if(this.newdataform.project.projectId==''){
 					this.$message.error('请先设置项目ID');
 				}
 				else{
@@ -551,14 +559,14 @@
 					 this.$message.error('添加信息不能为空');
 				}
 				else{
-					this.newdataform.student.push(this.addstuItem)
+					this.newdataform.studentList.push(this.addstuItem)
 					this.addstuItem={
-						id:'',
 						name:'',
 						grade:'',
 						specialty:'',
 						isPresenter:'',
 						projectId:'',
+						isDel:0
 					}
 					this.isaddStu=false
 					this.$message({
@@ -573,13 +581,13 @@
 					 this.$message.error('修改信息不能为空');
 				}
 				else{
-					this.newdataform.teacher.push(this.addTchItem)
+					this.newdataform.teacherList.push(this.addTchItem)
 					this.addTchItem={
-						id:'',
 						name:'',
 						job:'',
 						direction:'',
 						projectId:'',
+						isDel:0
 					}
 					this.isaddTch=false
 					this.$message({
@@ -592,18 +600,16 @@
 				this.$router.push('/Recommend')
 			},
 			getdata(){
-				let that = this
-				this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
-				        this.newdataform=res.data.data.project
-						this.newdataform.student=res.data.data.studentList
-						this.newdataform.teacher=res.data.data.teacherList
-						this.$message.success('获取信息成功')
-				      });
-			}
+													let that = this
+													this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
+													        this.newdataform=res.data.data
+															this.$message.success('获取信息成功')
+													      });
+												}
 		},
 		mounted() {
-			this.getdata()
-		}
+					this.getdata()
+				}
 	  }
 </script>
 
@@ -621,3 +627,19 @@
 		margin-bottom: 2%;
 	}
 </style>
+
+<style scoped>
+	.maincontainer{
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.box-card{
+		width: 50%;
+		margin-top: 2%;
+		margin-bottom: 2%;
+	}
+</style>
+
