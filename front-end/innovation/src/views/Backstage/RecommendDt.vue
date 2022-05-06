@@ -2,7 +2,7 @@
 	<div class="maincontainer">
 		<el-card class="box-card">
 			<div slot="header" >
-			    <span style="font-size: 25px;">新建推荐项目</span>
+			    <span style="font-size: 25px;">修改推荐项目</span>
 			  </div>
 			<div style="width: 100%;">
 				<el-form :model="newdataform.project" :rules="rules" ref="newdataform.project" label-width="100px" class="demo-ruleForm">
@@ -211,7 +211,7 @@
 		  				      <el-input v-model="editstuItem.specialty"></el-input>
 		  				    </el-form-item>
 		  					<el-form-item label="是否主持">
-		  					  <el-input v-model="editstuItem.isPresenter"></el-input>
+		  					  <el-input type="number" v-model="editstuItem.isPresenter"></el-input>
 		  					</el-form-item>
 							<el-form-item>
 							  <el-button type="primary" @click="savestuedit()">保存</el-button>
@@ -607,7 +607,6 @@
 		}
 	  }
 </script>
-
 <style scoped>
 	.maincontainer{
 		width: 100%;

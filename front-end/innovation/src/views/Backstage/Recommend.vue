@@ -44,7 +44,13 @@
     </el-table-column>
 			   </div>
 			   <div style="margin: 2% 0  ;width: 100%;">
-			   				   <el-button type="primary" style="width: 30%;" @click="navigateToNew()" round >新增推荐项目</el-button>
+			   		<el-pagination
+			   		  background
+			   		  layout="prev, pager, next"
+					  :current-page="current"
+					  @current-change="pageChange"
+			   		  :total="total">
+			   		</el-pagination>
 			   </div>
 		  </el-col>
 		</el-row>
@@ -59,6 +65,9 @@
 		},
 		data(){
 			return {
+			total:0,
+			current:1,
+			pages:0,
 			        tableData: [{
             id: "1",
         	project_name: "1 ",
@@ -93,10 +102,21 @@
 			        console.log(index, row);
 			      },
 			getData(){
-				this.$axios.get("/project/getbyType/1" ).then((res) => {
+				this.$axios.get("/project/getbyType/1?currentPage="+this.current ).then((res) => {
 				        // console.log(res);
 				        this.tableData=res.data.data.records
+						this.total=res.data.data.total
 						this.$message.success('获取列表成功')
+				      });
+			},
+			pageChange(val){
+				console.log(this.current)
+				this.current=val
+				this.$axios.get("/project/getbyType/1?currentPage="+this.current ).then((res) => {
+				        // console.log(res);
+				        this.tableData=res.data.data.records
+						this.total=res.data.data.total
+						console.log(this.total)
 				      });
 			},
 		},
