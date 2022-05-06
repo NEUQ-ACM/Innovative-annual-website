@@ -18,6 +18,9 @@ import IndexManage from '../views/Backstage/IndexManage.vue'
 import Team from '../views/Backstage/Team.vue'
 import RecommendDt from '../views/Backstage/RecommendDt.vue'
 import RecommendNew from '../views/Backstage/RecommendNew.vue'
+import ReformDt from '../views/Backstage/ReformDt.vue'
+import ReformNew from '../views/Backstage/ReformNew.vue'
+import NoticeDetail from '../views/NoticeDetail'
 Vue.use(VueRouter)
 
 const routes = [
@@ -91,6 +94,16 @@ const routes = [
     component: RecommendNew
   },
   {
+    path: '/ReformDt',
+    name: 'ReformDt',
+    component: ReformDt
+  },
+  {
+    path: '/ReformNew',
+    name: 'ReformNew',
+    component: ReformNew
+  },
+  {
     path: '/Reform',
     name: 'Reform',
     component: Reform
@@ -115,6 +128,11 @@ const routes = [
     name: 'Team',
     component: Team
   },
+  {
+    path: '/NoticeDetail',
+    name: 'NoticeDetail',
+    component: NoticeDetail
+  }
 ]
 
 const router = new VueRouter({
