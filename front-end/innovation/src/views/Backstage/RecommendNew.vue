@@ -211,7 +211,9 @@
 		  				      <el-input v-model="editstuItem.specialty"></el-input>
 		  				    </el-form-item>
 		  					<el-form-item label="是否主持">
-		  					  <el-input v-model="editstuItem.isPresenter"></el-input>
+		  					  <el-radio v-model="editstuItem.isPresenter" label="1">第一主持</el-radio>
+		  					  <el-radio v-model="editstuItem.isPresenter" label="2">第二主持</el-radio>
+		  					  <el-radio v-model="editstuItem.isPresenter" label="0">否</el-radio>
 		  					</el-form-item>
 							<el-form-item>
 							  <el-button type="primary" @click="savestuedit()">保存</el-button>
@@ -240,17 +242,19 @@
 		<el-dialog title="编辑学生" :visible.sync="isaddStu">
 		  <div>
 		  				  <el-form  :model="addstuItem" destroy-on-close="true" >
-		  				    <el-form-item label="名称">
+		  				    <el-form-item label="名称" >
 		  				      <el-input v-model="addstuItem.name"></el-input>
 		  				    </el-form-item>
-		  				    <el-form-item label="年级">
+		  				    <el-form-item label="年级" >
 		  				      <el-input v-model="addstuItem.grade"></el-input>
 		  				    </el-form-item>
-		  				    <el-form-item label="专业">
+		  				    <el-form-item label="专业" >
 		  				      <el-input v-model="addstuItem.specialty"></el-input>
 		  				    </el-form-item>
-		  					<el-form-item label="是否主持">
-		  					  <el-input v-model="addstuItem.isPresenter"></el-input>
+		  					<el-form-item label="是否主持" style="width: 80%;">
+								  <el-radio v-model="addstuItem.isPresenter" label="1">第一主持</el-radio>
+								  <el-radio v-model="addstuItem.isPresenter" label="2">第二主持</el-radio>
+								  <el-radio v-model="addstuItem.isPresenter" label="0">否</el-radio>
 		  					</el-form-item>
 							<el-form-item>
 							  <el-button type="primary" @click="savestuadd()">保存</el-button>
@@ -299,7 +303,7 @@
 				name:'',
 				grade:'',
 				specialty:'',
-				isPresenter:'',
+				isPresenter:0,
 				projectId:'',
 				isDel: 0,
 			},
@@ -314,7 +318,7 @@
 				name:'',
 				grade:'',
 				specialty:'',
-				isPresenter:'',
+				isPresenter:0,
 				projectId:'',
 				isDel: 0,
 			},
@@ -492,9 +496,9 @@
 			       this.newdataform.studentList.splice(index,1)
 			      },
 			savestuedit(){
-				if(this.editstuItem.project.name==''||this.editstuItem.project.grade==''||
-				this.editstuItem.project.specialty==''||
-				this.editstuItem.project.isPresenter==''){
+				if(this.editstuItem.name==''||this.editstuItem.grade==''||
+				this.editstuItem.specialty==''
+				){
 					 this.$message.error('修改信息不能为空');
 				}
 				else{
@@ -558,7 +562,7 @@
 						name:'',
 						grade:'',
 						specialty:'',
-						isPresenter:'',
+						isPresenter:0,
 						projectId:id,
 						isDel:0
 					}
