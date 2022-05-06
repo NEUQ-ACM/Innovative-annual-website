@@ -4,18 +4,42 @@
       <h1>通知{{ buttonText }}</h1>
       <el-col :span="12">
         <el-form ref="form" :model="noticeEdit" label-width="80px">
+            添加公告封面
+          <el-upload
+            class="upload-demo"
+            ref="upload"
+            action="http://81.70.56.45:8082/notice/upload"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :on-success="upSuccess"
+            :on-error="upError"
+            :file-list="fileList"
+            :auto-upload="false"
+          >
+            <el-button slot="trigger" size="small" type="primary"
+              >选取文件</el-button
+            >
+            <el-button
+              style="margin-left: 10px"
+              size="small"
+              type="success"
+              @click="submitUpload"
+              >上传到服务器</el-button
+            >
+            <div slot="tip" class="el-upload__tip">
+              只能上传jpg/png文件，且不超过500kb
+            </div>
+          </el-upload>
           <el-form-item label="标题">
             <el-input v-model="noticeEdit.title"></el-input>
           </el-form-item>
-          <el-form-item
-            label="描述"
-          >
+          <el-form-item label="描述">
             <el-input v-model="noticeEdit.description"></el-input>
           </el-form-item>
           <el-form-item>
             <el-input
               type="textarea"
-              :autosize="{ minRows: 30, maxRows: 30 }"
+              :autosize="{ minRows: 20, maxRows: 20 }"
               v-model="noticeEdit.content"
             >
             </el-input>
@@ -47,24 +71,40 @@ export default {
     return {
       buttonText: "修改",
       url: "",
-      noticeEdit: {id:'',title:'',content:'',description:''},
+      fileList: [],
+      noticeEdit: { id: "", title: "", content: "", description: "" },
     };
   },
   methods: {
+      upError(res){
+        this.$message.error(res);
+      },
+      upSuccess(res){
+          this.noticeEdit.imgUrl=res.data.url;
+          this.$message.success('上传成功')
+      },
+
+       submitUpload() {
+        this.$refs.upload.submit();
+      },
     back() {
       this.$router.push("/Notice");
     },
     onSubmit() {
-        console.log(JSON.stringify(this.noticeEdit));
+      console.log(JSON.stringify(this.noticeEdit));
       this.$axios({
-          method:'post',
-          url:this.url,
-          data:JSON.stringify(this.noticeEdit),
-          headers:{'Content-Type': 'application/json;charset=UTF-8','Transfer-Encoding':'chunked','Connection':'keep-alive'}
+        method: "post",
+        url: this.url,
+        data: JSON.stringify(this.noticeEdit),
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Transfer-Encoding": "chunked",
+          Connection: "keep-alive",
+        },
       })
         .then((response) => {
-          this.$message.success('发送成功')
-          this.back()
+          this.$message.success("发送成功");
+          this.back();
         })
         .catch((error) => {
           console.log(error);
@@ -73,15 +113,14 @@ export default {
     },
   },
   mounted() {
-      this.$axios.get(`/notice/${this.$route.query.id}`)
-      .then(res=>{
-          this.noticeEdit.title=res.data.data.notice.title;
-          this.noticeEdit.content=res.data.data.notice.content;
-          this.noticeEdit.description=res.data.data.notice.description;
-      })
+    this.$axios.get(`/notice/${this.$route.query.id}`).then((res) => {
+      this.noticeEdit.title = res.data.data.notice.title;
+      this.noticeEdit.content = res.data.data.notice.content;
+      this.noticeEdit.description = res.data.data.notice.description;
+    });
     if (!JSON.parse(this.$route.query.type)) {
       this.url = "/notice/updateNotice";
-      this.noticeEdit.id=this.$route.query.id;
+      this.noticeEdit.id = this.$route.query.id;
     } else if (JSON.parse(this.$route.query.type)) {
       this.url = "/notice/addNotice";
       delete this.noticeEdit.id;
