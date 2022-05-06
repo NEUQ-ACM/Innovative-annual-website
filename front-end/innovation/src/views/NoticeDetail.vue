@@ -66,6 +66,8 @@ export default {
 }
 .wrap .card {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  margin-top: 2%;
+  margin-bottom: 1%;
   background-color: #fff;
   overflow: hidden;
   padding: 0 10%;

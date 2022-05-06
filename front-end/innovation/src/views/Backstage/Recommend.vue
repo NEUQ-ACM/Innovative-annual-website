@@ -14,7 +14,6 @@
 				   <el-table
 				      :data="tableData"
 				      border
-					  height="400px"
 				      style="width: 100%">
 				      <el-table-column
 				        prop="id"
@@ -42,8 +41,10 @@
 					        </template>
 					      </el-table-column>
 				    </el-table>
-					
     </el-table-column>
+			   </div>
+			   <div style="margin: 2% 0  ;width: 100%;">
+			   				   <el-button type="primary" style="width: 30%;" @click="navigateToNew()" round >新增推荐项目</el-button>
 			   </div>
 		  </el-col>
 		</el-row>
