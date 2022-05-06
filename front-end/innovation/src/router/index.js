@@ -19,6 +19,7 @@ import Team from '../views/Backstage/Team.vue'
 import RecommendDt from '../views/Backstage/RecommendDt.vue'
 import RecommendNew from '../views/Backstage/RecommendNew.vue'
 import NoticeEdit from '../views/Backstage/NoticeEdit.vue'
+import NoticeDetail from '../views/NoticeDetail'
 Vue.use(VueRouter)
 
 const routes = [
@@ -70,6 +71,11 @@ const routes = [
     path: '/Notice',
     name: 'Notice',
     component: Notice
+  },
+  {
+    path: '/NoticeDetail',
+    name: 'NoticeDetail',
+    component: NoticeDetail
   },
   {
     path: '/NoticeEdit',
