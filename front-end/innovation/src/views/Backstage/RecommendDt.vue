@@ -345,23 +345,8 @@
 							isDel: 0
 						},
 				studentList:[
-				// 	{
-				// 	id:'',
-				// 	name:'',
-				// 	grade:'',
-				// 	specialty:'',
-				// 	isPresenter:'',
-				// 	projectId:'',
-				// },
 				],
 				teacherList:[
-					// {
-					// 	id:'',
-					// 	name:'',
-					// 	job:'',
-					// 	direction:'',
-					// 	projectId:'',
-					// }
 				],
 			},
 	        ruleForm: {
