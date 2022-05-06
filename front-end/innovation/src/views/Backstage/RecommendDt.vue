@@ -595,16 +595,16 @@
 				this.$router.push('/Recommend')
 			},
 			getdata(){
-																let that = this
-																this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
-																        this.newdataform=res.data.data
-																		this.$message.success('获取信息成功')
-																      });
-															}
+			let that = this
+				this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
+				        this.newdataform=res.data.data
+						this.$message.success('获取信息成功')
+				      });
+			}
 		},
 		mounted() {
-							this.getdata()
-						}
+			this.getdata()
+		}
 	  }
 </script>
 
