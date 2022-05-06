@@ -18,6 +18,10 @@ import IndexManage from '../views/Backstage/IndexManage.vue'
 import Team from '../views/Backstage/Team.vue'
 import RecommendDt from '../views/Backstage/RecommendDt.vue'
 import RecommendNew from '../views/Backstage/RecommendNew.vue'
+import PaperDt from '../views/Backstage/PaperDt.vue'
+import PaperNew from '../views/Backstage/PaperNew.vue'
+import ReformDt from '../views/Backstage/ReformDt.vue'
+import ReformNew from '../views/Backstage/ReformNew.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -76,6 +80,17 @@ const routes = [
     component: Paper
   },
   {
+    path: '/PaperDt',
+    name: 'PaperDt',
+    component: PaperDt
+  },
+  {
+    path: '/PaperNew',
+    name: 'PaperNew',
+    component: PaperNew
+  },
+  
+  {
     path: '/Recommend',
     name: 'Recommend',
     component: Recommend
@@ -94,6 +109,16 @@ const routes = [
     path: '/Reform',
     name: 'Reform',
     component: Reform
+  },
+  {
+    path: '/ReformDt',
+    name: 'ReformDt',
+    component: ReformDt
+  },
+  {
+    path: '/ReformNew',
+    name: 'ReformNew',
+    component: ReformNew
   },
   {
     path: '/Rotation',

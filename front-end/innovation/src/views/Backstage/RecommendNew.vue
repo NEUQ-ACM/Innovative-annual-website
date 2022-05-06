@@ -4,191 +4,196 @@
 			<div slot="header" >
 			    <span style="font-size: 25px;">新建推荐项目</span>
 			  </div>
-			<el-form :model="newdataform" :rules="rules" ref="newdataform" label-width="100px" class="demo-ruleForm">
-			  <el-form-item label="项目ID" prop="projectId">
-			    <el-input v-model="newdataform.projectId"></el-input>
-			  </el-form-item>
-			  <el-form-item label="项目名称" prop="project_name">
-			    <el-input v-model="newdataform.project_name"></el-input>
-			  </el-form-item>
-			  <el-form-item label="项目描述" prop="description">
-			    <el-input type="textarea" v-model="newdataform.description"></el-input>
-			  </el-form-item>
-			  <el-form-item label="项目类型" prop="project_type">
-			    <el-input v-model="newdataform.project_type"></el-input>
-			  </el-form-item>
-			  <el-form-item label="专业大类" prop="category">
-			    <el-input v-model="newdataform.category"></el-input>
-			  </el-form-item>
-			  <el-form-item label="年份" prop="years">
-			    <el-input v-model="ruleForm.name"></el-input>
-			  </el-form-item>
-			  <el-form-item label="学校" prop="school">
-			    <el-input  v-model="ruleForm.desc"></el-input>
-			  </el-form-item>
-			  <el-form-item label="上传缩略图" style="margin: 10% 0;" >
-			    <el-upload
-			      action="#"
-				  ref="upload1"
-			      list-type="picture-card"
-				  :on-success="handleAvatarSuccess1"
-				    :before-upload="beforeAvatarUpload1"
-			      :auto-upload="false">
-			        <i slot="default" class="el-icon-plus"></i>
-			        <div slot="file" slot-scope="{file}">
-			          <img
-			            class="el-upload-list__item-thumbnail"
-			            :src="file.url" alt=""
-			          >
-			          <span class="el-upload-list__item-actions">
-			            <span
-			              class="el-upload-list__item-preview"
-			              @click="handlePictureCardPreview1(file)"
-			            >
-			              <i class="el-icon-zoom-in"></i>
-			            </span>
-			            <span
-			              v-if="!disabled"
-			              class="el-upload-list__item-delete"
-			              @click="handleDownload1(file)"
-			            >
-			              <i class="el-icon-download"></i>
-			            </span>
-			            <span
-			              v-if="!disabled"
-			              class="el-upload-list__item-delete"
-			              @click="handleRemove1(file)"
-			            >
-			              <i class="el-icon-delete"></i>
-			            </span>
-			          </span>
-			        </div>
-			    </el-upload>
-			  </el-form-item>
-			  <el-form-item label="上传校徽" >
-			    <el-upload
-			      action="#"
-				  ref="upload2"
-			      list-type="picture-card"
-			      :auto-upload="false"
-				  :on-success="handleAvatarSuccess2"
-				    :before-upload="beforeAvatarUpload2"
-				  >
-			        <i slot="default" class="el-icon-plus" v-if="!isbadgeimg" ></i>
-			        <div slot="file" slot-scope="{file}">
-			          <img
-			            class="el-upload-list__item-thumbnail"
-			            :src="file.url" alt=""
-			          >
-			          <span class="el-upload-list__item-actions">
-			            <span
-			              class="el-upload-list__item-preview"
-			              @click="handlePictureCardPreview2(file)"
-			            >
-			              <i class="el-icon-zoom-in"></i>
-			            </span>
-			            <span
-			              v-if="!disabled"
-			              class="el-upload-list__item-delete"
-			              @click="handleDownload2(file)"
-			            >
-			              <i class="el-icon-download"></i>
-			            </span>
-			            <span
-			              v-if="!disabled"
-			              class="el-upload-list__item-delete"
-			              @click="handleRemove2(file)"
-			            >
-			              <i class="el-icon-delete"></i>
-			            </span>
-			          </span>
-			        </div>
-			    </el-upload>
-			  </el-form-item>
-			  <el-form-item label="学生列表" >
-			     <div>
-					 <el-button @click="addStu()" type="primary">添加学生</el-button>
-				 </div>
-				 <div style="margin: 3% 0;">
-					  <el-table
-					     :data="newdataform.student"
-					     border
-					     style="width: 100%">
-					     <el-table-column
-					       prop="name"
-					       label="姓名"
-					       >
-					     </el-table-column>
-					     <el-table-column
-					       prop="grade"
-					       label="年级">
-					     </el-table-column>
-					     <el-table-column
-					       prop="specialty"
-					       label="专业">
-					     </el-table-column>
-						 <el-table-column
-						   prop="isPresenter"
-						   label="是否主持">
-						 </el-table-column>
-						  <el-table-column label="操作">
-						       <template slot-scope="scope">
-						         <el-button
-						           size="mini"
-								   type="text"
-						           @click="handleEdit1(scope.$index, scope.row)">编辑</el-button>
-						         <el-button
-						           size="mini"
-						           type="text"
-						           @click="handleDelete1(scope.$index, scope.row)">删除</el-button>
-						       </template>
+			<div style="width: 100%;">
+				<el-form :model="newdataform" :rules="rules" ref="newdataform" label-width="100px" class="demo-ruleForm">
+				  <el-form-item label="项目ID" prop="projectId" style="width: 100%;" >
+				    <el-input v-model="newdataform.projectId"  ></el-input>
+				  </el-form-item>
+				  <el-form-item label="项目名称" prop="project_name" style="width: 100%;" >
+				    <el-input v-model="newdataform.project_name"></el-input>
+				  </el-form-item>
+				  <el-form-item label="项目描述" style="width: 100%;" prop="description">
+				    <el-input type="textarea" v-model="newdataform.description"></el-input>
+				  </el-form-item>
+				  <el-form-item label="项目类型" style="width: 100%;" prop="project_type">
+				    <el-input v-model="newdataform.project_type"></el-input>
+				  </el-form-item>
+				  <el-form-item label="专业大类" style="width: 100%;" prop="category">
+				    <el-input v-model="newdataform.category"></el-input>
+				  </el-form-item>
+				  <el-form-item style="width: 100%;" label="年份" prop="years">
+				    <el-input v-model="newdataform.years"></el-input>
+				  </el-form-item>
+				  <el-form-item style="width: 100%;" label="学校" prop="school">
+				    <el-input  v-model="newdataform.school"></el-input>
+				  </el-form-item>
+				  <!-- <el-form-item label="上传缩略图" style="margin: 10% 0;" >
+				    <el-upload
+				      action="http://81.70.56.45:8082/"
+					  ref="upload1"
+				      list-type="picture-card"
+					  :on-success="handleAvatarSuccess1"
+					    :before-upload="beforeAvatarUpload1"
+						limit="1"
+						:on-error="handleAvatarErr1"
+				      :auto-upload="false">
+				        <i slot="default" class="el-icon-plus"></i>
+				        <div slot="file" slot-scope="{file}">
+				          <img
+				            class="el-upload-list__item-thumbnail"
+				            :src="file.url" alt=""
+				          >
+				          <span class="el-upload-list__item-actions">
+				            <span
+				              class="el-upload-list__item-preview"
+				              @click="handlePictureCardPreview1(file)"
+				            >
+				              <i class="el-icon-zoom-in"></i>
+				            </span>
+				            <span
+				              v-if="!disabled"
+				              class="el-upload-list__item-delete"
+				              @click="handleDownload1(file)"
+				            >
+				              <i class="el-icon-download"></i>
+				            </span>
+				            <span
+				              v-if="!disabled"
+				              class="el-upload-list__item-delete"
+				              @click="handleRemove1(file)"
+				            >
+				              <i class="el-icon-delete"></i>
+				            </span>
+				          </span>
+				        </div>
+				    </el-upload>
+				  </el-form-item> -->
+				  <el-form-item label="上传校徽" >
+				    <el-upload
+				      action="http://81.70.56.45:8082/project/upload"
+					  ref="upload2"
+				      list-type="picture-card"
+				      :auto-upload="false"
+					  :on-success="handleAvatarSuccess2"
+					  :on-error="handleAvatarErr2"
+					    :before-upload="beforeAvatarUpload2"
+					  >
+				        <i slot="default" class="el-icon-plus" v-if="!isbadgeimg" ></i>
+				        <div slot="file" slot-scope="{file}">
+				          <img
+				            class="el-upload-list__item-thumbnail"
+				            :src="file.url" alt=""
+				          >
+				          <span class="el-upload-list__item-actions">
+				            <span
+				              class="el-upload-list__item-preview"
+				              @click="handlePictureCardPreview2(file)"
+				            >
+				              <i class="el-icon-zoom-in"></i>
+				            </span>
+				            <span
+				              v-if="!disabled"
+				              class="el-upload-list__item-delete"
+				              @click="handleDownload2(file)"
+				            >
+				              <i class="el-icon-download"></i>
+				            </span>
+				            <span
+				              v-if="!disabled"
+				              class="el-upload-list__item-delete"
+				              @click="handleRemove2(file)"
+				            >
+				              <i class="el-icon-delete"></i>
+				            </span>
+				          </span>
+				        </div>
+				    </el-upload>
+				  </el-form-item>
+				  <el-form-item label="学生列表" style="width: 100%;" >
+				     <div>
+						 <el-button @click="addStu()" type="primary">添加学生</el-button>
+					 </div>
+					 <div style="margin: 3% 0;">
+						  <el-table
+						     :data="newdataform.student"
+						     border
+						     style="width: 100%">
+						     <el-table-column
+						       prop="name"
+						       label="姓名"
+						       >
 						     </el-table-column>
-					   </el-table>
-				 </div>
-			  </el-form-item>
-			  <el-form-item label="指导老师" >
-			     <div>
-			     					 <el-button type="primary" @click="addTch()" >添加教师</el-button>
-			     </div>
-			     <div style="margin: 3% 0;">
-			     					  <el-table
-			     					     :data="newdataform.teacher"
-			     					     border
-			     					     style="width: 100%">
-			     					     <el-table-column
-			     					       prop="name"
-			     					       label="姓名"
-			     					       >
-			     					     </el-table-column>
-			     					     <el-table-column
-			     					       prop="job"
-			     					       label="职称">
-			     					     </el-table-column>
-			     					     <el-table-column
-			     					       prop="direction"
-			     					       label="研究方向">
-			     					     </el-table-column>
-			     						  <el-table-column label="操作">
-			     						       <template slot-scope="scope">
-			     						         <el-button
-			     						           size="mini"
-			     								   type="text"
-			     						           @click="handleEdit2(scope.$index, scope.row)">编辑</el-button>
-			     						         <el-button
-			     						           size="mini"
-			     						           type="text"
-			     						           @click="handleDelete2(scope.$index, scope.row)">删除</el-button>
-			     						       </template>
-			     						     </el-table-column>
-			     					   </el-table>
-			     </div>
-			  </el-form-item>
-			  <el-form-item>
-			    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-			    <el-button @click="resetForm('ruleForm')">重置项目</el-button>
-				<el-button @click="cancelback()">取消创建</el-button>
-			  </el-form-item>
-			</el-form>
+						     <el-table-column
+						       prop="grade"
+						       label="年级">
+						     </el-table-column>
+						     <el-table-column
+						       prop="specialty"
+						       label="专业">
+						     </el-table-column>
+							 <el-table-column
+							   prop="isPresenter"
+							   label="是否主持">
+							 </el-table-column>
+							  <el-table-column label="操作">
+							       <template slot-scope="scope">
+							         <el-button
+							           size="mini"
+									   type="text"
+							           @click="handleEdit1(scope.$index, scope.row)">编辑</el-button>
+							         <el-button
+							           size="mini"
+							           type="text"
+							           @click="handleDelete1(scope.$index, scope.row)">删除</el-button>
+							       </template>
+							     </el-table-column>
+						   </el-table>
+					 </div>
+				  </el-form-item>
+				  <el-form-item label="指导老师" style="width: 100%;" >
+				     <div>
+				     					 <el-button type="primary" @click="addTch()" >添加教师</el-button>
+				     </div>
+				     <div style="margin: 3% 0;">
+				     					  <el-table
+				     					     :data="newdataform.teacher"
+				     					     border
+				     					     style="width: 100%">
+				     					     <el-table-column
+				     					       prop="name"
+				     					       label="姓名"
+				     					       >
+				     					     </el-table-column>
+				     					     <el-table-column
+				     					       prop="job"
+				     					       label="职称">
+				     					     </el-table-column>
+				     					     <el-table-column
+				     					       prop="direction"
+				     					       label="研究方向">
+				     					     </el-table-column>
+				     						  <el-table-column label="操作">
+				     						       <template slot-scope="scope">
+				     						         <el-button
+				     						           size="mini"
+				     								   type="text"
+				     						           @click="handleEdit2(scope.$index, scope.row)">编辑</el-button>
+				     						         <el-button
+				     						           size="mini"
+				     						           type="text"
+				     						           @click="handleDelete2(scope.$index, scope.row)">删除</el-button>
+				     						       </template>
+				     						     </el-table-column>
+				     					   </el-table>
+				     </div>
+				  </el-form-item>
+				  <el-form-item style="width: 100%;">
+				    <el-button type="primary" @click="uploadfile()">立即创建</el-button>
+				    <el-button @click="resetForm('newdataform')">重置项目</el-button>
+					<el-button @click="cancelback()">取消创建</el-button>
+				  </el-form-item>
+				</el-form>
+			</div>
 		</el-card>
 		<el-dialog :visible.sync="dialogVisible">
 		  <img width="100%" :src="dialogImageUrl" alt="">
@@ -275,6 +280,7 @@
 </template>
 
 <script>
+	import qs from 'qs';
 	export default {
 	    data() {
 	      return {
@@ -296,6 +302,7 @@
 				specialty:'',
 				isPresenter:'',
 				projectId:'',
+				isDel: 0,
 			},
 			addTchItem:{
 				id:'',
@@ -303,6 +310,7 @@
 				job:'',
 				direction:'',
 				projectId:'',
+				isDel: 0,
 			},
 			editstuItem:{
 				id:'',
@@ -311,6 +319,7 @@
 				specialty:'',
 				isPresenter:'',
 				projectId:'',
+				isDel: 0,
 			},
 			editTchItem:{
 				id:'',
@@ -318,6 +327,7 @@
 				job:'',
 				direction:'',
 				projectId:'',
+				isDel: 0,
 			},
 			newdataform:{
 				id:'',
@@ -327,26 +337,28 @@
 				project_type:'',
 				category:'',
 				type:1,
+				previewImageUrl:'',
 				badgeUrl:'',
 				years:'',
 				school:'',
-				student:[{
-					id:'',
-					name:'',
-					grade:'',
-					specialty:'',
-					isPresenter:'',
-					projectId:'',
-				},
+				student:[
+				// 	{
+				// 	id:'',
+				// 	name:'',
+				// 	grade:'',
+				// 	specialty:'',
+				// 	isPresenter:'',
+				// 	projectId:'',
+				// },
 				],
 				teacher:[
-					{
-						id:'',
-						name:'',
-						job:'',
-						direction:'',
-						projectId:'',
-					}
+					// {
+					// 	id:'',
+					// 	name:'',
+					// 	job:'',
+					// 	direction:'',
+					// 	projectId:'',
+					// }
 				],
 			},
 	        ruleForm: {
@@ -360,39 +372,56 @@
 	          desc: ''
 	        },
 	        rules: {
-	          name: [
-	            { required: true, message: '请输入活动名称', trigger: 'blur' },
-	            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+				projectId: [
+				  { required: true, message: '请输入项目ID', trigger: 'blur' },
+				],
+	          project_name: [
+	            { required: true, message: '请输入项目名称', trigger: 'blur' },
 	          ],
-	          region: [
-	            { required: true, message: '请选择活动区域', trigger: 'change' }
-	          ],
-	          date1: [
-	            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-	          ],
-	          date2: [
-	            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-	          ],
-	          type: [
-	            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
-	          ],
-	          resource: [
-	            { required: true, message: '请选择活动资源', trigger: 'change' }
-	          ],
-	          desc: [
-	            { required: true, message: '请填写活动形式', trigger: 'blur' }
-	          ]
+			  description: [
+			    { required: true, message: '请输入项目描述', trigger: 'blur' },
+			  ],
+			  project_type: [
+			    { required: true, message: '请输入项目类别', trigger: 'blur' },
+			  ],
+			  category: [
+			    { required: true, message: '请输入专业大类', trigger: 'blur' },
+			  ],
+			  years: [
+			    { required: true, message: '请输入年份', trigger: 'blur' },
+			  ],
+			  school: [
+			    { required: true, message: '请输入学校', trigger: 'blur' },
+			  ],
+	          
 	        }
 	      };
 	    },
 		methods: {
-			
+			uploadfile(){
+					this.$refs.upload2.submit()
+			},
 			submitForm(formName) {
+			let that=this
 			  this.$refs[formName].validate((valid) => {
 			    if (valid) {
-			      alert('submit!');
+				  that.$axios({
+				           method:"post",//请求方式
+				           url:'/project/addProject',//请求接口
+				           headers:{
+				           'Content-Type': 'application/json '
+				           },//请求头参数
+				           data:that.newdataform//数据
+				         	})
+				  .then(function(res){
+				    that.$message.success('增加成功')
+					console.log(res)
+				  })
+				  .catch(function(err){
+				    that.$message.error('增加失败');
+				  });
 			    } else {
-			      console.log('error submit!!');
+			      that.$message.error('请检查表单，有无未填部分')
 			      return false;
 			    }
 			  });
@@ -405,23 +434,28 @@
 			     },
 			handlePictureCardPreview1(file) {
 			  this.dialogImageUrl = file.url;
+	
 			  this.dialogVisible = true;
 			},
 			handleDownload1(file) {
 			  console.log(file);
 			},
 			handleAvatarSuccess1(res, file) {
-			       this.imageUrl = URL.createObjectURL(file.raw);
-			     },
+				   this.newdataform.previewImageUrl=res.data.url
+				   this.$refs.upload2.submit()
+			},
+			handleAvatarErr1(err, file, fileList) {
+			      this.$message.error('上传缩略图错误');
+			},
 			beforeAvatarUpload1(file) {
 			  const isJPG = file.type === 'image/jpeg';
 			  const isLt2M = file.size / 1024 / 1024 < 2;
-					
+				console.log('111')
 			  if (!isJPG) {
-			    this.$message.error('上传头像图片只能是 JPG 格式!');
+			    this.$message.error('上传图片只能是 JPG 格式!');
 			  }
-			  if (!isLt2M) {
-			    this.$message.error('上传头像图片大小不能超过 2MB!');
+			  if (!isLt2M) {file
+			    this.$message.error('上传图片大小不能超过 2MB!');
 			  }
 			  return isJPG && isLt2M;
 			},
@@ -432,21 +466,23 @@
 			  this.dialogImageUrl = file.url;
 			  this.dialogVisible = true;
 			},
-			handleDownload2(file) {
-			  console.log(file);
+			handleAvatarErr2(err, file, fileList) {
+			       this.$message.error('图片上传失败')
 			},
 			handleAvatarSuccess2(res, file) {
-			       this.imageUrl = URL.createObjectURL(file.raw);
+			       this.newdataform.badgeUrl=res.data.url
+				    this.$message.success('图片上传成功')
+				   this.submitForm('newdataform')
 			     },
 			beforeAvatarUpload2(file) {
 			  const isJPG = file.type === 'image/jpeg';
 			  const isLt2M = file.size / 1024 / 1024 < 2;
 					
 			  if (!isJPG) {
-			    this.$message.error('上传头像图片只能是 JPG 格式!');
+			    this.$message.error('上传图片只能是 JPG 格式!');
 			  }
 			  if (!isLt2M) {
-			    this.$message.error('上传头像图片大小不能超过 2MB!');
+			    this.$message.error('上传图片大小不能超过 2MB!');
 			  }
 			  return isJPG && isLt2M;
 			},
