@@ -396,7 +396,7 @@
 			    if (valid) {
 				  that.$axios({
 				           method:"post",//请求方式
-				           url:'/project/addProject',//请求接口
+				           url:'/project/updateProject',//请求接口
 				           headers:{
 				           'Content-Type': 'application/json '
 				           },//请求头参数
