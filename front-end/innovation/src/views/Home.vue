@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <el-carousel :interval="3000" arrow="hover" height="607px" trigger="click">
-      <el-carousel-item v-for="r in rotation" :key="r.id">
-        <img src="../assets/images/mainImg.jpg" alt="" />
+      <el-carousel-item v-for="r in rotations.rotationList" :key="r.id">
+        <img :src="r.url" alt="" />
       </el-carousel-item>
     </el-carousel>
     <section class="sectionThree-new">
@@ -13,14 +13,14 @@
         </div>
 
         <div class="announmentItemList">
-          <div class="announmentItem" v-for="(notice , index) in notices" :key="index">
+          <div class="announmentItem" v-for="notice in notices" :key="notice.id">
             <!-- <div class="announmentText"></div> -->
             <router-link :to="`/NoticeDetail?id=${notice.id}`">
-              <div class="announmentWrap" :style="{backgroundImage: 'url('+notice.background_image+')'}">
+              <div class="announmentWrap" :style="{backgroundImage: 'url('+notice.imgUrl+')'}">
                 <div class="announmentText" style="overflow: hidden">
                   <div class="date">
-                    <span class="day">{{notice.update_time[2]}}</span>
-                    <span class="year">{{notice.update_time[0]}}.{{notice.update_time[1]}}</span>
+                    <span class="day">{{notice.updateTime[2]}}</span>
+                    <span class="year">{{notice.updateTime[0]}}.{{notice.updateTime[1]}}</span>
                   </div>
                   <div class="news">
                     <span class="newsTitle">
@@ -46,38 +46,34 @@ export default {
   name: "Home",
   data() {
     return {
-      preActiveName: "first",
-      thisActiveName: "first",
       notices: [
         {
-          id: '1',
+          id: 1,
           title: '酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷',
           description: 'bbbbbbbbbbbb',
-          background_image: 'https://picsum.photos/id/29/200/200',
-          update_time: '2021-12-01',
-        },
-        {
-          id: '2',
-          title: '酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷',
-          description: 'bbbbbbbbbbbb',
-          background_image: 'https://picsum.photos/id/29/200/200',
-          update_time: '2021-12-01',
+          content: '',
+          imgUrl: '',
+          updateTime: '',
+          createTime: '',
+          isDel: 0
         },
       ],
-      rotation: [
-        {
-          id: '1',
-          url: 'img/mainImg.57e2a7c6.jpg'
-        },
-        {
-          id: '2',
-          url: 'img/mainImg.57e2a7c6.jpg'
-        },
-        {
-          id: '3',
-          url: 'img/mainImg.57e2a7c6.jpg'
-        },
-      ],
+      rotations: {
+        rotationList: [
+          {
+            id: '1',
+            url: 'img/mainImg.57e2a7c6.jpg'
+          },
+          {
+            id: '2',
+            url: 'img/mainImg.57e2a7c6.jpg'
+          },
+          {
+            id: '3',
+            url: 'img/mainImg.57e2a7c6.jpg'
+          },
+        ],
+      }
     };
   },
   methods: {
@@ -88,32 +84,30 @@ export default {
       console.log(tab, event);
     },
     queryNotice(){
-      axios.get('/notice/getall').then(
+      axios.get('/notice/getAll').then(
         res => {
-          console.log(res)
-          this.notices = res.data.noticeList
+          this.notices = res.data.data.records
+          this.changeDateForm()
         }
       )
     },
     queryRotation(){
-      axios.get('/rotation/getall').then(
+      axios.get('/rotation/getAll').then(
         res => {
-          console.log(res)
-          this.rotation = res.data.rotationList
-          this.rotationPageNumber = res.data.pageNumber
+          this.rotations.rotationList = res.data.data.records
         }
       )
     },
     changeDateForm(){
       this.notices.forEach(item => {
-        item.update_time = item.update_time.split('-')
+        let tempStr = item.updateTime
+        item.updateTime = tempStr.split("-")
       })
     }
   },
   mounted(){
+    this.queryNotice()
     this.queryRotation()
-    this.queryRotation()
-    this.changeDateForm()
   }
 };
 </script>
@@ -422,6 +416,26 @@ span.headerline {
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   text-align: center;
+  color: #333;
+}
+
+span.intro {
+  margin-bottom: 0px;
+  color: #999;
+  line-height: 1.5rem;
+  text-align: left !important;
+  width: 100%;
+  height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: center;
+}
+</style>
+
+ext-align: center;
   color: #333;
 }
 
