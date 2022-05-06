@@ -47,7 +47,7 @@ export default {
     return {
       buttonText: "修改",
       url: "",
-      noticeEdit: {},
+      noticeEdit: {id:'',title:'',content:'',description:''},
     };
   },
   methods: {
@@ -55,32 +55,36 @@ export default {
       this.$router.push("/Notice");
     },
     onSubmit() {
+        console.log(JSON.stringify(this.noticeEdit));
       this.$axios({
           method:'post',
           url:this.url,
           data:JSON.stringify(this.noticeEdit),
-          headers:{'Content-Type': 'application/json;charset=UTF-8'}
+          headers:{'Content-Type': 'application/json;charset=UTF-8','Transfer-Encoding':'chunked','Connection':'keep-alive'}
       })
         .then((response) => {
-          alert('发送成功')
+          this.$message.success('发送成功')
           this.back()
         })
         .catch((error) => {
           console.log(error);
-          alert("网络错误，不能访问");
+          this.$message.error("网络错误，不能访问");
         });
     },
   },
   mounted() {
       this.$axios.get(`/notice/${this.$route.query.id}`)
       .then(res=>{
-          this.noticeEdit=res.data.data.notice;
+          this.noticeEdit.title=res.data.data.notice.title;
+          this.noticeEdit.content=res.data.data.notice.content;
+          this.noticeEdit.description=res.data.data.notice.description;
       })
     if (!JSON.parse(this.$route.query.type)) {
       this.url = "/notice/updateNotice";
       this.noticeEdit.id=this.$route.query.id;
     } else if (JSON.parse(this.$route.query.type)) {
       this.url = "/notice/addNotice";
+      delete this.noticeEdit.id;
       this.buttonText = "创建";
     }
   },
