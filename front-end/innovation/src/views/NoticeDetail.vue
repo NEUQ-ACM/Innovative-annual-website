@@ -2,11 +2,11 @@
   <div class="wrap">
     <div class="card">
       <div class="title">
-        <h1>{{notice.title}}</h1>
+        <h1>{{ notice.title }}</h1>
       </div>
       <div class="tips">
-        <span class="date">更新日期：{{notice.update_time}}</span>
-        <span class="views">浏览量：{{ notice.view_counts }}</span>
+        <span class="date">更新日期：{{ notice.updateTime }}</span>
+        <span class="views">浏览量：{{ notice.viewCounts }}</span>
       </div>
       <div class="content">
         {{ notice.content }}
@@ -16,7 +16,7 @@
         <span class="annexStart">相关附件</span>
       </div>
       <div class="annexs">
-        <div class="annex" v-for="a in notice.annexList" :key="a.id">
+        <div class="annex" v-for="a in annexList" :key="a.id">
           <a :href="a.annexesUrl" :download="a.name">
             <i class="el-icon-document"></i>
             <h5 class="fileName">{{ a.name }}</h5>
@@ -28,63 +28,28 @@
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
   name: "NoticeDetail",
   data() {
     return {
-      notice: {
-        title: "酷酷酷酷酷酷酷酷酷酷酷酷",
-        description: "斤斤计较急急急急急急急急急咳咳咳咳咳咳",
-        content:
-          "斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急斤斤计较急急急急急急急急急急急急急急急",
-        view_counts: 40,
-        update_time: "2021-12-01",
-        annexList: [
-          {
-            id: "01",
-            name: "东秦防疫政策",
-            annexesUrl: "https://element.eleme.cn/#/zh-CN/component/table",
-          },
-          {
-            id: "02",
-            name: "东秦防疫政策",
-            annexesUrl: "https://element.eleme.cn/#/zh-CN/component/table",
-          },
-          {
-            id: "03",
-            name: "东秦防疫政策",
-            annexesUrl: "https://element.eleme.cn/#/zh-CN/component/table",
-          },
-          {
-            id: "04",
-            name: "东秦防疫政策",
-            annexesUrl: "https://element.eleme.cn/#/zh-CN/component/table",
-          },
-          {
-            id: "05",
-            name: "东秦防疫政策东秦防疫政策东秦防疫政策",
-            annexesUrl: "https://element.eleme.cn/#/zh-CN/component/table",
-          },
-        ],
-      },
+      notice: {},
+      annexList: [],
     };
   },
   methods: {
     queryNotice() {
-      axios
-        .get("/notice", {
-          params: {
-            id: this.$route.query.id,
-          },
-        })
-        .then((res) => {
-          this.notice = res.data;
-        });
+      axios.get("/notice/" + this.$route.query.id).then((res) => {
+        // console.log(res);
+        this.notice = res.data.data.notice;
+        this.annexList = res.data.data.annexList;
+        console.log(this.notice);
+        console.log(this.annexList);
+      });
     },
   },
   mounted() {
-    // this.queryNotice()
+    this.queryNotice();
   },
 };
 </script>
@@ -98,7 +63,6 @@ export default {
   width: 90%;
   margin: 0 auto;
   background-color: #f6f6f6;
-
 }
 .wrap .card {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);

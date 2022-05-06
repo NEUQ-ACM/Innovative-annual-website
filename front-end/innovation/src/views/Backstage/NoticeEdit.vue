@@ -9,7 +9,6 @@
           </el-form-item>
           <el-form-item
             label="描述"
-            v-show="JSON.parse(this.$route.query.type)"
           >
             <el-input v-model="noticeEdit.description"></el-input>
           </el-form-item>
@@ -46,7 +45,7 @@
 export default {
   data() {
     return {
-      buttonText: "创建",
+      buttonText: "修改",
       url: "",
       noticeEdit: {},
     };
@@ -56,8 +55,13 @@ export default {
       this.$router.push("/Notice");
     },
     onSubmit() {
-      this.$axios
-        .post(url, this.noticeEdit)
+        console.log(JSON.stringify(this.noticeEdit));
+      this.$axios({
+          method:'post',
+          url:this.url,
+          data:JSON.stringify(this.noticeEdit),
+          headers:{'Content-Type': 'application/json;charset=UTF-8'}
+      })
         .then((response) => {
           alert('发送成功')
         })
@@ -68,12 +72,12 @@ export default {
     },
   },
   mounted() {
-    console.log(JSON.parse(this.$route.query.type));
-    if (JSON.parse(this.$route.query.type)) {
-      url = "/notice/updateNotice";
+    if (!JSON.parse(this.$route.query.type)) {
+      this.url = "/notice/updateNotice";
+      this.noticeEdit.id=this.$route.query.id;
     } else if (JSON.parse(this.$route.query.type)) {
-      url = "/notice/addNotice";
-      this.buttonText = "修改";
+      this.url = "/notice/addNotice";
+      this.buttonText = "创建";
     }
   },
 };
@@ -92,6 +96,7 @@ export default {
 .el-card {
   height: 750px;
   width: 80%;
+  overflow: auto;
 }
 .el-card .el-card__body {
   display: flex;
