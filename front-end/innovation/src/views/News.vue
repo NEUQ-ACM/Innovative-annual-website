@@ -5,72 +5,53 @@
         <span>年会通知公告</span>
       </el-header>
       <el-main>
-        <div class="boxWrap">
+        <div
+          class="boxWrap"
+          v-for="(item) in noticeData"
+          :key="item.id"
+          @click="viewDetail(item.id)"
+        >
           <div class="newsBoxOne newsBox">
             <div class="date">
               <span class="day">03</span>
               <span class="year">2021.12</span>
             </div>
             <div class="news">
-              <span class="newsTitle"
-                >关于举办第十四届河北省大学生创新创业年会的通知</span
-              >
-              <span class="newsContent">请查看附件</span>
-            </div>
-          </div>
-        </div>
-        <div class="boxWrap">
-          <div class="newsBoxOne newsBox">
-            <div class="date">
-              <span class="day">03</span>
-              <span class="year">2021.12</span>
-            </div>
-            <div class="news">
-              <span class="newsTitle"
-                >关于举办第十四届河北省大学生创新创业年会的通知</span
-              >
-              <span class="newsContent">请查看附件</span>
-            </div>
-          </div>
-        </div>
-        <div class="boxWrap">
-          <div class="newsBoxOne newsBox">
-            <div class="date">
-              <span class="day">03</span>
-              <span class="year">2021.12</span>
-            </div>
-            <div class="news">
-              <span class="newsTitle"
-                >关于举办第十四届河北省大学生创新创业年会的通知</span
-              >
-              <span class="newsContent">请查看附件</span>
-            </div>
-          </div>
-        </div>
-        <div class="boxWrap">
-          <div class="newsBoxOne newsBox">
-            <div class="date">
-              <span class="day">03</span>
-              <span class="year">2021.12</span>
-            </div>
-            <div class="news">
-              <span class="newsTitle"
-                >关于举办第十四届河北省大学生创新创业年会的通知</span
-              >
+              <span class="newsTitle">{{ item.title }}</span>
               <span class="newsContent">请查看附件</span>
             </div>
           </div>
         </div>
       </el-main>
-      <div class="btnLine">
-          <button>查看更多</button>
-        </div>
     </el-container>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      noticeData: [{}],
+    };
+  },
+  methods: {
+    viewDetail(id) {
+      this.$router.push({path:'/NoticeDetail',query:{id:id}})
+    },
+  },
+  mounted() {
+    this.$axios
+      .get("/notice/getAll")
+      .then((response) => {
+        this.noticeData = response.data.data.records;
+        console.log(this.noticeData);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("网络错误，不能访问");
+      });
+  },
+};
 </script>
 
 <style scoped>
@@ -189,18 +170,18 @@ div.btnLine button:hover {
   color: #fff;
   background-color: #352ddb;
 }
-@media screen and (max-width: 768px){
-  .el-main .boxWrap{
+@media screen and (max-width: 768px) {
+  .el-main .boxWrap {
     min-width: none;
     width: 100%;
   }
-  .el-main .boxWrap{
+  .el-main .boxWrap {
     width: 100%;
   }
- .el-main .boxWrap .newsTitle{
-   width: 100%;
-   display: block;
-   min-width: none;
- }
+  .el-main .boxWrap .newsTitle {
+    width: 100%;
+    display: block;
+    min-width: none;
+  }
 }
 </style>
