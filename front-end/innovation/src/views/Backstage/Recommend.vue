@@ -41,7 +41,6 @@
 					        </template>
 					      </el-table-column>
 				    </el-table>
-    </el-table-column>
 			   </div>
 			   <div style="margin: 2% 0  ;width: 100%;">
 			   		<el-pagination
