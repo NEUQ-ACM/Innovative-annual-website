@@ -2,20 +2,20 @@
 	<div class="maincontainer">
 		<el-card class="box-card">
 			<div slot="header" >
-			    <span style="font-size: 25px;">修改推荐论文</span>
+			    <span style="font-size: 25px;">修改推荐项目</span>
 			  </div>
 			<div style="width: 100%;">
 				<el-form :model="newdataform.project" :rules="rules" ref="newdataform.project" label-width="100px" class="demo-ruleForm">
-				  <el-form-item label="论文ID" prop="projectId" style="width: 100%;" >
-				    <el-input v-model="newdataform.project.projectId"  ></el-input>
+				  <el-form-item label="项目ID" prop="projectId" style="width: 100%;" >
+				    <el-input v-model="newdataform.project.projectId"  type="number" placeholder="输入数字" ></el-input>
 				  </el-form-item>
-				  <el-form-item label="论文名称" prop="projectName" style="width: 100%;" >
+				  <el-form-item label="项目名称" prop="projectName" style="width: 100%;" >
 				    <el-input v-model="newdataform.project.projectName"></el-input>
 				  </el-form-item>
-				  <el-form-item label="论文描述" style="width: 100%;" prop="description">
+				  <el-form-item label="项目描述" style="width: 100%;" prop="description">
 				    <el-input type="textarea" v-model="newdataform.project.description"></el-input>
 				  </el-form-item>
-				  <el-form-item label="论文类型" style="width: 100%;" prop="projectType">
+				  <el-form-item label="项目类型" style="width: 100%;" prop="projectType">
 				    <el-input v-model="newdataform.project.projectType"></el-input>
 				  </el-form-item>
 				  <el-form-item label="专业大类" style="width: 100%;" prop="category">
@@ -189,7 +189,7 @@
 				  </el-form-item>
 				  <el-form-item style="width: 100%;">
 				    <el-button type="primary" @click="uploadfile()">立即创建</el-button>
-				    <el-button @click="resetForm('newdataform')">重置论文</el-button>
+				    <el-button @click="resetForm('newdataform')">重置项目</el-button>
 					<el-button @click="cancelback()">取消创建</el-button>
 				  </el-form-item>
 				</el-form>
@@ -211,7 +211,7 @@
 		  				      <el-input v-model="editstuItem.specialty"></el-input>
 		  				    </el-form-item>
 		  					<el-form-item label="是否主持">
-		  					  <el-input v-model="editstuItem.isPresenter"></el-input>
+		  					  <el-input type="number" v-model="editstuItem.isPresenter"></el-input>
 		  					</el-form-item>
 							<el-form-item>
 							  <el-button type="primary" @click="savestuedit()">保存</el-button>
@@ -296,7 +296,6 @@
 			isaddStu:false,
 			isaddTch:false,
 			addstuItem:{
-				
 				name:'',
 				grade:'',
 				specialty:'',
@@ -305,7 +304,6 @@
 				isDel: 0,
 			},
 			addTchItem:{
-				
 				name:'',
 				job:'',
 				direction:'',
@@ -313,7 +311,6 @@
 				isDel: 0,
 			},
 			editstuItem:{
-				
 				name:'',
 				grade:'',
 				specialty:'',
@@ -322,7 +319,6 @@
 				isDel: 0,
 			},
 			editTchItem:{
-				
 				name:'',
 				job:'',
 				direction:'',
@@ -336,8 +332,8 @@
 							description: "",
 							projectType: "",
 							category: "",
-							type: 2,
-							viewCounts:'',
+							type: 1,
+							viewCounts:0,
 							previewImageUrl: "",
 							badgeUrl: "",
 							years: "",
@@ -361,16 +357,16 @@
 	        },
 	        rules: {
 				projectId: [
-				  { required: true, message: '请输入论文ID', trigger: 'blur' },
+				  { required: true, message: '请输入项目ID', trigger: 'blur' },
 				],
 	          projectName: [
-	            { required: true, message: '请输入论文名称', trigger: 'blur' },
+	            { required: true, message: '请输入项目名称', trigger: 'blur' },
 	          ],
 			  description: [
-			    { required: true, message: '请输入论文描述', trigger: 'blur' },
+			    { required: true, message: '请输入项目描述', trigger: 'blur' },
 			  ],
 			  projectType: [
-			    { required: true, message: '请输入论文类别', trigger: 'blur' },
+			    { required: true, message: '请输入项目类别', trigger: 'blur' },
 			  ],
 			  category: [
 			    { required: true, message: '请输入专业大类', trigger: 'blur' },
@@ -394,17 +390,29 @@
 			console.log(that.newdataform)
 			  this.$refs[formName].validate((valid) => {
 			    if (valid) {
+					let data1=JSON.stringify(that.newdataform)
+					console.log(data1)
 				  that.$axios({
 				           method:"post",//请求方式
 				           url:'/project/addProject',//请求接口
 				           headers:{
-				           'Content-Type': 'application/json '
+				           'Vary':'Origin',
+				           'Vary':'Access-Control-Request-Method',
+				           'Vary':'Access-Control-Request-Headers',
+				           'Content-Type':'application/json',
+				           'Transfer-Encoding':'chunked',
+				           'Connection':'keep-alive'
 				           },//请求头参数
-				           data:that.newdataform//数据
+				           data:data1//数据
 				         	})
 				  .then(function(res){
-				    that.$message.success('增加成功')
-					console.log(res)
+					if(res.data.status==200){
+						that.$message.success('增加成功')
+						that.$router.push('/Paper')
+					}
+					else{
+						 that.$message.error('增加失败');
+					}
 				  })
 				  .catch(function(err){
 				    that.$message.error('增加失败');
@@ -523,7 +531,7 @@
 			},
 			addStu(){
 				if(this.newdataform.project.projectId==''){
-					this.$message.error('请先设置论文ID');
+					this.$message.error('请先设置项目ID');
 				}
 				else{
 					this.isaddStu=true
@@ -531,7 +539,7 @@
 			},
 			addTch(){
 				if(this.newdataform.project.projectId==''){
-					this.$message.error('请先设置论文ID');
+					this.$message.error('请先设置项目ID');
 				}
 				else{
 					this.isaddTch=true
@@ -544,13 +552,14 @@
 					 this.$message.error('添加信息不能为空');
 				}
 				else{
+					let id=this.newdataform.project.projectId
 					this.newdataform.studentList.push(this.addstuItem)
 					this.addstuItem={
 						name:'',
 						grade:'',
 						specialty:'',
 						isPresenter:'',
-						projectId:'',
+						projectId:id,
 						isDel:0
 					}
 					this.isaddStu=false
@@ -567,11 +576,12 @@
 				}
 				else{
 					this.newdataform.teacherList.push(this.addTchItem)
+					let id=this.newdataform.project.projectId
 					this.addTchItem={
 						name:'',
 						job:'',
 						direction:'',
-						projectId:'',
+						projectId:id,
 						isDel:0
 					}
 					this.isaddTch=false
@@ -582,22 +592,21 @@
 				}
 			},
 			cancelback(){
-				this.$router.push('Paper')
+				this.$router.push('/Paper')
 			},
 			getdata(){
-													let that = this
-													this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
-													        this.newdataform=res.data.data
-															this.$message.success('获取信息成功')
-													      });
-												}
+			let that = this
+				this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
+				        this.newdataform=res.data.data
+						this.$message.success('获取信息成功')
+				      });
+			}
 		},
 		mounted() {
-					this.getdata()
-				}
+			this.getdata()
+		}
 	  }
 </script>
-
 <style scoped>
 	.maincontainer{
 		width: 100%;
@@ -613,18 +622,4 @@
 	}
 </style>
 
-<style scoped>
-	.maincontainer{
-		width: 100%;
-		height: auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.box-card{
-		width: 50%;
-		margin-top: 2%;
-		margin-bottom: 2%;
-	}
-</style>
 
