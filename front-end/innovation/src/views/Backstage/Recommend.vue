@@ -102,7 +102,7 @@
 			        this.$axios.get("/project/delProject/"+row.id ).then((res) => {
 			        		if(res.data.status=="200"){
 								this.$message.success('删除成功')
-								this.getData()
+								this.deleteReset1()
 							}
 								
 							else{
@@ -110,6 +110,14 @@
 							}
 			              });
 			      },
+			deleteReset1(){
+				this.current=1
+				this.$axios.get("/project/getbyType/2?currentPage="+this.current ).then((res) => {
+				        // console.log(res);
+						this.total=res.data.data.total
+				        this.tableData=res.data.data.records
+				      });
+			},
 			getData(){
 				this.$axios.get("/project/getbyType/1?currentPage="+this.current ).then((res) => {
 				        // console.log(res);
@@ -119,7 +127,6 @@
 				      });
 			},
 			pageChange(val){
-				console.log(this.current)
 				this.current=val
 				this.$axios.get("/project/getbyType/1?currentPage="+this.current ).then((res) => {
 				        // console.log(res);

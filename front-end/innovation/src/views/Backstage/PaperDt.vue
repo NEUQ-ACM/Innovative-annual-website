@@ -2,12 +2,12 @@
 	<div class="maincontainer">
 		<el-card class="box-card">
 			<div slot="header" >
-			    <span style="font-size: 25px;">修改推荐论文</span>
+			    <span style="font-size: 25px;">修改学术论文</span>
 			  </div>
 			<div style="width: 100%;">
 				<el-form :model="newdataform.project" :rules="rules" ref="newdataform.project" label-width="100px" class="demo-ruleForm">
 				  <el-form-item label="论文ID" prop="projectId" style="width: 100%;" >
-				    <el-input v-model="newdataform.project.projectId"  ></el-input>
+				    <el-input v-model="newdataform.project.projectId"  type="number" placeholder="输入数字" ></el-input>
 				  </el-form-item>
 				  <el-form-item label="论文名称" prop="projectName" style="width: 100%;" >
 				    <el-input v-model="newdataform.project.projectName"></el-input>
@@ -69,45 +69,64 @@
 				    </el-upload>
 				  </el-form-item> -->
 				  <el-form-item label="上传校徽" >
-				    <el-upload
-				      action="http://81.70.56.45:8082/project/upload"
-					  ref="upload2"
-				      list-type="picture-card"
-				      :auto-upload="false"
-					  :on-success="handleAvatarSuccess2"
-					  :on-error="handleAvatarErr2"
-					    :before-upload="beforeAvatarUpload2"
-					  >
-				        <i slot="default" class="el-icon-plus" v-if="!isbadgeimg" ></i>
-				        <div slot="file" slot-scope="{file}">
-				          <img
-				            class="el-upload-list__item-thumbnail"
-				            :src="file.url" alt=""
-				          >
-				          <span class="el-upload-list__item-actions">
-				            <span
-				              class="el-upload-list__item-preview"
-				              @click="handlePictureCardPreview2(file)"
-				            >
-				              <i class="el-icon-zoom-in"></i>
-				            </span>
-				            <span
-				              v-if="!disabled"
-				              class="el-upload-list__item-delete"
-				              @click="handleDownload2(file)"
-				            >
-				              <i class="el-icon-download"></i>
-				            </span>
-				            <span
-				              v-if="!disabled"
-				              class="el-upload-list__item-delete"
-				              @click="handleRemove2(file)"
-				            >
-				              <i class="el-icon-delete"></i>
-				            </span>
-				          </span>
-				        </div>
-				    </el-upload>
+					<div v-if="(!iseditimg)&&(!alreadyEditImg)" style="display: flex;justify-content: center;">
+						<span><el-image
+						      style="width: 100px; height: 100px"
+						      :src="newdataform.project.badgeUrl"
+						      fit="fill"></el-image></span>
+						<span style="margin-left: 10%;">
+							  <el-button type="primary" icon="el-icon-edit" circle @click="editimg()" ></el-button>
+						</span>
+					</div>
+				    <div v-if="iseditimg" style="display: flex;justify-content: center;align-items: center;float: left;">
+						<span style="margin-left: 5%;">
+							<el-upload
+							  action="http://81.70.56.45:8082/project/upload"
+							  ref="upload2"
+							  list-type="picture-card"
+							  :auto-upload="false"
+							  :on-success="handleAvatarSuccess2"
+							  :on-error="handleAvatarErr2"
+							  :on-change="alreadyChangeImg"
+							    :before-upload="beforeAvatarUpload2"
+							  >
+							    <i slot="default" class="el-icon-plus" v-if="!isbadgeimg" ></i>
+							    <div slot="file" slot-scope="{file}">
+							      <img
+							        class="el-upload-list__item-thumbnail"
+							        :src="file.url" alt=""
+							      >
+							      <span class="el-upload-list__item-actions">
+							        <span
+							          class="el-upload-list__item-preview"
+							          @click="handlePictureCardPreview2(file)"
+							        >
+							          <i class="el-icon-zoom-in"></i>
+							        </span>
+							        <span
+							          v-if="!disabled"
+							          class="el-upload-list__item-delete"
+							          @click="handleDownload2(file)"
+							        >
+							          <i class="el-icon-download"></i>
+							        </span>
+							        <span
+							          v-if="!disabled"
+							          class="el-upload-list__item-delete"
+							          @click="handleRemove2(file)"
+							        >
+							          <i class="el-icon-delete"></i>
+							        </span>
+							      </span>
+							    </div>
+							</el-upload>
+						</span>
+						<span style="margin-left: 3%;" v-if="!alreadyEditImg">
+							<el-button type="success"  @click="editimg()" >撤销更改(如已选图片则无法撤销)</el-button>
+							<!-- icon="el-icon-back" -->
+						</span>
+					</div>
+					
 				  </el-form-item>
 				  <el-form-item label="学生列表" style="width: 100%;" >
 				     <div>
@@ -188,9 +207,8 @@
 				     </div>
 				  </el-form-item>
 				  <el-form-item style="width: 100%;">
-				    <el-button type="primary" @click="uploadfile()">立即创建</el-button>
-				    <el-button @click="resetForm('newdataform')">重置论文</el-button>
-					<el-button @click="cancelback()">取消创建</el-button>
+				    <el-button type="primary" @click="uploadfile()">立即修改</el-button>
+					<el-button @click="cancelback()">取消修改</el-button>
 				  </el-form-item>
 				</el-form>
 			</div>
@@ -211,7 +229,9 @@
 		  				      <el-input v-model="editstuItem.specialty"></el-input>
 		  				    </el-form-item>
 		  					<el-form-item label="是否主持">
-		  					  <el-input v-model="editstuItem.isPresenter"></el-input>
+		  					  <el-radio v-model="editstuItem.isPresenter" label="1">第一主持</el-radio>
+		  					  <el-radio v-model="editstuItem.isPresenter" label="2">第二主持</el-radio>
+		  					  <el-radio v-model="editstuItem.isPresenter" label="0">否</el-radio>
 		  					</el-form-item>
 							<el-form-item>
 							  <el-button type="primary" @click="savestuedit()">保存</el-button>
@@ -240,17 +260,19 @@
 		<el-dialog title="编辑学生" :visible.sync="isaddStu">
 		  <div>
 		  				  <el-form  :model="addstuItem" destroy-on-close="true" >
-		  				    <el-form-item label="名称">
+		  				    <el-form-item label="名称" >
 		  				      <el-input v-model="addstuItem.name"></el-input>
 		  				    </el-form-item>
-		  				    <el-form-item label="年级">
+		  				    <el-form-item label="年级" >
 		  				      <el-input v-model="addstuItem.grade"></el-input>
 		  				    </el-form-item>
-		  				    <el-form-item label="专业">
+		  				    <el-form-item label="专业" >
 		  				      <el-input v-model="addstuItem.specialty"></el-input>
 		  				    </el-form-item>
-		  					<el-form-item label="是否主持">
-		  					  <el-input v-model="addstuItem.isPresenter"></el-input>
+		  					<el-form-item label="是否主持" style="width: 80%;">
+								  <el-radio v-model="addstuItem.isPresenter" label="1">第一主持</el-radio>
+								  <el-radio v-model="addstuItem.isPresenter" label="2">第二主持</el-radio>
+								  <el-radio v-model="addstuItem.isPresenter" label="0">否</el-radio>
 		  					</el-form-item>
 							<el-form-item>
 							  <el-button type="primary" @click="savestuadd()">保存</el-button>
@@ -284,6 +306,8 @@
 	export default {
 	    data() {
 	      return {
+			  alreadyEditImg:false,
+			  iseditimg:false,
 			  dialogImageUrl: '',
 			          dialogVisible: false,
 			          disabled: false,
@@ -296,16 +320,14 @@
 			isaddStu:false,
 			isaddTch:false,
 			addstuItem:{
-				
 				name:'',
 				grade:'',
 				specialty:'',
-				isPresenter:'',
+				isPresenter:0,
 				projectId:'',
 				isDel: 0,
 			},
 			addTchItem:{
-				
 				name:'',
 				job:'',
 				direction:'',
@@ -313,16 +335,14 @@
 				isDel: 0,
 			},
 			editstuItem:{
-				
 				name:'',
 				grade:'',
 				specialty:'',
-				isPresenter:'',
+				isPresenter:0,
 				projectId:'',
 				isDel: 0,
 			},
 			editTchItem:{
-				
 				name:'',
 				job:'',
 				direction:'',
@@ -331,13 +351,14 @@
 			},
 			newdataform:{
 				 project: {
+							id:'',
 							projectId: "",
 							projectName: "",
 							description: "",
 							projectType: "",
 							category: "",
-							type: 2,
-							viewCounts:'',
+							type: 1,
+							viewCounts:0,
 							previewImageUrl: "",
 							badgeUrl: "",
 							years: "",
@@ -361,16 +382,16 @@
 	        },
 	        rules: {
 				projectId: [
-				  { required: true, message: '请输入论文ID', trigger: 'blur' },
+				  { required: true, message: '请输入项目ID', trigger: 'blur' },
 				],
 	          projectName: [
-	            { required: true, message: '请输入论文名称', trigger: 'blur' },
+	            { required: true, message: '请输入项目名称', trigger: 'blur' },
 	          ],
 			  description: [
-			    { required: true, message: '请输入论文描述', trigger: 'blur' },
+			    { required: true, message: '请输入项目描述', trigger: 'blur' },
 			  ],
 			  projectType: [
-			    { required: true, message: '请输入论文类别', trigger: 'blur' },
+			    { required: true, message: '请输入项目类别', trigger: 'blur' },
 			  ],
 			  category: [
 			    { required: true, message: '请输入专业大类', trigger: 'blur' },
@@ -385,26 +406,49 @@
 	      };
 	    },
 		methods: {
+			alreadyChangeImg(file, fileList){
+				this.alreadyEditImg=true
+			},
+			editimg(){
+				this.iseditimg=!this.iseditimg
+			},
 			uploadfile(){
-					this.$refs.upload2.submit()
+						
+					if(this.alreadyEditImg){
+						this.$refs.upload2.submit()
+					}
+					else{
+						this.submitForm('newdataform.project')
+					}
 			},
 			submitForm(formName) {
 				
 			let that=this
-			console.log(that.newdataform)
 			  this.$refs[formName].validate((valid) => {
 			    if (valid) {
+					let data1=JSON.stringify(that.newdataform)
+					console.log(this.newdataform)
 				  that.$axios({
 				           method:"post",//请求方式
-				           url:'/project/addProject',//请求接口
+				           url:'/project/updateProject',//请求接口
 				           headers:{
-				           'Content-Type': 'application/json '
+				           'Vary':'Origin',
+				           'Vary':'Access-Control-Request-Method',
+				           'Vary':'Access-Control-Request-Headers',
+				           'Content-Type':'application/json',
+				           'Transfer-Encoding':'chunked',
+				           'Connection':'keep-alive'
 				           },//请求头参数
-				           data:that.newdataform//数据
+				           data:data1//数据
 				         	})
 				  .then(function(res){
-				    that.$message.success('增加成功')
-					console.log(res)
+					if(res.data.status==200){
+						that.$message.success('增加成功')
+						that.$router.push('/Paper')
+					}
+					else{
+						 that.$message.error('增加失败');
+					}
 				  })
 				  .catch(function(err){
 				    that.$message.error('增加失败');
@@ -484,9 +528,9 @@
 			       this.newdataform.studentList.splice(index,1)
 			      },
 			savestuedit(){
-				if(this.editstuItem.project.name==''||this.editstuItem.project.grade==''||
-				this.editstuItem.project.specialty==''||
-				this.editstuItem.project.isPresenter==''){
+				if(this.editstuItem.name==''||this.editstuItem.grade==''||
+				this.editstuItem.specialty==''
+				){
 					 this.$message.error('修改信息不能为空');
 				}
 				else{
@@ -523,18 +567,20 @@
 			},
 			addStu(){
 				if(this.newdataform.project.projectId==''){
-					this.$message.error('请先设置论文ID');
+					this.$message.error('请先设置项目ID');
 				}
 				else{
 					this.isaddStu=true
+					this.addstuItem.projectId=this.newdataform.project.projectId
 				}
 			},
 			addTch(){
 				if(this.newdataform.project.projectId==''){
-					this.$message.error('请先设置论文ID');
+					this.$message.error('请先设置项目ID');
 				}
 				else{
 					this.isaddTch=true
+					this.addTchItem.projectId=this.newdataform.project.projectId
 				}
 			},
 			savestuadd(){
@@ -544,13 +590,14 @@
 					 this.$message.error('添加信息不能为空');
 				}
 				else{
+					let id=this.newdataform.project.projectId
 					this.newdataform.studentList.push(this.addstuItem)
 					this.addstuItem={
 						name:'',
 						grade:'',
 						specialty:'',
-						isPresenter:'',
-						projectId:'',
+						isPresenter:0,
+						projectId:id,
 						isDel:0
 					}
 					this.isaddStu=false
@@ -567,11 +614,12 @@
 				}
 				else{
 					this.newdataform.teacherList.push(this.addTchItem)
+					let id=this.newdataform.project.projectId
 					this.addTchItem={
 						name:'',
 						job:'',
 						direction:'',
-						projectId:'',
+						projectId:id,
 						isDel:0
 					}
 					this.isaddTch=false
@@ -582,15 +630,16 @@
 				}
 			},
 			cancelback(){
-				this.$router.push('Paper')
+				this.$router.push('/Paper')
 			},
 			getdata(){
-													let that = this
-													this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
-													        this.newdataform=res.data.data
-															this.$message.success('获取信息成功')
-													      });
-												}
+						let that = this
+							this.$axios.get("/project/getbyId/"+this.$route.query.id ).then((res) => {
+							        this.newdataform=res.data.data
+									console.log(this.newdataform)
+									this.$message.success('获取信息成功')
+							      });
+						}
 		},
 		mounted() {
 					this.getdata()
@@ -613,18 +662,5 @@
 	}
 </style>
 
-<style scoped>
-	.maincontainer{
-		width: 100%;
-		height: auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.box-card{
-		width: 50%;
-		margin-top: 2%;
-		margin-bottom: 2%;
-	}
-</style>
+
 

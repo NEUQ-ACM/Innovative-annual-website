@@ -14,15 +14,16 @@
 				   <el-table
 				      :data="tableData"
 				      border
+					   v-loading="loading"
 				      style="width: 100%">
 				      <el-table-column
 				        prop="id"
-				        label="论文ID"
+				        label="项目ID"
 				        width="180">
 				      </el-table-column>
 				      <el-table-column
 				        prop="projectName"
-				        label="论文名称"
+				        label="项目名称"
 				        width="180">
 				      </el-table-column>
 					  <el-table-column
@@ -44,7 +45,13 @@
     </el-table-column>
 			   </div>
 			   <div style="margin: 2% 0  ;width: 100%;">
-			   				   <el-button type="primary" style="width: 30%;" @click="navigateToNew()" round >新增学术论文</el-button>
+			   		<el-pagination
+			   		  background
+			   		  layout="prev, pager, next"
+					  :current-page="current"
+					  @current-change="pageChange"
+			   		  :total="total">
+			   		</el-pagination>
 			   </div>
 		  </el-col>
 		</el-row>
@@ -59,27 +66,12 @@
 		},
 		data(){
 			return {
-			        tableData: [{
-            id: "",
-        	project_name: " ",
-            description: "",
-			project_type:'',
-			category:''
-           },
-          {
-           id: "1",
-                  	project_name: " ",
-           description: " ",
-          			project_type:'',
-          			category:''
-          },		
-           {
-            id: "1",
-                   	project_name: "1 ",
-            description: "1 ",
-           			project_type:'1',
-           			category:'1'
-           },]
+			total:0,
+			current:1,
+			pages:0,
+			loading:false,
+			        tableData: [],
+					resetData:[]
 			      }
 		},
 		methods:{
@@ -87,17 +79,61 @@
 				this.$router.push('/PaperNew')
 			},
 			handleEdit(index, row) {
-			        this.$router.push({path:'/PaperDt',query:{id:row.id}})
+			        this.$router.push({name:'PaperDt',query:{id:row.id}})
 			      },
 			      handleDelete(index, row) {
-			        console.log(index, row);
+					let that=this
+			        this.$axios.get("/project/delProject/"+row.id ).then((res) => {
+			        		if(res.data.status=="200"){
+								that.$message.success('删除成功')
+								// setTimeout(function(){
+								// 	that.getData()
+								// 	console.log(that.tableData)
+								// 	if((that.tableData.length==0)&&(that.current>1)){
+								// 		that.current--
+								// 		console.log(that.current)
+								// 		that.getData()
+								// 	}
+								// 	that.loading=false
+								// },3000)
+								that.deleteReset1()
+							}
+							else{
+								this.$message.error('删除失败'+res)
+							}
+			              });
 			      },
-			getData(){
-				this.$axios.get("/project/getbyType/2" ).then((res) => {
-				         
+			deleteReset1(){
+				this.current=1
+				this.$axios.get("/project/getbyType/2?currentPage="+this.current ).then((res) => {
+				        // console.log(res);
+						this.total=res.data.data.total
 				        this.tableData=res.data.data.records
-						console.log(this.tableData);
+				      });
+			},
+			deleteReset2(){
+				this.$axios.get("/project/getbyType/2?currentPage="+this.current-1 ).then((res) => {
+				        // console.log(res);
+				        this.tableData=res.data.data.records
+						this.total=res.data.data.total
 						this.$message.success('获取列表成功')
+				      });
+			},
+			getData(){
+				this.$axios.get("/project/getbyType/2?currentPage="+this.current ).then((res) => {
+				        // console.log(res);
+				        this.tableData=res.data.data.records
+						this.total=res.data.data.total
+						this.$message.success('获取列表成功')
+				      });
+			},
+			pageChange(val){
+				this.current=val
+				console.log(this.current)
+				this.$axios.get("/project/getbyType/2?currentPage="+this.current ).then((res) => {
+				        // console.log(res);
+				        this.tableData=res.data.data.records
+						this.total=res.data.data.total
 				      });
 			},
 		},

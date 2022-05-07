@@ -539,6 +539,7 @@
 				}
 				else{
 					this.isaddStu=true
+					this.addstuItem.projectId=this.newdataform.project.projectId
 				}
 			},
 			addTch(){
@@ -547,6 +548,7 @@
 				}
 				else{
 					this.isaddTch=true
+					this.addTchItem.projectId=this.newdataform.project.projectId
 				}
 			},
 			savestuadd(){
