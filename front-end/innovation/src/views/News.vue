@@ -1,30 +1,38 @@
 <template>
-  <section class="sectionOne">
-    <el-container>
-      <el-header>
-        <span>年会通知公告</span>
-      </el-header>
-      <el-main>
-        <div
-          class="boxWrap"
-          v-for="(item) in noticeData"
-          :key="item.id"
-          @click="viewDetail(item.id)"
-        >
-          <div class="newsBoxOne newsBox">
-            <div class="date">
-              <span class="day">{{item.updateTime.substring(8,10)}}</span>
-              <span class="year">{{item.updateTime.substring(0,7)}}</span>
-            </div>
-            <div class="news">
-              <span class="newsTitle">{{ item.title }}</span>
-              <span class="newsContent">请查看附件</span>
-            </div>
-          </div>
-        </div>
-      </el-main>
-    </el-container>
-  </section>
+  <div style="width: 70%;margin-left: 15%;display: flex;flex-direction: row;padding-top: 2%;">
+	  <span style="width: 25%;margin-left: 0%;margin-right: 5%;">
+		  <div style="background-color: #004EA1;color: white;font-size: 25px;height: 100px;align-items: center;display: flex;justify-content: center;">
+			  <div >
+				  年会通知公告
+			  </div>
+			  
+		</div>
+		  <div style="height: 50px;background-color: #F9F9F9;">
+			  
+		  </div>
+	  </span>
+	  <span style="width: 80%;margin-left: 5%;">
+		  <div>
+		  		<div
+		  			class="boxWrap"
+		  			v-for="(item) in noticeData"
+		  			:key="item.id"
+		  			@click="viewDetail(item.id)"
+		  		  >
+		  				    <div class="newsBoxOne newsBox">
+		  				      <div class="date">
+		  				        <span class="day">{{item.updateTime.substring(8,10)}}</span>
+		  				        <span class="year">{{item.updateTime.substring(0,7)}}</span>
+		  				      </div>
+		  				      <div class="news">
+		  				        <span class="newsTitle">{{ item.title }}</span>
+		  				        <span class="newsContent">请查看附件</span>
+		  				      </div>
+		  				    </div>
+		  		</div>
+		  </div>
+	  </span>
+  </div>
 </template>
 
 <script>
@@ -67,22 +75,27 @@ export default {
   font-size: 30px;
 }
 
-.el-main {
-  /* background-color: #e9eef3; */
+/* .el-main {
   color: #333;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-}
+} */
 
 div.boxWrap {
   padding: 30px 20px;
   margin-bottom: 20px;
-  background-color: #f6f6f6;
+  transition: 0.5s;
 }
-
+.boxWrap:hover{
+	box-shadow: 0 8px 16px rgba(0, 0, 0, .12), 0 0 24px rgba(0, 0, 0, .04);
+	margin-left: 0.625rem;
+}
+.boxWrap:hover .news .newsTitle{
+	color: #004EA1;
+}
 .newsBox {
   /* width: 50%; */
   display: flex;
@@ -104,14 +117,14 @@ div.date {
 }
 
 span.day {
-  color: #282828;
+  color: #004EA1;
   font-size: 40px;
   line-height: 40px;
   margin-bottom: 5px;
 }
 
 span.year {
-  color: #999;
+  color: #004EA1;
   font-size: 14px;
 }
 
