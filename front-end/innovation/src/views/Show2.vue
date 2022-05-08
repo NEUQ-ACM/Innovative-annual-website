@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     viewDetail(id) {
-      this.$router.push({path:'/NoticeDetail',query:{id:id}})
+      this.$router.push({path:'/ItemDetail',query:{id:id}})
     },
 	pageChange(val){
 		this.current=val
