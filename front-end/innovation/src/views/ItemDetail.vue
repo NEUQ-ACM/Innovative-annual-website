@@ -24,7 +24,7 @@
     <!-- 校徽 -->
     <el-row>
       <el-col :span="14" :offset="5">
-        <el-avatar shape="circle" :size="150" :src="newdataform.project.badgeUrl"></el-avatar>
+        <el-avatar shape="square" :size="150" :src="newdataform.project.badgeUrl" fit></el-avatar>
       </el-col>
     </el-row>
   <!-- 作品详情 -->
