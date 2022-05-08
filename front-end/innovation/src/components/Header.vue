@@ -66,7 +66,7 @@ header {
   width: 20%;
   height: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
   margin: 0 auto;
@@ -74,7 +74,8 @@ header {
 .headerLogo {
   flex: 1;
   margin-top: 20px;
-  margin-right: 0px;
+	margin-left: -200px;
+	margin-right: 300px;
   width: 300px;
 }
 nav {
