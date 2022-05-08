@@ -176,10 +176,8 @@ export default {
 }
 
 .announment {
-  padding: 20px 20px 50px 20px;
   border-bottom: 1px solid #444;
-  display: flex;
-  align-items: center;
+  /* display: flex; */
   margin-top: 20px;
 }
 
@@ -209,14 +207,15 @@ export default {
 
 .announmentItemList {
   display: flex;
-  overflow: auto;
+  justify-content: space-between;
+  /* overflow: auto; */
 }
 
-.announmentItemList::-webkit-scrollbar {
+/* .announmentItemList::-webkit-scrollbar {
   height: 8px;
   background-color: transparent;
   width: 0;
-}
+} */
 
 .announmentItemList::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.6);
@@ -225,10 +224,10 @@ export default {
 }
 
 .announmentItemList .announmentItem {
-  background-color: #d3d1d1;
-  padding: 10px 10px 2px 10px;
+  /* background-color: #d3d1d1;
+  padding: 10px 10px 2px 10px; */
   box-sizing: border-box;
-  flex: none;
+  min-width: 33%;
 }
 
 .announment a {
@@ -237,7 +236,6 @@ export default {
 
 .announment .announmentWrap {
   display: flex;
-  width: 500px;
   height: 200px;
   background-size: cover;
   flex-direction: column-reverse;
