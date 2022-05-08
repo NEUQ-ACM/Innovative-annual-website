@@ -4,22 +4,22 @@
       <div class="container">
         <div class="information">
           <span class="serve">
-            <span>服务电话：</span>
-            <span>025-83215097 400-050-8066</span>
+            <span></span>
+            <span></span>
           </span>
           <span>
-            <span>备案号：</span>
-            <span>BJTUICP备 14070101</span>
+            <span></span>
+            <span></span>
           </span>
         </div>
       </div>
     </footer>
     <footer class="footerMobile">
       <div class="info">
-        <span>服务电话：</span>
-        <span>025-83215097 400-050-8066</span>
-        <span>备案号：</span>
-        <span>BJTUICP备 14070101</span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </footer>
   </footer>
@@ -34,7 +34,8 @@ export default {
 .footerMain {
   width: 100%;
   height: 70px;
-  background-color: #004EA1;
+  background: url(../assets/images/foot_bg_03.jpg) center;
+  background-position: 0 -150px;
 }
 .container {
   color: #fff;

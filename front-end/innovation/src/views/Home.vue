@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <el-carousel :interval="3000" arrow="hover" height="455px" trigger="click">
+    <el-carousel :interval="3000" arrow="hover" :height="this.bannerHeight+'px'" trigger="click">
       <el-carousel-item v-for="r in rotations.rotationList" :key="r.id">
         <img :src="r.url" alt="" />
       </el-carousel-item>
@@ -46,6 +46,8 @@ export default {
   name: "Home",
   data() {
     return {
+      screenWidth:450,
+      bannerHeight:450,
       notices: [
         {
           id: 1,
@@ -108,6 +110,13 @@ export default {
   mounted(){
     this.queryNotice()
     this.queryRotation()
+    this.screenWidth = window.innerWidth
+    this.bannerHeight = 750 / 2500 * this.screenWidth
+    // 窗口大小发生改变
+    window.onresize = () => {
+      this.screenWidth = window.innerWidth
+      this.bannerHeight = 750 / 2500* this.screenWidth
+    }
   }
 };
 </script>
