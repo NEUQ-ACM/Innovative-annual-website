@@ -7,17 +7,17 @@
 			  </div>
 		</div>
 		  <div style="height: 190px;background-color: #F9F9F9; ">
-			  <router-link to="/Show1"  >
+			  <router-link to="/Show1"  active-class="linkActive">
 				 <div style="height: 50px;padding: 5px;margin-top: 10px;">
 				 	学术论文
 				 </div>
 			  </router-link>
-			  <router-link to="/Show2" >
+			  <router-link to="/Show2" active-class="linkActive">
 				  <div style="height: 50px;padding: 5px;margin: top 10px;">
 				  	创新创业展示项目
 				  </div>
 			  </router-link>
-			  <router-link to="/Show3">
+			  <router-link to="/Show3" active-class="linkActive">
 				  <div style="height: 50px;padding: 5px;margin: 10 0px;">
 				  	创业推荐项目
 				  </div>
@@ -69,7 +69,10 @@ export default {
   margin-bottom: 20px;
   font-size: 30px;
 }
-
+a{
+  color:#333;
+  line-height: 45px;
+}
 /* .el-main {
   color: #333;
   text-align: center;
@@ -79,8 +82,10 @@ export default {
   align-items: center;
 } */
 .linkActive{
+  display: block;
+  color: #ddd;
 	text-decoration: none;
-	background-color: #999;
+	background-color:rgb(30, 71, 97);
 }
 div.boxWrap {
   padding: 30px 20px;
