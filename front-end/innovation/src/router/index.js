@@ -26,6 +26,9 @@ import ReformNew from '../views/Backstage/ReformNew.vue'
 import NoticeEdit from '../views/Backstage/NoticeEdit.vue'
 import NoticeDetail from '../views/NoticeDetail'
 import annex from '../views/Backstage/annex'
+import Show1 from '../views/Show1.vue'
+import Show2 from '../views/Show2.vue'
+import Show3 from '../views/Show3.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -47,6 +50,23 @@ const routes = [
     path: '/Gallery',
     name: 'Gallery',
     component: Gallery,
+	children:[
+		{
+		  path: '/Show1',
+		  name: 'Show1',
+		  component: Show1
+		},
+		{
+		  path: '/Show2',
+		  name: 'Show2',
+		  component: Show2
+		},
+		{
+		  path: '/Show3',
+		  name: 'Show3',
+		  component: Show3
+		},
+	]
   },
   {
     path: '/Organizer',
@@ -163,6 +183,8 @@ const routes = [
     name: 'PaperNew',
     component: PaperNew
   },
+  
+  
 ]
 
 const router = new VueRouter({
