@@ -89,6 +89,7 @@ export default {
       axios.get('/notice/getAll').then(
         res => {
           this.notices = res.data.data.records
+          this.notices = this.notices.slice(0,3)
           this.changeDateForm()
         }
       )
