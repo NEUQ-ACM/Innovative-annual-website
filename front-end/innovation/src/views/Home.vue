@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <el-carousel :interval="3000" arrow="hover" height="607px" trigger="click">
+    <el-carousel :interval="3000" arrow="hover" height="455px" trigger="click">
       <el-carousel-item v-for="r in rotations.rotationList" :key="r.id">
         <img :src="r.url" alt="" />
       </el-carousel-item>
     </el-carousel>
     <section class="sectionThree-new">
       <div class="announment">
-        <div class="announmentSider">
+      <!--  <div class="announmentSider">
           <span class="announmentTitle">通知公告</span>
           <i class="el-icon-arrow-right"></i>
-        </div>
+        </div> -->
 
         <div class="announmentItemList">
           <div class="announmentItem" v-for="notice in notices" :key="notice.id">
@@ -113,6 +113,10 @@ export default {
 </script>
 
 <style scoped>
+	.home{
+		width: 70%;
+		margin-left: 15%;
+	}
 .el-carousel img {
   width: 100%;
   height: 100%;

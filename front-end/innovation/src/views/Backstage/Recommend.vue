@@ -112,7 +112,7 @@
 			      },
 			deleteReset1(){
 				this.current=1
-				this.$axios.get("/project/getbyType/2?currentPage="+this.current ).then((res) => {
+				this.$axios.get("/project/getbyType/1?currentPage="+this.current ).then((res) => {
 				        // console.log(res);
 						this.total=res.data.data.total
 				        this.tableData=res.data.data.records

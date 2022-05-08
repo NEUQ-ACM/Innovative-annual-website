@@ -10,7 +10,7 @@
         <router-view></router-view>
         <Backtop></Backtop>
       </el-main>
-      <el-footer>
+     <el-footer>
         <Footer></Footer>
       </el-footer>
     </el-container>
