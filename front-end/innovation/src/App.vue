@@ -6,11 +6,11 @@
         <Header></Header>
         <!-- <newHeader></newHeader> -->
       </el-header>
-      <el-main style="margin-top: 80px;" >
+      <el-main style="margin-top: 21px;">
         <router-view></router-view>
         <Backtop></Backtop>
       </el-main>
-     <el-footer>
+      <el-footer>
         <Footer></Footer>
       </el-footer>
     </el-container>
@@ -30,7 +30,6 @@ export default {
 };
 </script>
 <style>
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
