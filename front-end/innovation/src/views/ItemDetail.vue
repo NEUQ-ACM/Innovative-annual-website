@@ -1,59 +1,73 @@
 <template>
-  <div style="margin-top: 1%;">
+  <div style="margin-top:3%">
+    <div>
+      <span style="font-size:22px">基于UWB定位的手机端车库管理系统</span>
+    </div>
+    <el-col :span="12"
+            :offset="6">
+      <el-divider></el-divider>
+    </el-col>
+    <img src="../assets/images/基于UWB定位的手机端车库管理系统.jpg"
+         alt=""
+         width="50%">
+  </div>
+
+  <!-- <div style="margin-top: 1%;">
     <el-row>
-      <el-col :span="14" :offset="5">
+      <el-col :span="14"
+              :offset="5">
         <!-- 面包屑导航区域 -->
-       <!-- <el-breadcrumb separator="/" class="breadcrumb">
+  <!-- <el-breadcrumb separator="/" class="breadcrumb">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>作品展示</el-breadcrumb-item>
         </el-breadcrumb> -->
-        <!-- <el-divider></el-divider> -->
-      </el-col>
-    </el-row>
-    <!-- 作品标题 -->
+  <!-- <el-divider></el-divider> -->
+  <!-- </el-col>
+    </el-row> -->
+  <!-- 作品标题
     <el-row>
-      <el-col :span="14" :offset="5">
+      <el-col :span="14"
+              :offset="5">
         <div class="titleBox">
           <span class="itemTitle">{{ newdataform.project.projectName }}</span>
         </div>
       </el-col>
     </el-row>
-    <el-col :span="14" :offset="5">
+    <el-col :span="14"
+            :offset="5">
       <el-divider></el-divider>
-    </el-col>
-    <!-- 校徽 -->
-    <el-row>
-      <el-col :span="14" :offset="5">
-        <el-avatar shape="square" :size="150" :src="newdataform.project.badgeUrl" fit></el-avatar>
+    </el-col> -->
+  <!-- 校徽 -->
+  <!-- <el-row>
+      <el-col :span="14"
+              :offset="5">
+        <el-avatar shape="square"
+                   :size="150"
+                   :src="newdataform.project.badgeUrl"
+                   fit></el-avatar>
       </el-col>
-    </el-row>
+    </el-row> -->
   <!-- 作品详情 -->
-    <!-- 基本信息 -->
-    <el-row>
-      <el-col :span="14" :offset="5">
-        <el-descriptions
-          direction="vertical"
-          :column="4"
-          border
-        >
-          <el-descriptions-item label="论文题目"
-            >{{newdataform.project.projectName}}</el-descriptions-item
-          >
-          <el-descriptions-item label="项目类型"
-            >{{newdataform.project.projectType}}</el-descriptions-item
-          >
-          <el-descriptions-item label="学科类别" :span="2"
-            >{{newdataform.project.category}}</el-descriptions-item
-          >
+  <!-- 基本信息 -->
+  <!-- <el-row>
+      <el-col :span="14"
+              :offset="5">
+        <el-descriptions direction="vertical"
+                         :column="4"
+                         border>
+          <el-descriptions-item label="论文题目">{{newdataform.project.projectName}}</el-descriptions-item>
+          <el-descriptions-item label="项目类型">{{newdataform.project.projectType}}</el-descriptions-item>
+          <el-descriptions-item label="学科类别"
+                                :span="2">{{newdataform.project.category}}</el-descriptions-item>
           <el-descriptions-item label="项目编号">
             <el-tag size="small">{{newdataform.project.projectId}}</el-tag>
           </el-descriptions-item>
           <el-descriptions-item label="学校">{{newdataform.project.school}}</el-descriptions-item>
         </el-descriptions>
       </el-col>
-    </el-row>
-    <!-- 参赛人员 -->
-    <el-row>
+    </el-row> -->
+  <!-- 参赛人员 -->
+  <!-- <el-row>
       <el-col :span="14" :offset="5">
         <div class="tableTitleBox">
           <span class="itemTitle">项目成员</span>
@@ -69,9 +83,9 @@
           </el-table-column>
         </el-table>
       </el-col>
-    </el-row>
-    <!-- 指导老师 -->
-    <el-row>
+    </el-row> -->
+  <!-- 指导老师 -->
+  <!-- <el-row>
       <el-col :span="14" :offset="5">
         <div class="tableTitleBox">
           <span class="itemTitle">指导老师</span>
@@ -85,43 +99,43 @@
           </el-table-column>
         </el-table>
       </el-col>
-    </el-row>
-    <!-- 论文正文 -->
-    <el-row>
+    </el-row> -->
+  <!-- 论文正文 -->
+  <!-- <el-row>
       <el-col :span="14" :offset="5">
        <el-card shadow="never">
          {{newdataform.project.description}}
        </el-card>
       </el-col>
     </el-row>
-  </div>
+  </div> -->
 </template>
 
 <script>
 export default {
   name: "",
-  data() {
+  data () {
     return {
-		newdataform:{
-			 project: {
-						projectId: "",
-						projectName: "",
-						description: "",
-						projectType: "",
-						category: "",
-						type: 1,
-						viewCounts:0,
-						previewImageUrl: "",
-						badgeUrl: "",
-						years: "",
-						school: "",
-						isDel: 0
-					},
-			studentList:[
-			],
-			teacherList:[
-			],
-		},
+      newdataform: {
+        project: {
+          projectId: "",
+          projectName: "",
+          description: "",
+          projectType: "",
+          category: "",
+          type: 1,
+          viewCounts: 0,
+          previewImageUrl: "",
+          badgeUrl: "",
+          years: "",
+          school: "",
+          isDel: 0
+        },
+        studentList: [
+        ],
+        teacherList: [
+        ],
+      },
       project: {
         id: "",
         projectId: "",
@@ -170,12 +184,12 @@ export default {
   },
   methods: {
     // 请求作品信息
-    async getProject() {
+    async getProject () {
       let id = this.$route.query.id
-	  console.log(id)
-      const { data: res } = await this.$axios.get(`/project/getbyId/`+id)
-      if(res.status === 200) {
-		console.log(res)
+      console.log(id)
+      const { data: res } = await this.$axios.get(`/project/getbyId/` + id)
+      if (res.status === 200) {
+        console.log(res)
         this.newdataform = res.data
         return this.$message.success('请求成功')
       }
@@ -183,7 +197,7 @@ export default {
       console.log(res)
     }
   },
-  mounted() {
+  mounted () {
     this.getProject()
   },
 };
