@@ -1,76 +1,120 @@
 <template>
   <div>
     <div class="navMain">
-			<!-- <div style="color: white;margin-left: 15%;text-align: center;height: 70%;line-height: 80px;font-size: 28px;font-weight: 500;margin-top: 1%;">第七届河北省大学生创新创业年会</div> -->
-			<img src="../assets/images/shufalogo.png" style="color: white;margin-left: 10%;text-align: center;height: 70%;line-height: 80px;font-size: 28px;font-weight: 500;margin-top: 1%;" alt="">
+      <!-- <div style="color: white;margin-left: 15%;text-align: center;height: 70%;line-height: 80px;font-size: 28px;font-weight: 500;margin-top: 1%;">第七届河北省大学生创新创业年会</div> -->
+      <span>第七届河北省大学生创新创业年会</span>
     </div>
-    <div style="display: flex;float: right;width: 100%;background-color: #004ea1;">
-		<div style="margin-left: 60%;">
-			<el-menu router
-			         :default-active="activeIndex"
-			         class="el-menu-demo"
-			         mode="horizontal"
-					 background-color="#004ea1"
-					 text-color="#fff"
-					 active-text-color="#fff"
-			         @select="handleSelect">
-			  <el-menu-item index="1"
-			                route="/Home">首页</el-menu-item>
-			  <el-menu-item index="2"
-			                route="/News">通知公告</el-menu-item>
-			  <el-menu-item index="3"
-			                route="/Arrangment">年会日程</el-menu-item>
-			  <el-submenu index="4">
-			    <template slot="title">作品展示</template>
-			    <el-menu-item index="4-1"
-			                  route="/Show1">学术论文</el-menu-item>
-			    <el-menu-item index="4-2"
-			                  route="/Show2">创新创业展示项目</el-menu-item>
-			    <el-menu-item index="4-3"
-			                  route="/Show3">创业推荐项目</el-menu-item>
-			  </el-submenu>
-			</el-menu>
-		</div>
-	</div>
+    <div
+      style="
+        display: flex;
+        float: right;
+        width: 100%;
+        background-color: #004ea1;
+      "
+      class="Mmain"
+    >
+      <div style="margin-left: 60%">
+        <el-menu
+          router
+          :default-active="activeIndex"
+          class="el-menu-demo"
+          mode="horizontal"
+          background-color="#004ea1"
+          text-color="#fff"
+          active-text-color="#fff"
+          @select="handleSelect"
+        >
+          <el-menu-item index="1" route="/Home">首页</el-menu-item>
+          <el-menu-item index="2" route="/News">通知公告</el-menu-item>
+          <el-menu-item index="3" route="/Arrangment">年会日程</el-menu-item>
+          <el-submenu index="4">
+            <template slot="title">作品展示</template>
+            <el-menu-item index="4-1" route="/Show1">学术论文</el-menu-item>
+            <el-menu-item index="4-2" route="/Show2"
+              >创新创业展示项目</el-menu-item
+            >
+            <el-menu-item index="4-3" route="/Show3">创业推荐项目</el-menu-item>
+          </el-submenu>
+        </el-menu>
+      </div>
+    </div>
+    <!-- 移动端header下拉菜单 -->
+    <nav class="mobileNav">
+      <el-button @click="mobileShow = !mobileShow">=</el-button>
+      <el-collapse-transition>
+        <div v-show="mobileShow" class="mobileList">
+          <nav>
+            <ul>
+              <li v-for="(items, index) in navData" :key="index">
+                <router-link :to="items.routerLink" active-class="isActive">
+                  <span @click="mobileShow = !mobileShow">{{
+                    items.spanValue
+                  }}</span>
+                </router-link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </el-collapse-transition>
+      <div class="headerLogo">
+        <span>第七届河北省大学生创新创业年会</span>
+      </div>
+    </nav>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Header_2',
-  data () {
+  name: "Header_2",
+  data() {
     return {
-      activeIndex: this.$route.path
+      activeIndex: this.$route.path,
+      mobileShow: false,
+      navData: [
+        { routerLink: "/Home", spanValue: "首 页" },
+        { routerLink: "/News", spanValue: "通知公告" },
+        { routerLink: "/Arrangment", spanValue: "年会日程" },
+        { routerLink: "/Show1", spanValue: "作品展示" },
+      ],
     };
   },
-}
+};
 </script>
 
 <style scoped>
-/deep/.el-submenu__title{
-	height: 61px !important;
+@font-face {
+  font-family: "kaiti";
+  src: url(../assets/font/STKAITI.TTF);
 }
-/deep/.el-menu-item{
-	height: 61px !important;
+/deep/.el-submenu__title {
+  height: 61px !important;
+}
+/deep/.el-menu-item {
+  height: 61px !important;
 }
 .navMain {
-  background:url("../assets/images/logo_bg.png") 800px center no-repeat;
+  background: url("../assets/images/logo_bg.png") 800px center no-repeat;
   background-color: #004ea1;
   height: 100px;
   display: flex;
-
+  align-items: center;
 }
-.showheaderimg{
-	width: 50%;
-	background-image: url("../assets/images/logo_bg.png");
-	background-color: #004ea1;
-	height: 80px;
-	
+.navMain span {
+  color: #ddd;
+  font-size: 45px;
+  letter-spacing: 10px;
+  padding-left: 40px;
+  font-family: "kaiti";
+}
+.showheaderimg {
+  width: 50%;
+  background-image: url("../assets/images/logo_bg.png");
+  background-color: #004ea1;
+  height: 80px;
 }
 .el-menu-demo {
   width: 100%;
   height: 60px;
-
 }
 .el-menu-item {
   height: 78px;
@@ -83,5 +127,77 @@ export default {
   height: 80px;
   float: right;
   background-color: transparent;
+}
+.mobileNav {
+  display: none;
+  background-color: #004ea1;
+}
+.mobileNav .el-button {
+  margin-top: 10px;
+  margin-left: 3px;
+  font-size: 50px;
+  border: none;
+  padding: 0;
+  flex: 1;
+  background-color: #004ea1;
+}
+.mobileNav .headerLogo {
+  margin: 8px auto;
+  background-color: #004ea1;
+}
+.mobileNav .headerLogo span {
+  display: block;
+  line-height: 44px;
+  height: 100%;
+  font-family: "kaiti";
+  font-size: 20px;
+  color: #ddd;
+}
+.mobileNav .mobileList {
+  position: absolute;
+  background-color: #004ea1;
+  top: 55px;
+  width: 100%;
+  height: 1000px;
+  z-index: 500;
+}
+.mobileNav .mobileList nav {
+  height: 100%;
+  width: 100%;
+}
+.mobileNav .headerLogo img {
+  width: 40px;
+}
+.mobileNav .mobileList nav ul {
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 501;
+  background-color: #fff;
+}
+.mobileNav .mobileList nav li,
+.mobileNav .mobileList nav a {
+  display: block;
+  line-height: 50px;
+  z-index: 501;
+  width: 100%;
+  height: 50px;
+  color: black;
+  text-decoration: none;
+}
+.mobileNav .mobileList nav li:hover{
+	background-color: lightskyblue;
+}
+.mobileNav .headerLogo {
+  flex: 9;
+}
+@media screen and (max-width: 958px) {
+  .mobileNav {
+    display: flex;
+  }
+  .navMain,
+  .Mmain {
+    display: none !important;
+  }
 }
 </style>

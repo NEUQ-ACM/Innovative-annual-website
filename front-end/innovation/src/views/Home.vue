@@ -445,6 +445,11 @@ span.intro {
   -webkit-box-orient: vertical;
   text-align: center;
 }
+@media screen and (max-width: 958px) {
+  .el-main{
+	  margin: 0 !important;
+  }
+}
 </style>
 
 ext-align: center;
