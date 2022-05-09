@@ -4,36 +4,34 @@
       <!-- <div style="color: white;margin-left: 15%;text-align: center;height: 70%;line-height: 80px;font-size: 28px;font-weight: 500;margin-top: 1%;">第七届河北省大学生创新创业年会</div> -->
       <span>第七届河北省大学生创新创业年会</span>
     </div>
-    <div
-      style="
+    <div style="
         display: flex;
         float: right;
         width: 100%;
-        background-color: #004ea1;
       "
-      class="Mmain"
-    >
+         class="Mmain">
       <div style="margin-left: 60%">
-        <el-menu
-          router
-          :default-active="activeIndex"
-          class="el-menu-demo"
-          mode="horizontal"
-          background-color="#004ea1"
-          text-color="#fff"
-          active-text-color="#fff"
-          @select="handleSelect"
-        >
-          <el-menu-item index="1" route="/Home">首页</el-menu-item>
-          <el-menu-item index="2" route="/News">通知公告</el-menu-item>
-          <el-menu-item index="3" route="/Arrangment">年会日程</el-menu-item>
+        <el-menu router
+                 :default-active="activeIndex"
+                 class="el-menu-demo"
+                 mode="horizontal"
+                 text-color="#fff"
+                 active-text-color="#fff"
+                 @select="handleSelect">
+          <el-menu-item index="1"
+                        route="/Home">首页</el-menu-item>
+          <el-menu-item index="2"
+                        route="/News">通知公告</el-menu-item>
+          <el-menu-item index="3"
+                        route="/Arrangment">年会日程</el-menu-item>
           <el-submenu index="4">
             <template slot="title">作品展示</template>
-            <el-menu-item index="4-1" route="/Show1">学术论文</el-menu-item>
-            <el-menu-item index="4-2" route="/Show2"
-              >创新创业展示项目</el-menu-item
-            >
-            <el-menu-item index="4-3" route="/Show3">创业推荐项目</el-menu-item>
+            <el-menu-item index="4-1"
+                          route="/Show1">学术论文</el-menu-item>
+            <el-menu-item index="4-2"
+                          route="/Show2">创新创业展示项目</el-menu-item>
+            <el-menu-item index="4-3"
+                          route="/Show3">创业推荐项目</el-menu-item>
           </el-submenu>
         </el-menu>
       </div>
@@ -42,11 +40,14 @@
     <nav class="mobileNav">
       <el-button @click="mobileShow = !mobileShow">=</el-button>
       <el-collapse-transition>
-        <div v-show="mobileShow" class="mobileList">
+        <div v-show="mobileShow"
+             class="mobileList">
           <nav>
             <ul>
-              <li v-for="(items, index) in navData" :key="index">
-                <router-link :to="items.routerLink" active-class="isActive">
+              <li v-for="(items, index) in navData"
+                  :key="index">
+                <router-link :to="items.routerLink"
+                             active-class="isActive">
                   <span @click="mobileShow = !mobileShow">{{
                     items.spanValue
                   }}</span>
@@ -66,7 +67,7 @@
 <script>
 export default {
   name: "Header_2",
-  data() {
+  data () {
     return {
       activeIndex: this.$route.path,
       mobileShow: false,
@@ -86,6 +87,11 @@ export default {
   font-family: "kaiti";
   src: url(../assets/font/STKAITI.TTF);
 }
+div.Mmain {
+  z-index: 1;
+  position: absolute;
+  top: 39px;
+}
 /deep/.el-submenu__title {
   height: 61px !important;
 }
@@ -101,10 +107,10 @@ export default {
 }
 .navMain span {
   color: #ddd;
-  font-size: 45px;
-  letter-spacing: 10px;
+  font-size: 38px;
+  letter-spacing: 6px;
   padding-left: 40px;
-  font-family: "kaiti";
+  font-family: 黑体;
 }
 .showheaderimg {
   width: 50%;
@@ -118,6 +124,24 @@ export default {
 }
 .el-menu-item {
   height: 78px;
+  background-color: transparent;
+}
+.el-menu-item.is-active {
+  background-color: transparent !important;
+}
+.el-menu-item:hover {
+  background-color: #004ea1 !important;
+}
+/deep/ .el-submenu__title:hover {
+  background-color: #004ea1 !important;
+}
+.el-menu--horizontal .el-menu .el-menu-item,
+.el-menu--horizontal .el-menu .el-submenu__title {
+  background-color: #004ea1;
+  float: none;
+  height: 36px;
+  line-height: 36px;
+  color: #909399;
 }
 .el-menu.el-menu--horizontal {
   background-color: transparent;
@@ -185,8 +209,8 @@ export default {
   color: black;
   text-decoration: none;
 }
-.mobileNav .mobileList nav li:hover{
-	background-color: lightskyblue;
+.mobileNav .mobileList nav li:hover {
+  background-color: lightskyblue;
 }
 .mobileNav .headerLogo {
   flex: 9;
