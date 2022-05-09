@@ -1,74 +1,71 @@
 <template>
   <div>
-  		<div
-  			class="boxWrap"
-  			v-for="(item) in noticeData"
-  			:key="item.id"
-  			@click="viewDetail(item.id)"
-  		  >
-  				    <div class="newsBoxOne newsBox">
-  				      <div class="date">
-  				        <span class="day">{{item.id}}</span>
-  				      </div>
-  				      <div class="news">
-  				        <span class="newsTitle">{{ item.projectName }}</span>
-  				        <span class="newsContent">{{ item.description }}</span>
-  				      </div>
-  				    </div>
-  		</div>
-		<div style="margin: 2% 0  ;width: 100%;">
-				<el-pagination
-				  background
-				  layout="prev, pager, next"
-							  :current-page="current"
-							  @current-change="pageChange"
-				  :total="total">
-				</el-pagination>
-		</div>
+    <div class="boxWrap"
+         v-for="(item) in noticeData"
+         :key="item.id"
+         @click="viewDetail(item.id)">
+      <div class="newsBoxOne newsBox">
+        <div class="date">
+          <span class="day">{{item.id}}</span>
+        </div>
+        <div class="news">
+          <span class="newsTitle">{{ item.projectName }}</span>
+          <span class="newsContent">{{ item.school }}</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin: 2% 0  ;width: 100%;">
+      <el-pagination background
+                     layout="prev, pager, next"
+                     :current-page="current"
+                     @current-change="pageChange"
+                     :total="total">
+      </el-pagination>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-		current:1,
-		total:'',
+      current: 1,
+      total: '',
       noticeData: [{}],
     };
   },
   methods: {
-    viewDetail(id) {
-      this.$router.push({path:'/ItemDetail',query:{id:id}})
+    viewDetail (id) {
+      this.$router.push({ path: '/ItemDetail', query: { id: id } })
     },
-	pageChange(val){
-		this.current=val
-		this.$axios
-		  .get("/project/getbyType/1?currentPage="+this.current)
-		  .then((response) => {
-		    this.noticeData = response.data.data.records;
-		    console.log(this.noticeData);
-		  })
-		  .catch((error) => {
-		    console.log(error);
-		    alert("网络错误，不能访问");
-		  });
-		  console.log(this.noticeData);
-	}
+    pageChange (val) {
+      this.current = val
+      this.$axios
+        .get("/project/getbyType/1?currentPage=" + this.current)
+        .then((response) => {
+          this.noticeData = response.data.data.records;
+          console.log(this.noticeData);
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("网络错误，不能访问");
+        });
+      console.log(this.noticeData);
+    }
   },
-  mounted() {
+  mounted () {
     this.$axios
-      .get("/project/getbyType/1?currentPage="+this.current)
+      .get("/project/getbyType/1?currentPage=" + this.current)
       .then((response) => {
-		
+
         this.noticeData = response.data.data.records;
-		this.total=response.data.data.total
+        this.total = response.data.data.total
       })
       .catch((error) => {
         console.log(error);
         alert("网络错误，不能访问");
       });
-      console.log(this.noticeData);
+    console.log(this.noticeData);
   },
 };
 </script>
@@ -99,12 +96,12 @@ div.boxWrap {
   margin-bottom: 20px;
   transition: 0.5s;
 }
-.boxWrap:hover{
-	box-shadow: 0 8px 16px rgba(0, 0, 0, .12), 0 0 24px rgba(0, 0, 0, .04);
-	margin-left: 0.625rem;
+.boxWrap:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 0 24px rgba(0, 0, 0, 0.04);
+  margin-left: 0.625rem;
 }
-.boxWrap:hover .news .newsTitle{
-	color: #004EA1;
+.boxWrap:hover .news .newsTitle {
+  color: #004ea1;
 }
 .newsBox {
   /* width: 50%; */
@@ -127,14 +124,14 @@ div.date {
 }
 
 span.day {
-  color: #004EA1;
-  font-size: 40px;
+  color: #004ea1;
+  font-size: 24px;
   line-height: 40px;
   margin-bottom: 5px;
 }
 
 span.year {
-  color: #004EA1;
+  color: #004ea1;
   font-size: 14px;
 }
 
