@@ -8,7 +8,7 @@
 		  <el-col :span="4"><Sidebar></Sidebar></el-col>
 		  <el-col :span="20">
 			  <div style="margin: 2% 0  ;width: 100%;">
-				   <el-button type="primary" style="width: 30%;" @click="navigateToNew()" round >新增改革项目</el-button>
+				   <el-button type="primary" style="width: 30%;" @click="navigateToNew()" round >新增创新创业展示项目</el-button>
 			  </div>
 			   <div style="width: 100%;margin-top: 2%;">
 				   <el-table

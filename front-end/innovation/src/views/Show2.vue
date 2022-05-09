@@ -44,7 +44,7 @@ export default {
 	pageChange(val){
 		this.current=val
 		this.$axios
-		  .get("/project/getbyType/2?currentPage="+this.current)
+		  .get("/project/getbyType/3?currentPage="+this.current)
 		  .then((response) => {
 		    this.noticeData = response.data.data.records;
 		    console.log(this.noticeData);
@@ -58,7 +58,7 @@ export default {
   },
   mounted() {
     this.$axios
-      .get("/project/getbyType/2?currentPage="+this.current)
+      .get("/project/getbyType/3?currentPage="+this.current)
       .then((response) => {
 		
         this.noticeData = response.data.data.records;

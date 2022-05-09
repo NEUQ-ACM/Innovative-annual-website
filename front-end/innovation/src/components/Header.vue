@@ -1,202 +1,87 @@
 <template>
-  <header>
+  <div>
     <div class="navMain">
-      <div class="headerLogo">
-        <span>第七届河北省大学生创新创业年会</span>
-      </div>
-      <nav>
-        <ul>
-          <li v-for="(items, index) in navData" :key="index">
-            <router-link :to="items.routerLink" active-class="isActive">
-              <span>{{ items.spanValue }}</span>
-            </router-link>
-          </li>
-        </ul>
-      </nav>
+			<!-- <div style="color: white;margin-left: 15%;text-align: center;height: 70%;line-height: 80px;font-size: 28px;font-weight: 500;margin-top: 1%;">第七届河北省大学生创新创业年会</div> -->
+			<img src="../assets/images/shufalogo.png" style="color: white;margin-left: 10%;text-align: center;height: 70%;line-height: 80px;font-size: 28px;font-weight: 500;margin-top: 1%;" alt="">
     </div>
-    <!-- 移动端header下拉菜单 -->
-    <nav class="mobileNav">
-      <el-button @click="mobileShow = !mobileShow">=</el-button>
-      <el-collapse-transition>
-        <div v-show="mobileShow" class="mobileList">
-          <nav>
-            <ul>
-              <li v-for="(items, index) in navData" :key="index">
-            <router-link :to="items.routerLink" active-class="isActive">
-              <span @click="mobileShow = !mobileShow">{{ items.spanValue }}</span>
-            </router-link>
-          </li>
-            </ul>
-          </nav>
-        </div>
-      </el-collapse-transition>
-      <div class="headerLogo">
-        <span>第七届河北省大学生创新创业年会</span>
-      </div>
-    </nav>
-  </header>
+    <div style="display: flex;float: right;width: 100%;background-color: #004ea1;">
+		<div style="margin-left: 60%;">
+			<el-menu router
+			         :default-active="activeIndex"
+			         class="el-menu-demo"
+			         mode="horizontal"
+					 background-color="#004ea1"
+					 text-color="#fff"
+					 active-text-color="#fff"
+			         @select="handleSelect">
+			  <el-menu-item index="1"
+			                route="/Home">首页</el-menu-item>
+			  <el-menu-item index="2"
+			                route="/News">通知公告</el-menu-item>
+			  <el-menu-item index="3"
+			                route="/Arrangment">年会日程</el-menu-item>
+			  <el-submenu index="4">
+			    <template slot="title">作品展示</template>
+			    <el-menu-item index="4-1"
+			                  route="/Show1">学术论文</el-menu-item>
+			    <el-menu-item index="4-2"
+			                  route="/Show2">创新创业展示项目</el-menu-item>
+			    <el-menu-item index="4-3"
+			                  route="/Show3">创业推荐项目</el-menu-item>
+			  </el-submenu>
+			</el-menu>
+		</div>
+	</div>
+  </div>
 </template>
+
 <script>
 export default {
-  name: "Header",
-  data() {
+  name: 'Header_2',
+  data () {
     return {
-      mobileShow: false,
-      navData: [
-        { routerLink: "/Home", spanValue: "首 页" },
-       { routerLink: "/News", spanValue: "通知公告" },
-        { routerLink: "/Arrangment", spanValue: "年会日程" },
-        { routerLink: "/Gallery", spanValue: "作品展示" },
-        ],
+      activeIndex: this.$route.path
     };
   },
-};
+}
 </script>
+
 <style scoped>
-header {
-  background-image: url("../assets/images/logo_bg.png");
-  position: fixed;
-  height: 80px;
-  width: 100%;
-  z-index: 500;
-  background-color: #004ea1;
+/deep/.el-submenu__title{
+	height: 61px !important;
+}
+/deep/.el-menu-item{
+	height: 61px !important;
 }
 .navMain {
-  transform: translateY(6px);
-  width: 20%;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: row;
-  margin: 0 auto;
-}
-.headerLogo {
-  flex: 1;
-  margin-top: 20px;
-	margin-left: -200px;
-	margin-right: 300px;
-  width: 300px;
-}
-nav {
-  flex: 1;
-}
-.headerLogo img {
-  margin-right: 8px;
-  width: 60px;
-  vertical-align: middle;
-}
-.headerLogo span {
-  display: inline-block;
-  width: 300px;
-  height: 30px;
-  white-space: normal;
-  word-wrap: break-word;
-  vertical-align: middle;
-  font-size: 20px;
-  color: #ffffff;
-}
-a {
-  text-decoration: none;
-}
-.navMain nav ul {
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0;
-}
-.navMain nav ul li {
-  width: 92.5px;
-  height: 80px;
-  line-height: 80px;
-  /* margin: 0 25px; */
-  list-style: none;
-}
-.navMain nav ul li span {
-  display: inline-block;
-  line-height: 80px;
-  height: 100%;
-  width: 100%;
-}
-nav ul li a {
-  color: #fffff9;
-}
-nav ul li:hover {
-  color: #fffff9;
-  background-color: #063c77;
-}
-nav ul li:hover a {
-  color: #fffff9;
-}
-.mobileNav {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.el-header .mobileNav {
-  display: none;
-}
-.mobileNav .el-button {
-  margin-top: 10px;
-  margin-left: 3px;
-  font-size: 50px;
-  border: none;
-  padding: 0;
-  flex: 1;
+  background:url("../assets/images/logo_bg.png") 800px center no-repeat;
   background-color: #004ea1;
+  height: 100px;
+  display: flex;
+
 }
-.mobileNav .headerLogo {
-  margin: 8px auto;
+.showheaderimg{
+	width: 50%;
+	background-image: url("../assets/images/logo_bg.png");
+	background-color: #004ea1;
+	height: 80px;
+	
 }
-.mobileNav .mobileList {
-  position: absolute;
-  background-color: #004ea1;
-  top: 55px;
+.el-menu-demo {
   width: 100%;
-  height: 1000px;
-  z-index: 500;
+  height: 60px;
+
 }
-.mobileNav .mobileList nav {
-  height: 100%;
+.el-menu-item {
+  height: 78px;
+}
+.el-menu.el-menu--horizontal {
+  background-color: transparent;
+}
+.el-menu-demo[data-v-9fb1c1a0] {
   width: 100%;
-}
-.mobileNav .headerLogo img {
-  width: 40px;
-}
-.mobileNav .mobileList nav ul {
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 501;
-}
-.mobileNav .mobileList nav li,
-.mobileNav .mobileList nav a {
-  display: block;
-  line-height: 50px;
-  z-index: 501;
-  width: 100%;
-  height: 50px;
-}
-.mobileNav .headerLogo {
-  flex: 9;
-}
-.isActive {
-  display: block;
-  width: 92.5px;
   height: 80px;
-  line-height: 80px;
-  background-color: #063c77;
-  color: #fffff9;
-}
-@media screen and (max-width: 1105px) {
-  .el-header .mobileNav {
-    display: flex;
-  }
-  .el-header .navMain {
-    display: none;
-  }
+  float: right;
+  background-color: transparent;
 }
 </style>

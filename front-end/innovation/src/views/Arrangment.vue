@@ -1,59 +1,61 @@
 <template>
-  <el-card class="box-card">
-    <div class="block">
-      <el-timeline>
-        <el-timeline-item timestamp="2018/4/12"
-                          placement="top"
-                          type="warning"
-                          size="large"
-                          class="dayTime">
-        </el-timeline-item>
-        <el-timeline-item timestamp="08:00-19:00"
-                          placement="top">
-          <div class="member">嘉宾及专家报到</div>
-          <div class="location">东北大学秦皇岛分校</div>
-        </el-timeline-item>
-        <el-timeline-item timestamp="08:00-19:00"
-                          placement="top">
-          <div class="member">师生代表报到</div>
-          <div class="location">东北大学秦皇岛分校</div>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2018/4/3"
-                          placement="top"
-                          type="warning"
-                          size="large"
-                          class="dayTime">
-        </el-timeline-item>
-        <el-timeline-item timestamp="08:00-19:00"
-                          placement="top">
-          <div class="member">嘉宾及专家报到</div>
-          <div class="location">东北大学秦皇岛分校</div>
-        </el-timeline-item>
-        <el-timeline-item timestamp="08:00-19:00"
-                          placement="top">
-          <div class="member">师生代表报到</div>
-          <div class="location">东北大学秦皇岛分校</div>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2018/4/2"
-                          placement="top"
-                          type="warning"
-                          size="large"
-                          class="dayTime">
-        </el-timeline-item>
-        <el-timeline-item timestamp="08:00-19:00"
-                          placement="top">
-          <div class="member">嘉宾及专家报到</div>
-          <div class="location">东北大学秦皇岛分校</div>
-
-        </el-timeline-item>
-        <el-timeline-item timestamp="08:00-19:00"
-                          placement="top">
-          <div class="member">师生代表报到</div>
-          <div class="location">东北大学秦皇岛分校</div>
-        </el-timeline-item>
-      </el-timeline>
-    </div>
-  </el-card>
+ <div style="margin-top: 20px;">
+	 <el-card class="box-card">
+	   <div class="block">
+	     <el-timeline>
+	       <el-timeline-item timestamp="2022/6"
+	                         placement="top"
+	                         type="warning"
+	                         size="large"
+	                         class="dayTime">
+	       </el-timeline-item>
+	       <el-timeline-item timestamp="08:00-19:00"
+	                         placement="top">
+	         <div class="member">嘉宾及专家报到</div>
+	         <div class="location">东北大学秦皇岛分校</div>
+	       </el-timeline-item>
+	       <el-timeline-item timestamp="08:00-19:00"
+	                         placement="top">
+	         <div class="member">师生代表报到</div>
+	         <div class="location">东北大学秦皇岛分校</div>
+	       </el-timeline-item>
+	       <el-timeline-item timestamp="2022/6"
+	                         placement="top"
+	                         type="warning"
+	                         size="large"
+	                         class="dayTime">
+	       </el-timeline-item>
+	       <el-timeline-item timestamp="08:00-19:00"
+	                         placement="top">
+	         <div class="member">嘉宾及专家报到</div>
+	         <div class="location">东北大学秦皇岛分校</div>
+	       </el-timeline-item>
+	       <el-timeline-item timestamp="08:00-19:00"
+	                         placement="top">
+	         <div class="member">师生代表报到</div>
+	         <div class="location">东北大学秦皇岛分校</div>
+	       </el-timeline-item>
+	       <el-timeline-item timestamp="2022/6"
+	                         placement="top"
+	                         type="warning"
+	                         size="large"
+	                         class="dayTime">
+	       </el-timeline-item>
+	       <el-timeline-item timestamp="08:00-19:00"
+	                         placement="top">
+	         <div class="member">嘉宾及专家报到</div>
+	         <div class="location">东北大学秦皇岛分校</div>
+	 
+	       </el-timeline-item>
+	       <el-timeline-item timestamp="08:00-19:00"
+	                         placement="top">
+	         <div class="member">师生代表报到</div>
+	         <div class="location">东北大学秦皇岛分校</div>
+	       </el-timeline-item>
+	     </el-timeline>
+	   </div>
+	 </el-card>
+ </div>
 
 </template>
 

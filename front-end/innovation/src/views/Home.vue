@@ -124,8 +124,8 @@ export default {
 
 <style scoped>
 	.home{
-		width: 70%;
-		margin-left: 15%;
+		width: 80%;
+		margin-left: 10%;
 	}
 .el-carousel img {
   width: 100%;
@@ -466,4 +466,3 @@ span.intro {
   text-align: center;
 }
 </style>
-

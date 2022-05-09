@@ -6,7 +6,7 @@
         <Header></Header>
         <!-- <newHeader></newHeader> -->
       </el-header>
-      <el-main>
+      <el-main style="margin-top: 80px;" >
         <router-view></router-view>
         <Backtop></Backtop>
       </el-main>
@@ -30,6 +30,7 @@ export default {
 };
 </script>
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
