@@ -1,48 +1,51 @@
 <template>
   <div style="width: 70%;margin-left: 15%;display: flex;flex-direction: row;padding-top: 2%;">
-	  <span style="width: 25%;margin-left: 0%;margin-right: 5%;">
-		  <div style="background-color: #004EA1;color: white;font-size: 25px;height: 100px;align-items: center;display: flex;justify-content: center;">
-			  <div >
-				  年会通知公告
-			  </div>
-		</div>
-		  <div style="height: 190px;background-color: #F9F9F9; ">
-			  <router-link to="/Show1"  active-class="linkActive">
-				 <div style="height: 50px;padding: 5px;margin-top: 10px;">
-				 	学术论文
-				 </div>
-			  </router-link>
-			  <router-link to="/Show2" active-class="linkActive">
-				  <div style="height: 50px;padding: 5px;margin: top 10px;">
-				  	创新创业展示项目
-				  </div>
-			  </router-link>
-			  <router-link to="/Show3" active-class="linkActive">
-				  <div style="height: 50px;padding: 5px;margin: 10 0px;">
-				  	创业推荐项目
-				  </div>
-			  </router-link>
-		  </div>
-	  </span>
-	  <span style="width: 80%;margin-left: 5%;">
-		  <router-view></router-view>
-	  </span>
+    <span style="width: 25%;margin-left: 0%;margin-right: 5%;">
+      <div style="background-color: #004EA1;color: white;font-size: 25px;height: 100px;align-items: center;display: flex;justify-content: center;">
+        <div>
+          作品展示
+        </div>
+      </div>
+      <div style="height: 190px;background-color: #F9F9F9; ">
+        <router-link to="/Show1"
+                     active-class="linkActive">
+          <div style="height: 50px;padding: 5px;margin-top: 10px;">
+            学术论文
+          </div>
+        </router-link>
+        <router-link to="/Show2"
+                     active-class="linkActive">
+          <div style="height: 50px;padding: 5px;margin: top 10px;">
+            创新创业展示项目
+          </div>
+        </router-link>
+        <router-link to="/Show3"
+                     active-class="linkActive">
+          <div style="height: 50px;padding: 5px;margin: 10 0px;">
+            创业推荐项目
+          </div>
+        </router-link>
+      </div>
+    </span>
+    <span style="width: 80%;margin-left: 5%;">
+      <router-view></router-view>
+    </span>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       noticeData: [{}],
     };
   },
   methods: {
-    viewDetail(id) {
-      this.$router.push({path:'/NoticeDetail',query:{id:id}})
+    viewDetail (id) {
+      this.$router.push({ path: '/NoticeDetail', query: { id: id } })
     },
   },
-  mounted() {
+  mounted () {
     this.$axios
       .get("/notice/getAll")
       .then((response) => {
@@ -53,7 +56,7 @@ export default {
         console.log(error);
         alert("网络错误，不能访问");
       });
-      console.log(this.noticeData);
+    console.log(this.noticeData);
   },
 };
 </script>
@@ -69,8 +72,8 @@ export default {
   margin-bottom: 20px;
   font-size: 30px;
 }
-a{
-  color:#333;
+a {
+  color: #333;
   line-height: 45px;
 }
 /* .el-main {
@@ -81,23 +84,23 @@ a{
   justify-content: space-evenly;
   align-items: center;
 } */
-.linkActive{
+.linkActive {
   display: block;
   color: #ddd;
-	text-decoration: none;
-	background-color:rgb(30, 71, 97);
+  text-decoration: none;
+  background-color: rgb(30, 71, 97);
 }
 div.boxWrap {
   padding: 30px 20px;
   margin-bottom: 20px;
   transition: 0.5s;
 }
-.boxWrap:hover{
-	box-shadow: 0 8px 16px rgba(0, 0, 0, .12), 0 0 24px rgba(0, 0, 0, .04);
-	margin-left: 0.625rem;
+.boxWrap:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 0 24px rgba(0, 0, 0, 0.04);
+  margin-left: 0.625rem;
 }
-.boxWrap:hover .news .newsTitle{
-	color: #004EA1;
+.boxWrap:hover .news .newsTitle {
+  color: #004ea1;
 }
 .newsBox {
   /* width: 50%; */
@@ -120,14 +123,14 @@ div.date {
 }
 
 span.day {
-  color: #004EA1;
+  color: #004ea1;
   font-size: 40px;
   line-height: 40px;
   margin-bottom: 5px;
 }
 
 span.year {
-  color: #004EA1;
+  color: #004ea1;
   font-size: 14px;
 }
 
@@ -190,7 +193,6 @@ div.btnLine button:hover {
 a {
   text-decoration: none;
 }
- 
 
 @media screen and (max-width: 768px) {
   .el-main .boxWrap {
