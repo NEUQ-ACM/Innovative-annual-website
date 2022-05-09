@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div style="margin-top: 1%;">
     <el-row>
       <el-col :span="14" :offset="5">
         <!-- 面包屑导航区域 -->
-        <el-breadcrumb separator="/" class="breadcrumb">
+       <!-- <el-breadcrumb separator="/" class="breadcrumb">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>作品展示</el-breadcrumb-item>
-        </el-breadcrumb>
-        <el-divider></el-divider>
+        </el-breadcrumb> -->
+        <!-- <el-divider></el-divider> -->
       </el-col>
     </el-row>
     <!-- 作品标题 -->
@@ -58,7 +58,7 @@
         <div class="tableTitleBox">
           <span class="itemTitle">项目成员</span>
         </div>
-        <el-table :data="project.studentList" border fit>
+        <el-table :data="newdataform.studentList" border fit>
           <el-table-column prop="name" label="姓名" width="180">
           </el-table-column>
           <el-table-column prop="grade" label="年级" width="180">
@@ -76,12 +76,12 @@
         <div class="tableTitleBox">
           <span class="itemTitle">指导老师</span>
         </div>
-        <el-table :data="project.teacherList" border fit>
+        <el-table :data="newdataform.teacherList" border fit>
           <el-table-column prop="name" label="姓名" width="180">
           </el-table-column>
-          <el-table-column prop="grade" label="职称" width="180">
+          <el-table-column prop="job" label="职称" width="180">
           </el-table-column>
-          <el-table-column prop="specialty" label="研究方向" width="345">
+          <el-table-column prop="direction" label="研究方向" width="345">
           </el-table-column>
         </el-table>
       </el-col>
@@ -90,7 +90,7 @@
     <el-row>
       <el-col :span="14" :offset="5">
        <el-card shadow="never">
-         {{project.description}}
+         {{newdataform.project.description}}
        </el-card>
       </el-col>
     </el-row>
@@ -171,8 +171,9 @@ export default {
   methods: {
     // 请求作品信息
     async getProject() {
-      let id = Number(this.$route.query.itemid)
-      const { data: res } = await this.$axios.get(`/project/getbyId/${id}`)
+      let id = this.$route.query.id
+	  console.log(id)
+      const { data: res } = await this.$axios.get(`/project/getbyId/`+id)
       if(res.status === 200) {
 		console.log(res)
         this.newdataform = res.data

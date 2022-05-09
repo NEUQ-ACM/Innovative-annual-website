@@ -2,7 +2,7 @@
 	<div class="maincontainer">
 		<el-card class="box-card">
 			<div slot="header" >
-			    <span style="font-size: 25px;">修改推荐项目</span>
+			    <span style="font-size: 25px;">修改创新创业展示项目</span>
 			  </div>
 			<div style="width: 100%;">
 				<el-form :model="newdataform.project" :rules="rules" ref="newdataform.project" label-width="100px" class="demo-ruleForm">
