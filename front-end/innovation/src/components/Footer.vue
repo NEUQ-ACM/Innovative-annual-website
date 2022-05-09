@@ -65,7 +65,9 @@ export default {
   display: none;
   width: 100%;
   height: 100px;
-  background-color: #1e16bf;
+  background-color: #004ea1;
+  background: url(../assets/images/foot_bg_03.jpg) center;
+  background-position: 0 -150px;
 }
 .footerMobile .info {
   height: 100%;
@@ -77,11 +79,11 @@ export default {
   color: #fff;
   font-size: 20x;
 }
-@media screen and (max-width:900px) {
-  footer .footerMain{
+@media screen and (max-width: 900px) {
+  footer .footerMain {
     display: none;
   }
-  footer .footerMobile{
+  footer .footerMobile {
     display: block;
   }
 }
