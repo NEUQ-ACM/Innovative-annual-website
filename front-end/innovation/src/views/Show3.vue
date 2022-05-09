@@ -31,7 +31,57 @@ export default {
     return {
       current: 1,
       total: '',
-      noticeData: [{}],
+      noticeData: [
+        {
+          id: 1,
+          projectName: '基于UWB定位的手机端车库管理系统',
+          school: '河北大学'
+        }, {
+          id: 2,
+          projectName: '炫图',
+          school: '河北大学'
+        }, {
+          id: 3,
+          projectName: '基于物联网的LabVIEW智能温室大棚监管系统',
+          school: '河北大学'
+        }, {
+          id: 4,
+          projectName: '乡村振兴下产业融合促进农村“空心化“治理',
+          school: '河北大学'
+        }, {
+          id: 5,
+          projectName: '流域视角下京津冀水生态环境协同治理',
+          school: '河北大学'
+        }, {
+          id: 6,
+          projectName: '一种园艺用多功能手柄',
+          school: '河北工程大学'
+        }, {
+          id: 7,
+          projectName: 'EPCI”-废旧物再生创意艺术工坊',
+          school: '河北工程大学'
+        }, {
+          id: 8,
+          projectName: '基于大数据下的高楼外墙智能喷涂运作系统',
+          school: '河北工程大学'
+        }, {
+          id: 9,
+          projectName: '满天星红外导盲有限公司',
+          school: '河北地质大学'
+        }, {
+          id: 10,
+          projectName: '基于深度学习的人群密度预警方法及系统设计',
+          school: '河北地质大学'
+        }, {
+          id: 11,
+          projectName: '断骨智合：基于信息物理融合的骨折复位机器人',
+          school: '河北工业大学'
+        }, {
+          id: 12,
+          projectName: '一种辅助起居移乘机器人',
+          school: '河北工业大学'
+        }
+      ],
     };
   },
   methods: {
@@ -53,20 +103,20 @@ export default {
       console.log(this.noticeData);
     }
   },
-  mounted () {
-    this.$axios
-      .get("/project/getbyType/1?currentPage=" + this.current)
-      .then((response) => {
+  // mounted () {
+  //   this.$axios
+  //     .get("/project/getbyType/1?currentPage=" + this.current)
+  //     .then((response) => {
 
-        this.noticeData = response.data.data.records;
-        this.total = response.data.data.total
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("网络错误，不能访问");
-      });
-    console.log(this.noticeData);
-  },
+  //       this.noticeData = response.data.data.records;
+  //       this.total = response.data.data.total
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert("网络错误，不能访问");
+  //     });
+  //   console.log(this.noticeData);
+  // },
 };
 </script>
 
