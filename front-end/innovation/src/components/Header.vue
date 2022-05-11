@@ -33,6 +33,8 @@
             <el-menu-item index="4-3"
                           route="/Show3">创业推荐项目</el-menu-item>
           </el-submenu>
+          <el-menu-item index="5" route="/xxxx">投票入口
+          </el-menu-item>
         </el-menu>
       </div>
     </div>
@@ -76,6 +78,7 @@ export default {
         { routerLink: "/News", spanValue: "通知公告" },
         { routerLink: "/Arrangment", spanValue: "年会日程" },
         { routerLink: "/Show1", spanValue: "作品展示" },
+        {routerLink:"/xxxx", spanValue:"投票入口"}
       ],
     };
   },
@@ -106,11 +109,12 @@ div.Mmain {
   align-items: center;
 }
 .navMain span {
-  color: #ddd;
+  color: #fff;
   font-size: 38px;
   letter-spacing: 6px;
   padding-left: 40px;
   font-family: 黑体;
+  transform: translateX(70px);
 }
 .showheaderimg {
   width: 50%;
