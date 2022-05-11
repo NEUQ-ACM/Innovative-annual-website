@@ -29,6 +29,9 @@ import annex from '../views/Backstage/annex'
 import Show1 from '../views/Show1.vue'
 import Show2 from '../views/Show2.vue'
 import Show3 from '../views/Show3.vue'
+import ShowVote from '../views/ShowVote.vue'
+import Vote from '../views/Vote.vue'
+import UserLogin from '../views/UserLogin.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -183,8 +186,21 @@ const routes = [
     name: 'PaperNew',
     component: PaperNew
   },
-  
-  
+  {
+    path: '/showvote',
+    name: 'ShowVote',
+    component: ShowVote
+  },
+  {
+    path: '/vote',
+    name: 'Vote',
+    component: Vote
+  },
+  {
+    path: '/userlogin',
+    name: 'UserLogin',
+    component: UserLogin
+  },
 ]
 
 const router = new VueRouter({
