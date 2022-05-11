@@ -55,7 +55,7 @@ export default {
   methods () {
   },
   mounted () {
-    this.height = this.frontSidebar.links.length * 60;
+    this.frontSidebarStyle.height = this.frontSidebar.links.length * 60;
   },
 }
 </script>
