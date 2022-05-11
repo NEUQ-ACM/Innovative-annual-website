@@ -10,7 +10,7 @@
         width: 100%;
       "
          class="Mmain">
-      <div style="margin-left: 60%">
+      <div style="margin-left: 50%">
         <el-menu router
                  :default-active="activeIndex"
                  class="el-menu-demo"
@@ -35,6 +35,13 @@
           </el-submenu>
           <el-menu-item index="5" route="/xxxx">投票入口
           </el-menu-item>
+          <el-menu-item v-for="(items,index) in navSingle" :key="index">
+          {{items[0]}}
+          </el-menu-item>
+          <el-submenu :index="dasuoyin+7" v-for="(items,dasuoyin) in navMultiple" :key="dasuoyin">
+            <template slot="title">{{items[0]}}</template>
+            <el-menu-item :index="dasuoyin+7+'-'+suoyin" v-for="(details,suoyin) in items" :key="suoyin">{{details}}</el-menu-item>
+          </el-submenu>
         </el-menu>
       </div>
     </div>
@@ -80,8 +87,20 @@ export default {
         { routerLink: "/Show1", spanValue: "作品展示" },
         {routerLink:"/xxxx", spanValue:"投票入口"}
       ],
+      navDynamic:[['学校简介','师生'],['不会取名'],['会取名'],['不要取名','多整点']],
+      navSingle:[],
+      navMultiple:[],
     };
   },
+  mounted(){
+    for (var i=0;i<this.navDynamic.length;i++){
+      if(this.navDynamic[i].length==1)
+      this.navSingle.push(this.navDynamic[i])
+      else
+      this.navMultiple.push(this.navDynamic[i])
+    }
+    console.log(this.navMultiple);
+  }
 };
 </script>
 
@@ -89,6 +108,9 @@ export default {
 @font-face {
   font-family: "kaiti";
   src: url(../assets/font/STKAITI.TTF);
+}
+.el-menu-demo{
+  width: 100%;
 }
 div.Mmain {
   z-index: 1;
