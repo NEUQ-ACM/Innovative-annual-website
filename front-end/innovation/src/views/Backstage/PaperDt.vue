@@ -5,20 +5,20 @@
 				<span style="font-size: 25px;">修改学术论文</span>
 			</div>
 			<div style="width: 100%;">
-				<el-form :model="newdataform.project" :rules="rules" ref="newdataform.project" label-width="100px"
+				<el-form :model="newdataform" :rules="rules" ref="newdataform" label-width="100px"
 					class="demo-ruleForm">
 					<el-form-item label="论文ID" prop="projectId" style="width: 100%;">
-						<el-input v-model="newdataform.project.projectId" type="number" placeholder="输入数字"></el-input>
+						<el-input v-model="newdataform.projectId" type="number" placeholder="输入数字"></el-input>
 					</el-form-item>
-					<el-form-item label="论文名称" prop="projectName" style="width: 100%;">
-						<el-input v-model="newdataform.project.projectName"></el-input>
+					<el-form-item label="论文名称" prop="title" style="width: 100%;">
+						<el-input v-model="newdataform.title"></el-input>
 					</el-form-item>
 					<el-form-item label="论文描述" style="width: 100%;" prop="description">
-						<el-input type="textarea" v-model="newdataform.project.description"></el-input>
+						<el-input type="textarea" v-model="newdataform.description"></el-input>
 					</el-form-item>
 					<el-form-item label="论文内容" style="width: 100%;" prop="content">
 						<!-- 还没有新建数据，content是临时起名，之后记得改 -->
-						<mavon-editor v-model="newdataform.project.content"></mavon-editor>
+						<mavon-editor v-model="newdataform.content"></mavon-editor>
 					</el-form-item>
 					<!-- <el-form-item label="论文类型" style="width: 100%;" prop="projectType">
 						<el-input v-model="newdataform.project.projectType"></el-input>
@@ -155,7 +155,7 @@
 						</div>
 					</el-form-item> -->
 					<el-form-item style="width: 100%;">
-						<el-button type="primary" @click="uploadfile()">立即修改</el-button>
+						<el-button type="primary" @click="submitForm('newdataform')">立即修改</el-button>
 						<el-button @click="cancelback()">取消修改</el-button>
 					</el-form-item>
 				</el-form>
@@ -267,56 +267,61 @@ export default {
 			isEditTch: false,
 			isaddStu: false,
 			isaddTch: false,
-			addstuItem: {
-				name: '',
-				grade: '',
-				specialty: '',
-				isPresenter: 0,
-				projectId: '',
-				isDel: 0,
-			},
-			addTchItem: {
-				name: '',
-				job: '',
-				direction: '',
-				projectId: '',
-				isDel: 0,
-			},
-			editstuItem: {
-				name: '',
-				grade: '',
-				specialty: '',
-				isPresenter: 0,
-				projectId: '',
-				isDel: 0,
-			},
-			editTchItem: {
-				name: '',
-				job: '',
-				direction: '',
-				projectId: '',
-				isDel: 0,
-			},
+			// addstuItem: {
+			// 	name: '',
+			// 	grade: '',
+			// 	specialty: '',
+			// 	isPresenter: 0,
+			// 	projectId: '',
+			// 	isDel: 0,
+			// },
+			// addTchItem: {
+			// 	name: '',
+			// 	job: '',
+			// 	direction: '',
+			// 	projectId: '',
+			// 	isDel: 0,
+			// },
+			// editstuItem: {
+			// 	name: '',
+			// 	grade: '',
+			// 	specialty: '',
+			// 	isPresenter: 0,
+			// 	projectId: '',
+			// 	isDel: 0,
+			// },
+			// editTchItem: {
+			// 	name: '',
+			// 	job: '',
+			// 	direction: '',
+			// 	projectId: '',
+			// 	isDel: 0,
+			// },
 			newdataform: {
-				project: {
-					id: '',
-					projectId: "",
-					projectName: "",
-					description: "",
-					projectType: "",
-					category: "",
-					type: 1,
-					viewCounts: 0,
-					previewImageUrl: "",
-					badgeUrl: "",
-					years: "",
-					school: "",
-					isDel: 0
-				},
-				studentList: [
-				],
-				teacherList: [
-				],
+				id: '',
+				projectId: "",
+				title: "",
+				description: "",
+				menuId: 4,
+				content: "",
+				name: "学术论文",
+				viewCounts: 0,
+				isDel: 0,
+				createTime: "",
+				updateTime: "",
+				// studentList: [
+				// ],
+				// teacherList: [
+				// ],
+			},
+			submitData: {
+				id: '',
+				projectId: "",
+				title: "",
+				description: "",
+				menuId: 4,
+				content: "",
+				name: "学术论文",
 			},
 			ruleForm: {
 				name: '',
@@ -354,42 +359,46 @@ export default {
 		};
 	},
 	methods: {
-		alreadyChangeImg(file, fileList) {
-			this.alreadyEditImg = true
-		},
-		editimg() {
-			this.iseditimg = !this.iseditimg
-		},
-		uploadfile() {
+		// alreadyChangeImg(file, fileList) {
+		// 	this.alreadyEditImg = true
+		// },
+		// editimg() {
+		// 	this.iseditimg = !this.iseditimg
+		// },
+		// uploadfile() {
 
-			if (this.alreadyEditImg) {
-				this.$refs.upload2.submit()
-			}
-			else {
-				this.submitForm('newdataform.project')
-			}
-		},
+		// 	if (this.alreadyEditImg) {
+		// 		this.$refs.upload2.submit()
+		// 	}
+		// 	else {
+		// 		this.submitForm('newdataform.project')
+		// 	}
+		// },
 		submitForm(formName) {
-
 			let that = this
 			this.$refs[formName].validate((valid) => {
 				if (valid) {
-					let data1 = JSON.stringify(that.newdataform)
-					console.log(this.newdataform)
+					that.submitData.id = that.newdataform.id
+					that.submitData.menuId = that.newdataform.menuId
+					that.submitData.projectId = that.newdataform.projectId
+					that.submitData.content = that.newdataform.content
+					that.submitData.title = that.newdataform.title
+					that.submitData.description = that.newdataform.description
+					that.submitData.name = that.newdataform.name
+					let data1 = JSON.stringify(that.submitData)
+					let token = sessionStorage.getItem('token')
+					// console.log(this.newdataform)
 					that.$axios({
 						method: "post",//请求方式
-						url: '/project/updateProject',//请求接口
+						url: '/menuItem/updateMenuDetail',//请求接口
 						headers: {
-							'Vary': 'Origin',
-							'Vary': 'Access-Control-Request-Method',
-							'Vary': 'Access-Control-Request-Headers',
 							'Content-Type': 'application/json',
-							'Transfer-Encoding': 'chunked',
-							'Connection': 'keep-alive'
+							'token': token
 						},//请求头参数
 						data: data1//数据
 					})
 						.then(function (res) {
+							console.log(res)
 							if (res.data.status == 200) {
 								that.$message.success('增加成功')
 								that.$router.push('/Paper')
@@ -399,6 +408,7 @@ export default {
 							}
 						})
 						.catch(function (err) {
+							// console.log(err)
 							that.$message.error('增加失败');
 						});
 				} else {
@@ -407,187 +417,192 @@ export default {
 				}
 			});
 		},
-		resetForm(formName) {
-			this.$refs[formName].resetFields();
-		},
-		handleRemove1(file) {
-			console.log(file);
-		},
-		handlePictureCardPreview1(file) {
-			this.dialogImageUrl = file.url;
-			this.dialogVisible = true;
-		},
-		handleDownload1(file) {
-			console.log(file);
-		},
-		handleAvatarSuccess1(res, file) {
-			this.newdataform.project.previewImageUrl = res.data.url
-			this.$refs.upload2.submit()
-		},
-		handleAvatarErr1(err, file, fileList) {
-			this.$message.error('上传缩略图错误');
-		},
-		beforeAvatarUpload1(file) {
-			const isJPG = file.type === 'image/jpeg';
-			const isLt2M = file.size / 1024 / 1024 < 2;
-			console.log('111')
-			if (!isJPG) {
-				this.$message.error('上传图片只能是 JPG 格式!');
-			}
-			if (!isLt2M) {
-				file
-				this.$message.error('上传图片大小不能超过 2MB!');
-			}
-			return isJPG && isLt2M;
-		},
-		handleRemove2(file) {
-			console.log(file);
-		},
-		handlePictureCardPreview2(file) {
-			this.dialogImageUrl = file.url;
-			this.dialogVisible = true;
-		},
-		handleAvatarErr2(err, file, fileList) {
-			this.$message.error('图片上传失败')
-		},
-		handleAvatarSuccess2(res, file) {
-			this.newdataform.project.badgeUrl = res.data.url
-			this.$message.success('图片上传成功')
-			this.submitForm('newdataform.project')
-		},
-		beforeAvatarUpload2(file) {
-			const isJPG = file.type === 'image/jpeg';
-			const isLt2M = file.size / 1024 / 1024 < 2;
+		// handleRemove1(file) {
+		// 	console.log(file);
+		// },
+		// handlePictureCardPreview1(file) {
+		// 	this.dialogImageUrl = file.url;
+		// 	this.dialogVisible = true;
+		// },
+		// handleDownload1(file) {
+		// 	console.log(file);
+		// },
+		// handleAvatarSuccess1(res, file) {
+		// 	this.newdataform.project.previewImageUrl = res.data.url
+		// 	this.$refs.upload2.submit()
+		// },
+		// handleAvatarErr1(err, file, fileList) {
+		// 	this.$message.error('上传缩略图错误');
+		// },
+		// beforeAvatarUpload1(file) {
+		// 	const isJPG = file.type === 'image/jpeg';
+		// 	const isLt2M = file.size / 1024 / 1024 < 2;
+		// 	console.log('111')
+		// 	if (!isJPG) {
+		// 		this.$message.error('上传图片只能是 JPG 格式!');
+		// 	}
+		// 	if (!isLt2M) {
+		// 		file
+		// 		this.$message.error('上传图片大小不能超过 2MB!');
+		// 	}
+		// 	return isJPG && isLt2M;
+		// },
+		// handleRemove2(file) {
+		// 	console.log(file);
+		// },
+		// handlePictureCardPreview2(file) {
+		// 	this.dialogImageUrl = file.url;
+		// 	this.dialogVisible = true;
+		// },
+		// handleAvatarErr2(err, file, fileList) {
+		// 	this.$message.error('图片上传失败')
+		// },
+		// handleAvatarSuccess2(res, file) {
+		// 	this.newdataform.project.badgeUrl = res.data.url
+		// 	this.$message.success('图片上传成功')
+		// 	this.submitForm('newdataform.project')
+		// },
+		// beforeAvatarUpload2(file) {
+		// 	const isJPG = file.type === 'image/jpeg';
+		// 	const isLt2M = file.size / 1024 / 1024 < 2;
 
-			if (!isJPG) {
-				this.$message.error('上传图片只能是 JPG 格式!');
-			}
-			if (!isLt2M) {
-				this.$message.error('上传图片大小不能超过 2MB!');
-			}
-			return isJPG && isLt2M;
-		},
-		handleEdit1(index, row) {
-			console.log(index, row);
-			this.editstuItem = row
-			this.editStuIndex = index
-			this.isEditStu = true
-		},
-		handleDelete1(index, row) {
-			this.newdataform.studentList.splice(index, 1)
-		},
-		savestuedit() {
-			if (this.editstuItem.name == '' || this.editstuItem.grade == '' ||
-				this.editstuItem.specialty == ''
-			) {
-				this.$message.error('修改信息不能为空');
-			}
-			else {
-				this.newdataform.studentList[this.editStuIndex] = this.editstuItem
-				this.isEditStu = false
-				this.$message({
-					message: '修改成功',
-					type: 'success'
-				});
-			}
-		},
-		handleEdit2(index, row) {
-			console.log(index, row);
-			this.editTchItem = row
-			this.editStuIndex = index
-			this.isEditTch = true
-		},
-		handleDelete2(index, row) {
-			this.newdataform.teacherList.splice(index, 1)
-		},
-		savesTchedit() {
-			if (this.editTchItem.name == '' || this.editTchItem.job == '' ||
-				this.editTchItem.direction == '') {
-				this.$message.error('修改信息不能为空');
-			}
-			else {
-				this.newdataform.teacherList[this.editTchIndex] = this.editTchItem
-				this.isEditTch = false
-				this.$message({
-					message: '修改成功',
-					type: 'success'
-				});
-			}
-		},
-		addStu() {
-			if (this.newdataform.project.projectId == '') {
-				this.$message.error('请先设置项目ID');
-			}
-			else {
-				this.isaddStu = true
-				this.addstuItem.projectId = this.newdataform.project.projectId
-			}
-		},
-		addTch() {
-			if (this.newdataform.project.projectId == '') {
-				this.$message.error('请先设置项目ID');
-			}
-			else {
-				this.isaddTch = true
-				this.addTchItem.projectId = this.newdataform.project.projectId
-			}
-		},
-		savestuadd() {
-			if (this.addstuItem.name == '' || this.addstuItem.grade == '' ||
-				this.addstuItem.specialty == '' ||
-				this.addstuItem.isPresenter == '') {
-				this.$message.error('添加信息不能为空');
-			}
-			else {
-				let id = this.newdataform.project.projectId
-				this.newdataform.studentList.push(this.addstuItem)
-				this.addstuItem = {
-					name: '',
-					grade: '',
-					specialty: '',
-					isPresenter: 0,
-					projectId: id,
-					isDel: 0
-				}
-				this.isaddStu = false
-				this.$message({
-					message: '修改成功',
-					type: 'success'
-				});
-			}
-		},
-		savesTchadd() {
-			if (this.addTchItem.name == '' || this.addTchItem.job == '' ||
-				this.addTchItem.direction == '') {
-				this.$message.error('修改信息不能为空');
-			}
-			else {
-				this.newdataform.teacherList.push(this.addTchItem)
-				let id = this.newdataform.project.projectId
-				this.addTchItem = {
-					name: '',
-					job: '',
-					direction: '',
-					projectId: id,
-					isDel: 0
-				}
-				this.isaddTch = false
-				this.$message({
-					message: '修改成功',
-					type: 'success'
-				});
-			}
-		},
+		// 	if (!isJPG) {
+		// 		this.$message.error('上传图片只能是 JPG 格式!');
+		// 	}
+		// 	if (!isLt2M) {
+		// 		this.$message.error('上传图片大小不能超过 2MB!');
+		// 	}
+		// 	return isJPG && isLt2M;
+		// },
+		// handleEdit1(index, row) {
+		// 	console.log(index, row);
+		// 	this.editstuItem = row
+		// 	this.editStuIndex = index
+		// 	this.isEditStu = true
+		// },
+		// handleDelete1(index, row) {
+		// 	this.newdataform.studentList.splice(index, 1)
+		// },
+		// savestuedit() {
+		// 	if (this.editstuItem.name == '' || this.editstuItem.grade == '' ||
+		// 		this.editstuItem.specialty == ''
+		// 	) {
+		// 		this.$message.error('修改信息不能为空');
+		// 	}
+		// 	else {
+		// 		this.newdataform.studentList[this.editStuIndex] = this.editstuItem
+		// 		this.isEditStu = false
+		// 		this.$message({
+		// 			message: '修改成功',
+		// 			type: 'success'
+		// 		});
+		// 	}
+		// },
+		// handleEdit2(index, row) {
+		// 	console.log(index, row);
+		// 	this.editTchItem = row
+		// 	this.editStuIndex = index
+		// 	this.isEditTch = true
+		// },
+		// handleDelete2(index, row) {
+		// 	this.newdataform.teacherList.splice(index, 1)
+		// },
+		// savesTchedit() {
+		// 	if (this.editTchItem.name == '' || this.editTchItem.job == '' ||
+		// 		this.editTchItem.direction == '') {
+		// 		this.$message.error('修改信息不能为空');
+		// 	}
+		// 	else {
+		// 		this.newdataform.teacherList[this.editTchIndex] = this.editTchItem
+		// 		this.isEditTch = false
+		// 		this.$message({
+		// 			message: '修改成功',
+		// 			type: 'success'
+		// 		});
+		// 	}
+		// },
+		// addStu() {
+		// 	if (this.newdataform.project.projectId == '') {
+		// 		this.$message.error('请先设置项目ID');
+		// 	}
+		// 	else {
+		// 		this.isaddStu = true
+		// 		this.addstuItem.projectId = this.newdataform.project.projectId
+		// 	}
+		// },
+		// addTch() {
+		// 	if (this.newdataform.project.projectId == '') {
+		// 		this.$message.error('请先设置项目ID');
+		// 	}
+		// 	else {
+		// 		this.isaddTch = true
+		// 		this.addTchItem.projectId = this.newdataform.project.projectId
+		// 	}
+		// },
+		// savestuadd() {
+		// 	if (this.addstuItem.name == '' || this.addstuItem.grade == '' ||
+		// 		this.addstuItem.specialty == '' ||
+		// 		this.addstuItem.isPresenter == '') {
+		// 		this.$message.error('添加信息不能为空');
+		// 	}
+		// 	else {
+		// 		let id = this.newdataform.project.projectId
+		// 		this.newdataform.studentList.push(this.addstuItem)
+		// 		this.addstuItem = {
+		// 			name: '',
+		// 			grade: '',
+		// 			specialty: '',
+		// 			isPresenter: 0,
+		// 			projectId: id,
+		// 			isDel: 0
+		// 		}
+		// 		this.isaddStu = false
+		// 		this.$message({
+		// 			message: '修改成功',
+		// 			type: 'success'
+		// 		});
+		// 	}
+		// },
+		// savesTchadd() {
+		// 	if (this.addTchItem.name == '' || this.addTchItem.job == '' ||
+		// 		this.addTchItem.direction == '') {
+		// 		this.$message.error('修改信息不能为空');
+		// 	}
+		// 	else {
+		// 		this.newdataform.teacherList.push(this.addTchItem)
+		// 		let id = this.newdataform.project.projectId
+		// 		this.addTchItem = {
+		// 			name: '',
+		// 			job: '',
+		// 			direction: '',
+		// 			projectId: id,
+		// 			isDel: 0
+		// 		}
+		// 		this.isaddTch = false
+		// 		this.$message({
+		// 			message: '修改成功',
+		// 			type: 'success'
+		// 		});
+		// 	}
+		// },
 		cancelback() {
 			this.$router.push('/Paper')
 		},
 		getdata() {
 			let that = this
-			this.$axios.get("/project/getbyId/" + this.$route.query.id).then((res) => {
-				this.newdataform = res.data.data
+			that.$axios({
+				method: "get",//请求方式
+				url: '/menuItem/getMenuDetail/' + this.$route.query.id,//请求接口
+				headers: {
+					'Content-Type': 'application/json',
+					'token': 'eee'
+				},//请求头参数
+			}).then(res => {
+				// console.log(res)
+				this.newdataform = res.data.data.menuItem
 				console.log(this.newdataform)
 				this.$message.success('获取信息成功')
-			});
+			})
 		}
 	},
 	mounted() {

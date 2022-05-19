@@ -3,7 +3,7 @@
     <h2 style="text-align: center; margin: 10px 0 20px">选择作品投票</h2>
     <div style="text-align: center">
       <el-transfer style="text-align: left; display: inline-block" v-model="value" filterable
-        :props="{ key: 'id', label: 'projectName' }" :render-content="renderFunc" :titles="['所有作品', '选择作品']"
+        :props="{ key: 'id', label: 'title' }" :render-content="renderFunc" :titles="['所有作品', '选择作品']"
         :button-texts="['删除', '添加']" :format="{
           noChecked: '${total}',
           hasChecked: '${checked}/${total}'
@@ -11,45 +11,21 @@
       </el-transfer>
     </div>
     <div class="btnBox">
-      <el-button type="primary">确认</el-button>
+      <el-button type="primary" @click="submitVote">确认</el-button>
     </div>
   </div>
 
 </template>
 
-<style>
-.transfer-footer {
-  margin-left: 20px;
-  padding: 6px 5px;
-}
-</style>
-
 <script>
 export default {
   data() {
-    const generateData = _ => {
-      const data = [];
-      for (let i = 1; i <= 15; i++) {
-        data.push({
-          key: i,
-          label: `备选项 ${i}`,
-          disabled: i % 4 === 0
-        });
-      }
-      return data;
-    };
     return {
-      data: [
-        {
-          id: 1,
-          projectName: '基于UWB定位的手机端车库管理系统',
-          school: '河北大学'
-        },
-      ],
+      data: [],
       current: 1,
       value: [],
       renderFunc(h, option) {
-        return <span>{option.id} - {option.projectName}</span>;
+        return <span>{option.id} - {option.title}</span>;
       }
     };
   },
@@ -59,9 +35,11 @@ export default {
       console.log(value, direction, movedKeys);
     },
     getProject() {
-      this.$axios.get("/project/getbyType/1?currentPage=1").then(res => {
+      this.$axios.get("/menuItem/getbyName/创新创业展示项目").then(res => {
         console.log(res)
+        // this.data = res.data.data.records
         res.data.data.records.forEach(element => {
+          console.log(element.projectId)
           this.data.push(element)
         });
         let pages = res.data.data.pages;
@@ -76,6 +54,38 @@ export default {
           })
         }
       })
+    },
+    submitVote() {
+      let that = this
+      this.value.forEach(key => {
+        that.data.forEach(item => {
+          let token = window.sessionStorage.getItem('token')
+          if (item.id == key) {
+            console.log(item.projectId)
+            that.$axios({
+              method: "post",//请求方式
+              url: '/user/doVote/' + item.projectId + '/admin',//请求接口
+              headers: {
+                'Content-Type': 'application/json',
+                'token': token
+              },//请求头参数
+            })
+              .then(function (res) {
+                console.log(res)
+                if (res.data.status == 200) {
+                  that.$message.success('投票成功')
+                }
+                else {
+                  that.$message.error('投票失败');
+                }
+              })
+              .catch(function (err) {
+                that.$message.error('投票失败');
+              })
+          }
+        })
+      })
+
     }
   },
   mounted() {

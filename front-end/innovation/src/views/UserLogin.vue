@@ -59,12 +59,13 @@ export default {
     // 登录
     async login() {
       console.log('函数调用')
-      const {data: res} = await this.$axios.post('/login', this.loginForm)
+      const {data: res} = await this.$axios.post('/user/login?satoken=2210ee6c-f98d-43f2-92ee-a286f82c7c6f', this.loginForm)
       if(res.status !== 200) {
         return this.$message.error(res.msg)
       }
       else {
-        window.sessionStorage.setItem('token', res.data.token)
+        console.log(res)
+        window.sessionStorage.setItem('token', res.data)
         this.$router.push('/vote')
       }
     },
