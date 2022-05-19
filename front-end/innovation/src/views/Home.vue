@@ -2,7 +2,9 @@
   <div class="home">
     <el-carousel :interval="3000" arrow="hover" :height="this.bannerHeight+'px'" trigger="click">
       <el-carousel-item v-for="r in rotations.rotationList" :key="r.id">
-        <img :src="r.url" alt="" />
+        <a :href="r.routerUrl">
+          <img :src="r.url" alt=""/>
+        </a>
       </el-carousel-item>
     </el-carousel>
     <section class="sectionThree-new">
@@ -98,6 +100,7 @@ export default {
       axios.get('/rotation/getAll').then(
         res => {
           this.rotations.rotationList = res.data.data.records
+          console.log(this.rotations.rotationList)
         }
       )
     },
