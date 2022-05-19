@@ -238,6 +238,7 @@ export default {
   padding: 10px 10px 2px 10px; */
   box-sizing: border-box;
   min-width: 33%;
+  max-width: 33%;
 }
 
 .announment a {
