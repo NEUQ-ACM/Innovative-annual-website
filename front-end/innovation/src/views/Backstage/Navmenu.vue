@@ -161,7 +161,7 @@ export default {
       }).then(({ value }) => {
         console.log(value)
         this.$axios
-          .post('/menu/updateFirstMenu', {
+          .post('http://81.70.56.45:8083/menu/updateFirstMenu', {
             "menuName": value,
             "isDel": 0,
             "id": row.id
