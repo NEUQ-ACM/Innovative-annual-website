@@ -59,7 +59,7 @@ export default {
     // 登录
     async login() {
       console.log('函数调用')
-      const {data: res} = await this.$axios.post('/user/login?satoken=2210ee6c-f98d-43f2-92ee-a286f82c7c6f', this.loginForm)
+      const {data: res} = await this.$axios.post('http://81.70.56.45:8083/user/login?satoken=2210ee6c-f98d-43f2-92ee-a286f82c7c6f', this.loginForm)
       if(res.status !== 200) {
         return this.$message.error(res.msg)
       }

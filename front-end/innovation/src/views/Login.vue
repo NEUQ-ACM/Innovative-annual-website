@@ -55,7 +55,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$axios
-            .post('/user/login?satoken=2210ee6c-f98d-43f2-92ee-a286f82c7c6f', {
+            .post('http://81.70.56.45:8083/user/login?satoken=2210ee6c-f98d-43f2-92ee-a286f82c7c6f', {
               "username": this.nameValidateForm.name,
               "password": this.nameValidateForm.password
             })
