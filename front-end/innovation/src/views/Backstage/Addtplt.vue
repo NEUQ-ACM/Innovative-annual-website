@@ -44,7 +44,7 @@ export default {
       buttonText: "修改",
       url: "http://81.70.56.45:8083/menuItem/addMenuDetail",
       fileList: [],
-      noticeEdit: { itemId: "", title: "", content: "",name:''},
+      noticeEdit: { itemId: "", title: "", content: ``,name:''},
     };
   },
   methods: {

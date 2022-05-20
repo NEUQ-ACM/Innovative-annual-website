@@ -1,30 +1,35 @@
 <template>
   <div>
-   <h1>{{records.title}}</h1>
-   <p>{{records.content}}</p>
+    <h1>{{ records.title }}</h1>
+    <div>
+      <p>{{ records.content }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-  data () {
+  data() {
     return {
-      records:{}
-    }
+      records: {},
+    };
   },
-  methods () {
-  },
-  mounted () {
+  methods() {},
+  mounted() {
     axios({
-      method:'GET',
-      url:`http://81.70.56.45:8083/menuItem/getbyName/${this.$route.query.name}`
-    }).then(res=>{
-      this.records=res.data.data.records[res.data.data.records.length-1]
-    })
+      method: "GET",
+      url: `http://81.70.56.45:8083/menuItem/getbyName/${this.$route.query.name}`,
+    }).then((res) => {
+      this.records = res.data.data.records[res.data.data.records.length - 1];
+    });
     this.frontSidebarStyle.height = this.frontSidebar.links.length * 60;
+
   },
-}
+  updated() {
+    console.log(刷新)
+  },
+};
 </script>
 
 <style scoped>
@@ -32,6 +37,18 @@ a {
   text-decoration: none;
   color: #333;
   line-height: 45px;
+}
+div{
+  width: 70%;
+  padding:0 ;
+  margin: 0 auto;
+  
+  
+}
+div p{
+  display: block;
+ width: 100%;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
 }
 div.frontSidebar {
   width: 70%;
