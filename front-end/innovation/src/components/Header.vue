@@ -4,44 +4,36 @@
       <!-- <div style="color: white;margin-left: 15%;text-align: center;height: 70%;line-height: 80px;font-size: 28px;font-weight: 500;margin-top: 1%;">第七届河北省大学生创新创业年会</div> -->
       <span>第七届河北省大学生创新创业年会</span>
     </div>
-    <div style="
-        display: flex;
-        float: right;
-        width: 100%;
-      "
-         class="Mmain">
+    <div style="display: flex; float: right; width: 100%" class="Mmain">
       <div style="margin-left: 50%">
-        <el-menu router
-                 :default-active="activeIndex"
-                 class="el-menu-demo"
-                 mode="horizontal"
-                 text-color="#fff"
-                 active-text-color="#fff"
-                 @select="handleSelect">
-          <el-menu-item index="1"
-                        route="/Home">首页</el-menu-item>
-          <el-menu-item index="2"
-                        route="/News">通知公告</el-menu-item>
-          <el-menu-item index="3"
-                        route="/Arrangment">年会日程</el-menu-item>
+        <el-menu
+          router
+          :default-active="activeIndex"
+          class="el-menu-demo"
+          mode="horizontal"
+          text-color="#fff"
+          active-text-color="#fff"
+          @select="handleSelect"
+        >
+          <el-menu-item index="1" route="/Home">首页</el-menu-item>
+          <el-menu-item index="2" route="/News">通知公告</el-menu-item>
+          <el-menu-item index="3" route="/Arrangment">年会日程</el-menu-item>
           <el-submenu index="4">
             <template slot="title">作品展示</template>
-            <el-menu-item index="4-1"
-                          route="/Show1">学术论文</el-menu-item>
-            <el-menu-item index="4-2"
-                          route="/Show2">创新创业展示项目</el-menu-item>
-            <el-menu-item index="4-3"
-                          route="/Show3">创业推荐项目</el-menu-item>
+            <el-menu-item index="4-1" route="/Show1">学术论文</el-menu-item>
+            <el-menu-item index="4-2" route="/Show2"
+              >创新创业展示项目</el-menu-item
+            >
+            <el-menu-item index="4-3" route="/Show3">创业推荐项目</el-menu-item>
           </el-submenu>
-          <el-menu-item index="5" route="/userlogin">投票入口
+          <el-menu-item index="5" route="/userlogin">投票入口 </el-menu-item>
+          <el-menu-item
+            v-for="(items, index) in navDynamic"
+            :key="index"
+            @click="run(items.menuName)"
+          >
+            {{ items.menuName }}
           </el-menu-item>
-          <el-menu-item v-for="(items,index) in navSingle" :key="index">
-          {{items[0]}}
-          </el-menu-item>
-          <el-submenu :index="dasuoyin+7" v-for="(items,dasuoyin) in navMultiple" :key="dasuoyin">
-            <template slot="title">{{items[0]}}</template>
-            <el-menu-item :index="dasuoyin+7+'-'+suoyin" v-for="(details,suoyin) in items" :key="suoyin">{{details}}</el-menu-item>
-          </el-submenu>
         </el-menu>
       </div>
     </div>
@@ -49,14 +41,11 @@
     <nav class="mobileNav">
       <el-button @click="mobileShow = !mobileShow">=</el-button>
       <el-collapse-transition>
-        <div v-show="mobileShow"
-             class="mobileList">
+        <div v-show="mobileShow" class="mobileList">
           <nav>
             <ul>
-              <li v-for="(items, index) in navData"
-                  :key="index">
-                <router-link :to="items.routerLink"
-                             active-class="isActive">
+              <li v-for="(items, index) in navData" :key="index">
+                <router-link :to="items.routerLink" active-class="isActive">
                   <span @click="mobileShow = !mobileShow">{{
                     items.spanValue
                   }}</span>
@@ -74,9 +63,10 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Header_2",
-  data () {
+  data() {
     return {
       activeIndex: this.$route.path,
       mobileShow: false,
@@ -85,22 +75,29 @@ export default {
         { routerLink: "/News", spanValue: "通知公告" },
         { routerLink: "/Arrangment", spanValue: "年会日程" },
         { routerLink: "/Show1", spanValue: "作品展示" },
-        {routerLink:"/xxxx", spanValue:"投票入口"}
+        { routerLink: "/xxxx", spanValue: "投票入口" },
       ],
-      navDynamic:[['学校简介','师生'],['不会取名'],['会取名'],['不要取名','多整点']],
-      navSingle:[],
-      navMultiple:[],
+      navDynamic: [{}],
     };
   },
-  mounted(){
-    for (var i=0;i<this.navDynamic.length;i++){
-      if(this.navDynamic[i].length==1)
-      this.navSingle.push(this.navDynamic[i])
-      else
-      this.navMultiple.push(this.navDynamic[i])
-    }
-    console.log(this.navMultiple);
-  }
+  methods: {
+    run(name) {
+      console.log(1);
+      this.$router.push({
+        path: "/Template",
+        query: {name}
+      });
+    },
+  },
+  mounted() {
+    axios({
+      method: "GET",
+      url: "http://81.70.56.45:8083/menu/getFirstMenu",
+    }).then((res) => {
+      this.navDynamic = res.data.data.menuList;
+      console.log(this.navDynamic);
+    });
+  },
 };
 </script>
 
@@ -109,7 +106,7 @@ export default {
   font-family: "kaiti";
   src: url(../assets/font/STKAITI.TTF);
 }
-.el-menu-demo{
+.el-menu-demo {
   width: 100%;
 }
 div.Mmain {

@@ -22,7 +22,7 @@
                            align="center">
           </el-table-column>
           <el-table-column align="center"
-                           width="240">
+                           width="290">
             <template slot="header">
               <el-button size="small"
                          type="primary"
@@ -31,10 +31,13 @@
             <template slot-scope="scope">
               <el-button size="small"
                          type="info"
-                         @click="updateFirstMenu(scope.$index, scope.row)">编辑</el-button>
+                         @click="updateFirstMenu(scope.$index, scope.row)">编辑导航</el-button>
               <el-button size="small"
                          type="danger"
                          @click="delFirstMenu(scope.$index, scope.row)">删除</el-button>
+                         <el-button size="small"
+                         type="succees"
+                         @click="handleEdit(scope.$index, scope.row)">编辑内容</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -54,14 +57,20 @@ export default {
       tableData: [],
       loading: false,
       headers: {
-        token: "3957d2b9-d2af-4806-bd64-94c1e3875e89"
+        token: "cec2ffaf-5e51-4f4d-81ad-4177ca163c6b"
       }
     }
   },
   methods: {
+    handleEdit(index, row) {
+      this.$router.push({
+        path: "/Addtplt",
+        query: {id: row.id,name:row.menuName },
+      }); //type参数 true为修改 false为添加
+    },
     getFirstMenu () {
       this.$axios
-        .get('/menu/getFirstMenu')
+        .get('http://81.70.56.45:8083/menu/getFirstMenu')
         .then(res => {
           console.log(res);
           this.tableData = res.data.data.menuList;
@@ -80,7 +89,7 @@ export default {
         console.log(value)
         this.loading = true;
         this.$axios
-          .post('/menu/addFirstMenu', {
+          .post('http://81.70.56.45:8083/menu/addFirstMenu', {
             "menuName": value,
             "isDel": 0,
           }, {
@@ -96,6 +105,7 @@ export default {
             });
             this.getFirstMenu();
             this.loading = false;
+            
           })
           .catch(err => {
             console.log(err);
@@ -116,7 +126,7 @@ export default {
       console.log(index, row);
       this.loading = true;
       this.$axios
-        .get('/menu/delFirstMenu/' + row.id, {
+        .get('http://81.70.56.45:8083/menu/delFirstMenu/' + row.id, {
           headers: {
             "token": this.headers.token
           }

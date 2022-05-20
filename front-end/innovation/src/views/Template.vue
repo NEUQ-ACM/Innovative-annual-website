@@ -1,60 +1,27 @@
 <template>
-  <div class="frontSidebar">
-    <span style="width: 25%;margin-left: 0%;margin-right: 5%;">
-      <div class="frontSidebarTitle">
-        <div>
-          {{frontSidebar.title}}
-        </div>
-      </div>
-      <div :style="frontSidebarStyle">
-        <div v-for="(item,index) in frontSidebar.links">
-          <router-link :to="item.path"
-                       active-class="linkActive">
-            <div style="height: 50px;padding: 5px;margin-top: 10px;">
-              {{item.name}}
-            </div>
-          </router-link>
-        </div>
-      </div>
-    </span>
-    <span style="width: 80%;margin-left: 5%;">
-
-      <router-view></router-view>
-    </span>
+  <div>
+   <h1>{{records.title}}</h1>
+   <p>{{records.content}}</p>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data () {
     return {
-      frontSidebar: {
-        title: "作品展示",
-        links: [
-          {
-            name: "学术论文",
-            path: "/Show1",
-          }, {
-            name: "创新创业展示项目",
-            path: "/Show2",
-          }, {
-            name: "创业推荐项目",
-            path: "/Show3",
-          }, {
-            name: "TemplateBody",
-            path: "/TemplateBody",
-          },
-        ],
-      },
-      frontSidebarStyle: {
-        height: "",
-        backgroundColor: "#F9F9F9",
-      },
+      records:{}
     }
   },
   methods () {
   },
   mounted () {
+    axios({
+      method:'GET',
+      url:`http://81.70.56.45:8083/menuItem/getbyName/${this.$route.query.name}`
+    }).then(res=>{
+      this.records=res.data.data.records[res.data.data.records.length-1]
+    })
     this.frontSidebarStyle.height = this.frontSidebar.links.length * 60;
   },
 }
