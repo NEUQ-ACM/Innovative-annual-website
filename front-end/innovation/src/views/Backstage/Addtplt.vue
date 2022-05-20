@@ -7,13 +7,8 @@
           <el-form-item label="标题">
             <el-input v-model="noticeEdit.title"></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-input
-              type="textarea"
-              :autosize="{ minRows: 20, maxRows: 20 }"
-              v-model="noticeEdit.content"
-            >
-            </el-input>
+          <el-form-item >
+            <mavon-editor v-model="noticeEdit.content" style="height:700px;width: 1700px;" :ishljs="true"></mavon-editor>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit"
@@ -22,15 +17,6 @@
             <el-button @click="back()">取消</el-button>
           </el-form-item>
         </el-form>
-      </el-col>
-      <el-col :span="12">
-        <el-card class="box-card">
-          <h3>{{ noticeEdit.title }}</h3>
-          <div class="content">
-            <span style="color: gray">{{ noticeEdit.description }}</span>
-            <p>{{ noticeEdit.content }}</p>
-          </div>
-        </el-card>
       </el-col>
     </el-row>
   </el-main>
