@@ -394,7 +394,7 @@ export default {
 					// console.log(this.newdataform)
 					that.$axios({
 						method: "post",//请求方式
-						url: '/menuItem/updateMenuDetail',//请求接口
+						url: 'http://81.70.56.45:8083/menuItem/updateMenuDetail',//请求接口
 						headers: {
 							'Content-Type': 'application/json',
 							'token': token
@@ -599,7 +599,7 @@ export default {
 			let that = this
 			that.$axios({
 				method: "get",//请求方式
-				url: '/menuItem/getMenuDetail/' + this.$route.query.id,//请求接口
+				url: 'http://81.70.56.45:8083/menuItem/getMenuDetail/' + this.$route.query.id,//请求接口
 				headers: {
 					'Content-Type': 'application/json',
 					'token': 'eee'
