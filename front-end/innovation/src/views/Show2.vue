@@ -9,8 +9,8 @@
           <span class="day">{{item.id}}</span>
         </div>
         <div class="news">
-          <span class="newsTitle">{{ item.projectName }}</span>
-          <span class="newsContent">{{ item.school }}</span>
+          <span class="newsTitle">{{ item.title }}</span>
+          <span class="newsContent">{{ item.createTime }}</span>
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@ export default {
     pageChange (val) {
       this.current = val
       this.$axios
-        .get("/project/getbyType/3?currentPage=" + this.current)
+        .get("http://81.70.56.45:8083/menuItem/getbyName/创新创业展示项目?currentPage=" + this.current)
         .then((response) => {
           this.noticeData = response.data.data.records;
           console.log(this.noticeData);
@@ -103,20 +103,20 @@ export default {
       console.log(this.noticeData);
     }
   },
-  // mounted () {
-  //   this.$axios
-  //     .get("/project/getbyType/3?currentPage=" + this.current)
-  //     .then((response) => {
+  mounted () {
+    this.$axios
+      .get("http://81.70.56.45:8083/menuItem/getbyName/创新创业展示项目?currentPage=" + this.current)
+      .then((response) => {
 
-  //       this.noticeData = response.data.data.records;
-  //       this.total = response.data.data.total
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       alert("网络错误，不能访问");
-  //     });
-  //   console.log(this.noticeData);
-  // },
+        this.noticeData = response.data.data.records;
+        this.total = response.data.data.total
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("网络错误，不能访问");
+      });
+    console.log(this.noticeData);
+  },
 };
 </script>
 
