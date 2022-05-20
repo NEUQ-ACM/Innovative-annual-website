@@ -344,7 +344,7 @@ export default {
 					// console.log(data1)
 					that.$axios({
 						method: "post",//请求方式
-						url: '/menuItem/addMenuDetail',//请求接口
+						url: 'http://81.70.56.45:8083/menuItem/addMenuDetail',//请求接口
 						headers: {
 							'Content-Type': 'application/json',
 						  token: token
