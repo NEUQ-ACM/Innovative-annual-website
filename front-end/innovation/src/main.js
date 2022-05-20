@@ -6,12 +6,12 @@ import ElementUI from 'element-ui'
 import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = 'http://81.70.56.45:8082'
+// axios.defaults.baseURL = 'http://81.70.56.45:8082'
 Vue.prototype.$axios=axios
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 
-axios.defaults.baseURL = 'http://81.70.56.45:8082'
+axios.defaults.baseURL = 'http://81.70.56.45:8083'
 new Vue({
   router,
   store,
