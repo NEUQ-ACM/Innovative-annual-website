@@ -126,11 +126,6 @@ export default {
       delete this.noticeEdit.id;
       this.buttonText = "创建";
     }
-    else if (JSON.parse(this.$route.query.type)===3) {
-      this.url = "http://81.70.56.45:8083/menuItem/updateMenuDetail";
-      delete this.noticeEdit.id;
-      this.buttonText = "修改";
-    }
   },
 };
 </script>

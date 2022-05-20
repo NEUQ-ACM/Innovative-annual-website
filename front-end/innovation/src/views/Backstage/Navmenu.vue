@@ -103,9 +103,9 @@ export default {
               type: 'success',
               message: '添加成功!'
             });
+            location.reload();
             this.getFirstMenu();
             this.loading = false;
-            
           })
           .catch(err => {
             console.log(err);
@@ -137,6 +137,7 @@ export default {
             type: 'success',
             message: '删除成功!'
           });
+          location.reload();
           this.getFirstMenu();
           this.loading = false;
         })

@@ -82,11 +82,11 @@ export default {
   },
   methods: {
     run(name) {
-      console.log(1);
       this.$router.push({
         path: "/Template",
         query: {name}
       });
+      location.reload()
     },
   },
   mounted() {
