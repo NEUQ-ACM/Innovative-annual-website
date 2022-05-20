@@ -116,6 +116,7 @@ export default {
             this.loading = false;
           })
       }).catch(() => {
+		this.loading=false
         this.$message({
           type: 'info',
           message: '取消添加'
@@ -189,6 +190,7 @@ export default {
             this.loading = false;
           })
       }).catch(() => {
+		this.loading=false
         this.$message({
           type: 'info',
           message: '取消添加'
