@@ -30,7 +30,7 @@
 		      <i class="el-icon-setting"></i>
 		      <span slot="title">附件管理</span>
 		    </el-menu-item>
-			<el-menu-item index="navManage">
+			<el-menu-item index="Navmenu">
 		      <i class="el-icon-setting"></i>
 		      <span slot="title">导航管理</span>
 		    </el-menu-item>

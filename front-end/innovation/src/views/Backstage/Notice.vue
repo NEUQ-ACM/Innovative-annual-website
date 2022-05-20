@@ -177,11 +177,11 @@ export default {
     handleEdit(index, row) {
       this.$router.push({
         path: "/NoticeEdit",
-        query: { type: false, id: row.id },
+        query: { type: 1, id: row.id },
       }); //type参数 true为修改 false为添加
     },
     handleAdd(index, row) {
-      this.$router.push({ path: "/NoticeEdit", query: { type: true } });
+      this.$router.push({ path: "/NoticeEdit", query: { type: 2 } });
     },
     handleDelete() {
       this.deleteVisible = false;

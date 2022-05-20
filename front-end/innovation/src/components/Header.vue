@@ -27,7 +27,11 @@
             <el-menu-item index="4-3" route="/Show3">创业推荐项目</el-menu-item>
           </el-submenu>
           <el-menu-item index="5" route="/userlogin">投票入口 </el-menu-item>
-          <el-menu-item v-for="(items, index) in navDynamic" :key="index" route="/Template">
+          <el-menu-item
+            v-for="(items, index) in navDynamic"
+            :key="index"
+            @click="run(items.menuName)"
+          >
             {{ items.menuName }}
           </el-menu-item>
         </el-menu>
@@ -73,16 +77,25 @@ export default {
         { routerLink: "/Show1", spanValue: "作品展示" },
         { routerLink: "/xxxx", spanValue: "投票入口" },
       ],
-      navDynamic: [{}
-      ],
+      navDynamic: [{}],
     };
+  },
+  methods: {
+    run(name) {
+      console.log(1);
+      this.$router.push({
+        path: "/Template",
+        query: {name}
+      });
+    },
   },
   mounted() {
     axios({
       method: "GET",
       url: "http://81.70.56.45:8083/menu/getFirstMenu",
     }).then((res) => {
-      this.navDynamic=res.data.data.menuList
+      this.navDynamic = res.data.data.menuList;
+      console.log(this.navDynamic);
     });
   },
 };

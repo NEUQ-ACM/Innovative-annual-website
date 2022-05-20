@@ -1,40 +1,11 @@
 <template>
   <el-main>
     <el-row>
-      <h1>通知{{ buttonText }}</h1>
+      <h1>内容{{ buttonText }}</h1>
       <el-col :span="12">
         <el-form ref="form" :model="noticeEdit" label-width="80px">
-            添加公告封面
-          <el-upload
-            class="upload-demo"
-            ref="upload"
-            action="http://81.70.56.45:8082/notice/upload"
-            :on-preview="handlePreview"
-            :on-remove="handleRemove"
-            :on-success="upSuccess"
-            :on-error="upError"
-            :file-list="fileList"
-            :auto-upload="false"
-          >
-            <el-button slot="trigger" size="small" type="primary"
-              >选取文件</el-button
-            >
-            <el-button
-              style="margin-left: 10px"
-              size="small"
-              type="success"
-              @click="submitUpload"
-              >上传到服务器</el-button
-            >
-            <div slot="tip" class="el-upload__tip">
-              只能上传jpg/png文件，且不超过500kb
-            </div>
-          </el-upload>
           <el-form-item label="标题">
             <el-input v-model="noticeEdit.title"></el-input>
-          </el-form-item>
-          <el-form-item label="描述">
-            <el-input v-model="noticeEdit.description"></el-input>
           </el-form-item>
           <el-form-item>
             <el-input
@@ -69,10 +40,11 @@
 export default {
   data() {
     return {
+        token:'cec2ffaf-5e51-4f4d-81ad-4177ca163c6b',
       buttonText: "修改",
-      url: "",
+      url: "http://81.70.56.45:8083/menuItem/addMenuDetail",
       fileList: [],
-      noticeEdit: { id: "", title: "", content: "", description: "" },
+      noticeEdit: { itemId: "", title: "", content: "",name:''},
     };
   },
   methods: {
@@ -88,7 +60,7 @@ export default {
         this.$refs.upload.submit();
       },
     back() {
-      this.$router.push("/Notice");
+      this.$router.push("/Navmenu");
     },
     onSubmit() {
       console.log(JSON.stringify(this.noticeEdit));
@@ -99,12 +71,14 @@ export default {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           "Transfer-Encoding": "chunked",
+          "token":this.token,
           Connection: "keep-alive",
         },
       })
         .then((response) => {
           this.$message.success("发送成功");
-          this.back();
+          console.log(response);
+        //   this.back();
         })
         .catch((error) => {
           console.log(error);
@@ -113,25 +87,14 @@ export default {
     },
   },
   mounted() {
-    this.$axios.get(`/notice/${this.$route.query.id}`).then((res) => {
-      this.noticeEdit.title = res.data.data.notice.title;
-      this.noticeEdit.content = res.data.data.notice.content;
-      this.noticeEdit.description = res.data.data.notice.description;
+      this.noticeEdit.name=this.$route.query.name
+      this.noticeEdit.itemId=this.$route.query.id
+    this.$axios.get(`http://81.70.56.45:8083/menuItem/getbyName/${this.$route.query.name}`).then((res) => {
+      this.noticeEdit.title = res.data.data.records[0].title;
+      this.noticeEdit.content = res.data.data.records[0].content;
     });
-    if (JSON.parse(this.$route.query.type)===1) {
-      this.url = "/notice/updateNotice";
-      this.noticeEdit.id = this.$route.query.id;
-    } else if (JSON.parse(this.$route.query.type)===2) {
-      this.url = "/notice/addNotice";
-      delete this.noticeEdit.id;
-      this.buttonText = "创建";
-    }
-    else if (JSON.parse(this.$route.query.type)===3) {
-      this.url = "http://81.70.56.45:8083/menuItem/updateMenuDetail";
-      delete this.noticeEdit.id;
-      this.buttonText = "修改";
-    }
   },
+  
 };
 </script>
 
