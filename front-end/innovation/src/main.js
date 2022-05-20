@@ -6,6 +6,10 @@ import ElementUI from 'element-ui'
 import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.prototype.$axios = axios
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
+Vue.use(mavonEditor)
 // axios.defaults.baseURL = 'http://81.70.56.45:8082'
 Vue.prototype.$axios=axios
 Vue.config.productionTip = false
