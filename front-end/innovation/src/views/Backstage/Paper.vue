@@ -79,7 +79,7 @@ export default {
 		},
 		deleteReset1() {
 			this.current = 1
-			this.$axios.get("/menuItem/getbyName/学术论文?currentPage=" + this.current).then((res) => {
+			this.$axios.get("http://81.70.56.45:8083/menuItem/getbyName/学术论文?currentPage=" + this.current).then((res) => {
 				// console.log(res);
 				this.tableData = res.data.data.records
 				this.total = res.data.data.total
@@ -87,7 +87,7 @@ export default {
 		},
 		getData() {
 			//  + this.current
-			this.$axios.get("/menuItem/getbyName/学术论文?currentPage=" + this.current).then((res) => {
+			this.$axios.get("http://81.70.56.45:8083/menuItem/getbyName/学术论文?currentPage=" + this.current).then((res) => {
 				console.log(res);
 				this.tableData = res.data.data.records
 				this.total = res.data.data.total
@@ -97,7 +97,7 @@ export default {
 		pageChange(val) {
 			console.log(this.current)
 			this.current = val
-			this.$axios.get("/menuItem/getbyName/学术论文?currentPage=" + this.current).then((res) => {
+			this.$axios.get("http://81.70.56.45:8083/menuItem/getbyName/学术论文?currentPage=" + this.current).then((res) => {
 				// console.log(res);
 				this.tableData = res.data.data.records
 				this.total = res.data.data.total

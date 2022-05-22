@@ -88,7 +88,7 @@ export default {
       console.log(tab, event);
     },
     queryNotice(){
-      axios.get('/notice/getAll').then(
+      axios.get('http://81.70.56.45:8082/notice/getAll').then(
         res => {
           this.notices = res.data.data.records
           this.notices = this.notices.slice(0,3)
@@ -97,7 +97,7 @@ export default {
       )
     },
     queryRotation(){
-      axios.get('/rotation/getAll').then(
+      axios.get('http://81.70.56.45:8083/rotation/getAll').then(
         res => {
           this.rotations.rotationList = res.data.data.records
           console.log(this.rotations.rotationList)
