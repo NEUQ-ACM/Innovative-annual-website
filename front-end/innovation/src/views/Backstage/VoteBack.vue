@@ -137,6 +137,7 @@ export default {
   mounted () {
     this.getData()
     this.getUserVoteNum()
+    this.headers.token = sessionStorage.getItem('token')
   }
 }
 </script>

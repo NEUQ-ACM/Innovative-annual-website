@@ -35,7 +35,7 @@
               <el-button size="small"
                          type="danger"
                          @click="delFirstMenu(scope.$index, scope.row)">删除</el-button>
-                         <el-button size="small"
+              <el-button size="small"
                          type="succees"
                          @click="handleEdit(scope.$index, scope.row)">编辑内容</el-button>
             </template>
@@ -62,10 +62,10 @@ export default {
     }
   },
   methods: {
-    handleEdit(index, row) {
+    handleEdit (index, row) {
       this.$router.push({
         path: "/Addtplt",
-        query: {id: row.id,name:row.menuName },
+        query: { id: row.id, name: row.menuName },
       }); //type参数 true为修改 false为添加
     },
     getFirstMenu () {
@@ -116,7 +116,7 @@ export default {
             this.loading = false;
           })
       }).catch(() => {
-		this.loading=false
+        this.loading = false
         this.$message({
           type: 'info',
           message: '取消添加'
@@ -190,7 +190,7 @@ export default {
             this.loading = false;
           })
       }).catch(() => {
-		this.loading=false
+        this.loading = false
         this.$message({
           type: 'info',
           message: '取消添加'
@@ -200,6 +200,7 @@ export default {
   },
   mounted () {
     this.getFirstMenu()
+    this.headers.token = sessionStorage.getItem('token')
   }
 }
 </script>
