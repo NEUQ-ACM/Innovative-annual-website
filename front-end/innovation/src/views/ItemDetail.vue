@@ -8,7 +8,7 @@
       <el-divider></el-divider>
     </el-col>
     <mavon-editor
-      style="width:100%"
+      style="width:60%;left:50%;transform: translateX(-50%);"
         class="md"
         :value="content"
         :subfield="false"
