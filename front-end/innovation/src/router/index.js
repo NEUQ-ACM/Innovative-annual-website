@@ -33,15 +33,16 @@ import ShowVote from '../views/ShowVote.vue'
 import Vote from '../views/Vote.vue'
 import UserLogin from '../views/UserLogin.vue'
 import Navmenu from '../views/Backstage/Navmenu.vue'
-import Addtplt  from '../views/Backstage/Addtplt.vue'
+import Addtplt from '../views/Backstage/Addtplt.vue'
 import Template from '../views/Template.vue'
+import VoteBack from '../views/Backstage/VoteBack.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
     redirect: '/Home'
-},
+  },
   {
     path: '/Home',
     name: 'Home',
@@ -56,23 +57,23 @@ const routes = [
     path: '/Gallery',
     name: 'Gallery',
     component: Gallery,
-	children:[
-		{
-		  path: '/Show1',
-		  name: 'Show1',
-		  component: Show1
-		},
-		{
-		  path: '/Show2',
-		  name: 'Show2',
-		  component: Show2
-		},
-		{
-		  path: '/Show3',
-		  name: 'Show3',
-		  component: Show3
-		},
-	]
+    children: [
+      {
+        path: '/Show1',
+        name: 'Show1',
+        component: Show1
+      },
+      {
+        path: '/Show2',
+        name: 'Show2',
+        component: Show2
+      },
+      {
+        path: '/Show3',
+        name: 'Show3',
+        component: Show3
+      },
+    ]
   },
   {
     path: '/Organizer',
@@ -134,7 +135,7 @@ const routes = [
     name: 'Recommend',
     component: Recommend
   },
-  
+
   {
     path: '/Reform',
     name: 'Reform',
@@ -159,7 +160,7 @@ const routes = [
     path: '/Team',
     name: 'Team',
     component: Team
-  },{
+  }, {
     path: '/RecommendDt',
     name: 'RecommendDt',
     component: RecommendDt
@@ -219,6 +220,11 @@ const routes = [
     name: 'Template',
     component: Template
   },
+  {
+    path: '/VoteBack',
+    name: 'VoteBack',
+    component: VoteBack
+  }
 ]
 
 const router = new VueRouter({
