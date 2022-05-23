@@ -99,7 +99,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          alert("网络错误，不能访问");
+          // alert("网络错误，不能访问");
         });
       console.log(this.noticeData);
     }
@@ -114,7 +114,7 @@ export default {
       })
       .catch((error) => {
         console.log(error);
-        alert("网络错误，不能访问");
+        // alert("网络错误，不能访问");
       });
     console.log(this.noticeData);
   },

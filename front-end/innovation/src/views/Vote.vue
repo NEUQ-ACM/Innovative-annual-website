@@ -1,7 +1,7 @@
 <template>
   <div class="voteWrap" style="position: relative;">
     <h2 style="text-align: center; margin: 10px 0 20px">选择作品投票</h2>
-	 <h3 style="text-align: center; margin: 10px 0 10px;color: red;">您最多可以为10个项目投票，提交后将不能更改选择</h3>
+    <h3 style="text-align: center; margin: 10px 0 10px;color: red;">您最多可以为10个项目投票，提交后将不能更改选择</h3>
     <div style="text-align: center">
       <el-transfer style="text-align: left; display: inline-block" v-model="value" filterable
         :props="{ key: 'id', label: 'title' }" :render-content="renderFunc" :titles="['所有作品', '选择作品']"
@@ -13,8 +13,9 @@
     </div>
     <div class="btnBox">
       <el-button type="primary" @click="submitVote">确认</el-button>
+
     </div>
-	<!-- <el-pagination
+    <!-- <el-pagination
 	  background
 	  layout="prev, pager, next"
 	  :total="total"
@@ -22,7 +23,7 @@
 	  >
 	</el-pagination> -->
   </div>
-	
+
 </template>
 
 <script>
@@ -35,8 +36,9 @@ export default {
       renderFunc(h, option) {
         return <span>{option.id} - {option.title}</span>;
       },
-	  total:0,
-	  pages:0,
+      total: 0,
+      pages: 0,
+      proId: []
     };
   },
 
@@ -45,61 +47,77 @@ export default {
       console.log(value, direction, movedKeys);
     },
     getProject() {
-      this.$axios.get("/menuItem/getbyName/创新创业展示项目?currentPage="+this.current).then(res => {
-		this.pages=res.data.data.pages
+      this.$axios.get("http://81.70.56.45:8083/menuItem/getbyName/创新创业展示项目?currentPage=" + this.current).then(res => {
+        this.pages = res.data.data.pages
         // this.data = res.data.data.records
         res.data.data.records.forEach(element => {
           this.data.push(element)
         });
         let pages = res.data.data.pages;
         let cur = this.current;
-		for(let i=cur+1;i<=pages;i++){
-			this.$axios.get("/menuItem/getbyName/创新创业展示项目?currentPage="+i).then(res => {
-			  res.data.data.records.forEach(element => {
-			    this.data.push(element)
-			  });
-			})
-		}
+        for (let i = cur + 1; i <= pages; i++) {
+          this.$axios.get("http://81.70.56.45:8083/menuItem/getbyName/创新创业展示项目?currentPage=" + i).then(res => {
+            res.data.data.records.forEach(element => {
+              this.data.push(element)
+            });
+          })
+        }
       })
     },
-	// handleCurrentChange(val) {
-	// 		let newvalue=this.value
-	//         this.current=val
-	// 		this.data=[]
-	// 		this.getProject()
-	// 		this.value=newvalue
-	//       },
-	
+    // handleCurrentChange(val) {
+    // 		let newvalue=this.value
+    //         this.current=val
+    // 		this.data=[]
+    // 		this.getProject()
+    // 		this.value=newvalue
+    //       },
+
     submitVote() {
       let that = this
-      this.value.forEach(key => {
-        that.data.forEach(item => {
+      if (that.value.length > 10) {
+        this.$message({
+          type: 'error',
+          message: '投票项目数不得超过10个'
+        });
+      } else {
+        this.$confirm('投票只能提交一次，不能修改', '请确定', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
           let token = window.sessionStorage.getItem('token')
-          if (item.id == key) {
-            console.log(item.projectId)
-            that.$axios({
-              method: "post",//请求方式
-              url: '/user/doVote/' + item.projectId + '/admin',//请求接口
-              headers: {
-                'Content-Type': 'application/json',
-                'token': token
-              },//请求头参数
+          this.value.forEach(key => {
+            that.proId.push(key)
+          })
+          that.$axios({
+            method: "post",//请求方式
+            url: '/user/doVote/admin',//请求接口
+            headers: {
+              'Content-Type': 'application/json',
+              'token': token
+            },//请求头参数
+            data: proId
+          }).then(function (res) {
+            if (res.data.status == 200) {
+              that.$message.success('投票成功')
+			  that.$router.push('/home')
+			  that.$message.success('投票成功')
+            }
+            else {
+              that.$message.error('投票失败');
+            }
+          })
+            .catch(function (err) {
+              that.$message.error('投票失败');
             })
-              .then(function (res) {
-                console.log(res)
-                if (res.data.status == 200) {
-                  that.$message.success('投票成功')
-                }
-                else {
-                  that.$message.error('投票失败');
-                }
-              })
-              .catch(function (err) {
-                that.$message.error('投票失败');
-              })
-          }
-        })
-      })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消提交'
+          });
+        });
+      }
+
 
     }
   },
@@ -167,7 +185,7 @@ export default {
 
 .btnBox .el-button[data-v-3ccf8124] {
   position: absolute;
-  top: 67%;
+  top: 68%;
   left: 46%;
   width: 8%;
 }
