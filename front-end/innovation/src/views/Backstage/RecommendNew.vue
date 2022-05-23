@@ -18,7 +18,7 @@
 					</el-form-item>
 					<el-form-item label="项目内容" style="width: 100%;" prop="content">
 						<!-- 还没有新建数据，content是临时起名，之后记得改 -->
-						<mavon-editor v-model="newdataform.content"></mavon-editor>
+						<mavon-editor ref="md" @imgAdd="imgAdd" @imgDel="imgDel" v-model="newdataform.content"></mavon-editor>
 					</el-form-item>
 					<!-- <el-form-item label="项目类型" style="width: 100%;" prop="projectType">
 						<el-input v-model="newdataform.project.projectType"></el-input>
@@ -334,6 +334,28 @@ export default {
 		uploadfile() {
 			this.$refs.upload2.submit()
 		},
+		imgAdd(pos, $file) {
+						let token = sessionStorage.getItem('token')
+		                var _this = this
+		                var formdata = new FormData();
+		                formdata.append('file', $file);
+		                this.$axios.post("http://81.70.56.45:8083/rotation/upload/",formdata,{
+		                    headers: {
+		                        'Content-Type': 'multipart/form-data',
+								'token': token
+		                    }
+		                }).then((response) => {
+		                    // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+							console.log(response)
+		                    if (response.status === 200) {
+		                        var url = response.data.data.url;
+		                        _this.$refs.md.$img2Url(pos,url)
+		                    }
+		                })
+		            },
+		            imgDel(pos) {
+		
+		            },
 		submitForm(formName) {
 			let that = this
 			console.log(that.newdataform)
