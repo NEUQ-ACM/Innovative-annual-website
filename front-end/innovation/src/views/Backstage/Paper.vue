@@ -62,7 +62,7 @@ export default {
 		},
 		handleDelete(index, row) {
 			let token = sessionStorage.getItem('token')
-			this.$axios.get("/menuItem/delMenuDetail/" + row.id,{
+			this.$axios.get("http://81.70.56.45:8083/menuItem/delMenuDetail/" + row.id,{
 				headers: {
 					token: token
 				}

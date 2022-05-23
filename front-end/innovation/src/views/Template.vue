@@ -1,8 +1,18 @@
 <template>
   <div>
     <h1>{{ records.title }}</h1>
-    <div>
-      <p>{{ records.content }}</p>
+    <div >
+      <mavon-editor
+      style="width:100%"
+        class="md"
+        :value="records.content"
+        :subfield="false"
+        :defaultOpen="'preview'"
+        :toolbarsFlag="false"
+        :editable="false"
+        :scrollStyle="true"
+        :ishljs="true"
+      />
     </div>
   </div>
 </template>
@@ -39,7 +49,7 @@ a {
   line-height: 45px;
 }
 div{
-  width: 70%;
+  width: 90%;
   padding:0 ;
   margin: 0 auto;
   
