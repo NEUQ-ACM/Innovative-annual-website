@@ -6,7 +6,7 @@
          @click="viewDetail(item.id,item.content,item.title)">
       <div class="newsBoxOne newsBox">
         <div class="date">
-          <span class="day">{{item.id}}</span>
+          <span class="day">{{item.projectId}}</span>
         </div>
         <div class="news">
           <span class="newsTitle">{{ item.title }}</span>
@@ -179,6 +179,7 @@ span.day {
   font-size: 24px;
   line-height: 40px;
   margin-bottom: 5px;
+   min-width: 6.25rem;
 }
 
 span.year {
