@@ -1,6 +1,7 @@
 <template>
   <div class="voteWrap" style="position: relative;">
     <h2 style="text-align: center; margin: 10px 0 20px">选择作品投票</h2>
+	 <h3 style="text-align: center; margin: 10px 0 10px;color: red;">您最多可以为10个项目投票，提交后将不能更改选择</h3>
     <div style="text-align: center">
       <el-transfer style="text-align: left; display: inline-block" v-model="value" filterable
         :props="{ key: 'id', label: 'title' }" :render-content="renderFunc" :titles="['所有作品', '选择作品']"
@@ -13,8 +14,15 @@
     <div class="btnBox">
       <el-button type="primary" @click="submitVote">确认</el-button>
     </div>
+	<!-- <el-pagination
+	  background
+	  layout="prev, pager, next"
+	  :total="total"
+	  @current-change="handleCurrentChange"
+	  >
+	</el-pagination> -->
   </div>
-
+	
 </template>
 
 <script>
@@ -26,7 +34,9 @@ export default {
       value: [],
       renderFunc(h, option) {
         return <span>{option.id} - {option.title}</span>;
-      }
+      },
+	  total:0,
+	  pages:0,
     };
   },
 
@@ -35,26 +45,31 @@ export default {
       console.log(value, direction, movedKeys);
     },
     getProject() {
-      this.$axios.get("/menuItem/getbyName/创新创业展示项目").then(res => {
-        console.log(res)
+      this.$axios.get("/menuItem/getbyName/创新创业展示项目?currentPage="+this.current).then(res => {
+		this.pages=res.data.data.pages
         // this.data = res.data.data.records
         res.data.data.records.forEach(element => {
-          console.log(element.projectId)
           this.data.push(element)
         });
         let pages = res.data.data.pages;
-        let cur = res.data.data.current;
-        while (pages > cur) {
-          this.$axios.get("/project/getbyType/1?currentPage=" + (cur + 1)).then(res => {
-            pages = res.data.data.pages;
-            cur = res.data.data.current;
-            res.data.data.records.forEach(element => {
-              this.data.push(element)
-            });
-          })
-        }
+        let cur = this.current;
+		for(let i=cur+1;i<=pages;i++){
+			this.$axios.get("/menuItem/getbyName/创新创业展示项目?currentPage="+i).then(res => {
+			  res.data.data.records.forEach(element => {
+			    this.data.push(element)
+			  });
+			})
+		}
       })
     },
+	// handleCurrentChange(val) {
+	// 		let newvalue=this.value
+	//         this.current=val
+	// 		this.data=[]
+	// 		this.getProject()
+	// 		this.value=newvalue
+	//       },
+	
     submitVote() {
       let that = this
       this.value.forEach(key => {
