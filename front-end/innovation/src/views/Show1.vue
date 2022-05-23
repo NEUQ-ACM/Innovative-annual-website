@@ -3,7 +3,7 @@
     <div class="boxWrap"
          v-for="(item) in noticeData"
          :key="item.id"
-         @click="viewDetail(item.id)">
+         @click="viewDetail(item.id,item.content,item.title)">
       <div class="newsBoxOne newsBox">
         <div class="date">
           <span class="day">{{item.id}}</span>
@@ -85,7 +85,8 @@ export default {
     };
   },
   methods: {
-    viewDetail (id) {
+    viewDetail (id,content,title) {
+      this.$store.commit('itemChange',{content,title})
       this.$router.push({ path: '/ItemDetail', query: { id: id } })
     },
     pageChange (val) {

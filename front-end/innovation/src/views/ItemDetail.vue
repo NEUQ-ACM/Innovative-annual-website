@@ -1,15 +1,23 @@
 <template>
   <div style="margin-top:3%">
     <div>
-      <span style="font-size:22px">基于UWB定位的手机端车库管理系统</span>
+      <span style="font-size:22px">{{title}}</span>
     </div>
     <el-col :span="12"
             :offset="6">
       <el-divider></el-divider>
     </el-col>
-    <img src="../assets/images/基于UWB定位的手机端车库管理系统.jpg"
-         alt=""
-         width="50%">
+    <mavon-editor
+      style="width:100%"
+        class="md"
+        :value="content"
+        :subfield="false"
+        :defaultOpen="'preview'"
+        :toolbarsFlag="false"
+        :editable="false"
+        :scrollStyle="true"
+        :ishljs="true"
+      />
   </div>
 
   <!-- <div style="margin-top: 1%;">
@@ -116,6 +124,8 @@ export default {
   name: "",
   data () {
     return {
+      title:'',
+      content:'',
       newdataform: {
         project: {
           projectId: "",
@@ -184,21 +194,19 @@ export default {
   },
   methods: {
     // 请求作品信息
-    async getProject () {
-      let id = this.$route.query.id
-      console.log(id)
-      const { data: res } = await this.$axios.get(`/project/getbyId/` + id)
-      if (res.status === 200) {
-        console.log(res)
-        this.newdataform = res.data
-        return this.$message.success('请求成功')
-      }
-      else return this.$message.error('请求作品详情失败')
-      console.log(res)
-    }
+    // async getProject () {
+    //   let id = this.$route.query.id
+    //   console.log(id)
+    //   this.$axios.get('http://81.70.56.45:8083/menuItem/getbyName/'+this.$route.query.id).then(res=>{
+    //     console.log(res);
+    //   })
+    //   console.log(res)
+    // }
   },
   mounted () {
-    this.getProject()
+    // this.getProject()
+    this.content=this.$store.state.itemContent
+    this.title=this.$store.state.itemTitle
   },
 };
 </script>
