@@ -1,63 +1,59 @@
 <template>
   <div style="width: 70%;margin-left: 15%;display: flex;flex-direction: row;padding-top: 2%;">
-	  <span style="width: 25%;margin-left: 0%;margin-right: 5%;">
-		  <div style="background-color: #004EA1;color: white;font-size: 25px;height: 100px;align-items: center;display: flex;justify-content: center;">
-			  <div >
-				  年会通知公告
-			  </div>
-			  
-		</div>
-		  <div style="height: 50px;background-color: #F9F9F9;">
-			  
-		  </div>
-	  </span>
-	  <span style="width: 80%;margin-left: 5%;">
-		  <div >
-		  		<div
-		  			class="boxWrap"
-		  			v-for="(item) in noticeData"
-		  			:key="item.id"
-		  			@click="viewDetail(item.id,item.content,item.title)"
-		  		  >
-		  				    <div class="newsBoxOne newsBox">
-		  				      <div class="date">
-		  				        <span class="day">{{item.updateTime.substring(8,10)}}</span>
-		  				        <span class="year">{{item.updateTime.substring(0,7)}}</span>
-		  				      </div>
-		  				      <div class="news">
-		  				        <span class="newsTitle">{{ item.title }}</span>
-		  				        <span class="newsContent">{{item.description}}</span>
-		  				      </div>
-		  				    </div>
-		  		</div>
-		  </div>
-	  </span>
+    <span style="width: 25%;margin-left: 0%;margin-right: 5%;">
+      <div style="background-color: #004EA1;color: white;font-size: 25px;height: 100px;align-items: center;display: flex;justify-content: center;">
+        <div>
+          年会通知公告
+        </div>
+      </div>
+      <div style="height: 50px;background-color: #F9F9F9;">
+      </div>
+    </span>
+    <span style="width: 80%;margin-left: 5%;">
+      <div>
+        <div class="boxWrap"
+             v-for="(item) in noticeData"
+             :key="item.id"
+             @click="viewDetail(item.id,item.content,item.title)">
+          <div class="newsBoxOne newsBox">
+            <div class="date">
+              <span class="day">{{item.updateTime.substring(8,10)}}</span>
+              <span class="year">{{item.updateTime.substring(0,7)}}</span>
+            </div>
+            <div class="news">
+              <span class="newsTitle">{{ item.title }}</span>
+              <!-- <span class="newsContent">{{item.description}}</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       noticeData: [{}],
     };
   },
   methods: {
-	viewDetail (id,content,title) {
-	  this.$store.commit('itemChange',{content,title})
-	  console.log('跳转')
-	  this.$router.push({ path: '/ItemDetail', query: { id: id } })
-	},
+    viewDetail (id, content, title) {
+      this.$store.commit('itemChange', { content, title })
+      console.log('跳转')
+      this.$router.push({ path: '/ItemDetail', query: { id: id } })
+    },
     // viewDetail(id) {
     //   this.$router.push({path:'/NoticeDetail',query:{id:id}})
     // },
   },
-  mounted() {
-	  // this.$axios.get("http://81.70.56.45:8083/menuItem/getSecMenu/3").then((res) => {
-	  // 	console.log(res);
-	  // 	this.notices = res.data.data.menuItemList.slice(0,3)
-	  // 	this.changeDateForm()
-	  // });
+  mounted () {
+    // this.$axios.get("http://81.70.56.45:8083/menuItem/getSecMenu/3").then((res) => {
+    // 	console.log(res);
+    // 	this.notices = res.data.data.menuItemList.slice(0,3)
+    // 	this.changeDateForm()
+    // });
     this.$axios
       .get("http://81.70.56.45:8083/menuItem/getSecMenu/3")
       .then((response) => {
@@ -67,7 +63,7 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-      console.log(this.noticeData);
+    console.log(this.noticeData);
   },
 };
 </script>
@@ -94,17 +90,21 @@ export default {
 } */
 
 div.boxWrap {
-  padding: 30px 20px;
-  margin-bottom: 20px;
+  padding: 10px 5px;
+  /* margin-bottom: 20px; */
   transition: 0.5s;
 }
-.boxWrap:hover{
-	box-shadow: 0 8px 16px rgba(0, 0, 0, .12), 0 0 24px rgba(0, 0, 0, .04);
-	margin-left: 0.625rem;
+.boxWrap:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 0 24px rgba(0, 0, 0, 0.04);
+  margin-left: 0.625rem;
 }
-.boxWrap:hover .news .newsTitle{
-	color: #004EA1;
+.boxWrap:hover .news .newsTitle {
+  color: #004ea1;
 }
+span.newsTitle {
+  margin-top: 16px;
+}
+
 .newsBox {
   /* width: 50%; */
   display: flex;
@@ -117,7 +117,7 @@ div.newsbox span {
 }
 
 div.date {
-  width: 80px;
+  min-width: 80px;
   display: flex;
   flex-wrap: wrap;
   border-right: 1px solid #ddd;
@@ -126,14 +126,14 @@ div.date {
 }
 
 span.day {
-  color: #004EA1;
-  font-size: 40px;
+  color: #004ea1;
+  font-size: 30px;
   line-height: 40px;
   margin-bottom: 5px;
 }
 
 span.year {
-  color: #004EA1;
+  color: #004ea1;
   font-size: 14px;
 }
 
