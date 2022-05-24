@@ -14,27 +14,29 @@
           <i class="el-icon-arrow-right"></i>
         </div> -->
 
-        <div class="announmentItemList">
-          <div class="announmentItem" v-for="notice in notices" :key="notice.id">
+        <div class="announmentItemList"  >
+          <div class="announmentItem"  v-for="notice in notices" :key="notice.id">
             <!-- <div class="announmentText"></div> -->
-            <router-link :to="`/NoticeDetail?id=${notice.id}`">
-              <div class="announmentWrap" :style="{backgroundImage: 'url('+notice.imgUrl+')'}">
-                <div class="announmentText" style="overflow: hidden">
-                  <div class="date">
-                    <span class="day">{{notice.updateTime[2]}}</span>
-                    <span class="year">{{notice.updateTime[0]}}.{{notice.updateTime[1]}}</span>
-                  </div>
-                  <div class="news">
-                    <span class="newsTitle">
-                      {{notice.title}}
-                    </span>
-                    <span class="newsContent">
-                      {{notice.description}}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </router-link>
+            <!-- <router-link :to="`/ItemDetail?id=${notice.id}`"> -->
+              <div @click="viewDetail(notice.id,notice.content,notice.title)">
+				  <div class="announmentWrap" :style="{backgroundImage: 'url('+notice.name+')'}">
+				    <div class="announmentText" style="overflow: hidden">
+				      <div class="date">
+				        <span class="day">{{notice.updateTime[2]}}</span>
+				        <span class="year">{{notice.updateTime[0]}}.{{notice.updateTime[1]}}</span>
+				      </div>
+				      <div class="news">
+				        <span class="newsTitle">
+				          {{notice.title}}
+				        </span>
+				        <span class="newsContent">
+				          {{notice.description}}
+				        </span>
+				      </div>
+				    </div>
+				  </div>
+			  </div>
+            <!-- </router-link> -->
           </div>
         </div>
       </div>
@@ -81,6 +83,11 @@ export default {
     };
   },
   methods: {
+	viewDetail (id,content,title) {
+	  this.$store.commit('itemChange',{content,title})
+	  console.log('跳转')
+	  this.$router.push({ path: '/ItemDetail', query: { id: id } })
+	},
     handlePreClick(tab, event) {
       console.log(tab, event);
     },
@@ -88,13 +95,18 @@ export default {
       console.log(tab, event);
     },
     queryNotice(){
-      axios.get('http://81.70.56.45:8082/notice/getAll').then(
-        res => {
-          this.notices = res.data.data.records
-          this.notices = this.notices.slice(0,3)
-          this.changeDateForm()
-        }
-      )
+		this.$axios.get("http://81.70.56.45:8083/menuItem/getSecMenu/3").then((res) => {
+			console.log(res);
+			this.notices = res.data.data.menuItemList.slice(0,3)
+			this.changeDateForm()
+		});
+      // axios.get('http://81.70.56.45:8082/notice/getAll').then(
+      //   res => {
+      //     this.notices = res.data.data.records
+      //     this.notices = this.notices.slice(0,3)
+      //     this.changeDateForm()
+      //   }
+      // )
     },
     queryRotation(){
       axios.get('http://81.70.56.45:8083/rotation/getAll').then(

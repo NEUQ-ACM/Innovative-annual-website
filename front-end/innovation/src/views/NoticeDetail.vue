@@ -8,9 +8,15 @@
         <span class="date">更新日期：{{ notice.updateTime }}</span>
         <span class="views">浏览量：{{ notice.viewCounts }}</span>
       </div>
-      <div class="content">
-        {{ notice.content }}
-      </div>
+	  <div v-if="id==19" style="width: 100%;height: 100%;margin-top: 10%;">
+		  <iframe style="width: 100%;height: 100vh;" src="http://81.70.56.45:8083/image/1528803860202700800.pdf"></iframe>
+	  </div>
+	  <div v-if="id==20" style="margin-top: 10%;" >
+		  <embed style="width: 100%;height: 100vh;" src="http://81.70.56.45:8083/image/1528804088658051072.pdf">
+	  </div>
+	  <div class="content" v-else-if="id!=19&&id!=20" >
+	    {{ notice.content }}
+	  </div>
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <div class="divider">
         <span class="annexStart">相关附件</span>
@@ -35,11 +41,13 @@ export default {
     return {
       notice: {},
       annexList: [],
+	  id:'',
     };
   },
   methods: {
     queryNotice() {
-      axios.get("/notice/" + this.$route.query.id).then((res) => {
+		this.id=this.$route.query.id
+      axios.get("http://81.70.56.45:8082/notice/" + this.$route.query.id).then((res) => {
         // console.log(res);
         this.notice = res.data.data.notice;
         this.annexList = res.data.data.annexList;

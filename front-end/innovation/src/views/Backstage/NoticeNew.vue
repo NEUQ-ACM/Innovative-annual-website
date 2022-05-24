@@ -2,21 +2,24 @@
 	<div class="maincontainer">
 		<el-card class="box-card">
 			<div slot="header">
-				<span style="font-size: 25px;">新建学术论文</span>
+				<span style="font-size: 25px;">新建通知公告</span>
 			</div>
 			<div style="width: 100%;">
 				<el-form :model="newdataform" :rules="rules" ref="newdataform" label-width="100px"
 					class="demo-ruleForm">
-					<el-form-item label="论文ID" prop="projectId" style="width: 100%;">
+					<el-form-item label="通知ID" prop="projectId" style="width: 100%;">
 						<el-input v-model="newdataform.projectId" type="number" placeholder="输入数字"></el-input>
 					</el-form-item>
-					<el-form-item label="论文名称" prop="projectName" style="width: 100%;">
+					<el-form-item label="通知名称" prop="projectName" style="width: 100%;">
 						<el-input v-model="newdataform.title"></el-input>
 					</el-form-item>
-					<el-form-item label="论文描述" style="width: 100%;" prop="description">
+					<el-form-item label="通知描述" style="width: 100%;" prop="description">
 						<el-input type="textarea" v-model="newdataform.description"></el-input>
 					</el-form-item>
-					<el-form-item label="论文内容" style="width: 100%;" prop="content">
+					<!-- <el-form-item label="通知封面图" style="width: 100%;" prop="description">
+						<el-input type="textarea" v-model="newdataform.description"></el-input>
+					</el-form-item> -->
+					<el-form-item label="通知内容" style="width: 100%;" prop="content">
 						<!-- 还没有新建数据，content是临时起名，之后记得改 -->
 						<mavon-editor ref="md" @imgAdd="imgAdd" @imgDel="imgDel" v-model="newdataform.content"></mavon-editor>
 					</el-form-item>
@@ -73,8 +76,8 @@
 				        </div>
 				    </el-upload>
 				  </el-form-item> -->
-					<!-- <el-form-item label="上传校徽">
-						<el-upload action="http://81.70.56.45:8082/project/upload" ref="upload2" list-type="picture-card"
+					<el-form-item label="上传缩略图">
+						<el-upload action="http://81.70.56.45:8083/rotation/upload" limit="1" ref="upload2" :headers="myHeaders" list-type="picture-card"
 							:auto-upload="false" :on-success="handleAvatarSuccess2" :on-error="handleAvatarErr2"
 							:before-upload="beforeAvatarUpload2">
 							<i slot="default" class="el-icon-plus" v-if="!isbadgeimg"></i>
@@ -94,7 +97,7 @@
 							</div>
 						</el-upload>
 					</el-form-item>
-					<el-form-item label="学生列表" style="width: 100%;">
+					<!-- <el-form-item label="学生列表" style="width: 100%;">
 						<div>
 							<el-button @click="addStu()" type="primary">添加学生</el-button>
 						</div>
@@ -139,8 +142,7 @@
 						</div>
 					</el-form-item> -->
 					<el-form-item style="width: 100%;">
-						<el-button type="primary" @click="submitForm('newdataform')">立即创建</el-button>
-						<el-button @click="resetForm('newdataform')">重置项目</el-button>
+						<el-button type="primary" @click="submitbefore()">立即创建</el-button>
 						<el-button @click="cancelback()">取消创建</el-button>
 					</el-form-item>
 				</el-form>
@@ -236,6 +238,7 @@
 
 <script>
 import qs from 'qs';
+let token = sessionStorage.getItem('token')
 export default {
 	data() {
 		return {
@@ -250,6 +253,7 @@ export default {
 			isEditTch: false,
 			isaddStu: false,
 			isaddTch: false,
+			myHeaders: {'token': token},
 			// addstuItem: {
 			// 	name: '',
 			// 	grade: '',
@@ -284,9 +288,9 @@ export default {
 				projectId: "",
 				title: "",
 				description: "",
-				menuId: 4,
+				menuId: 3,
 				content: "",
-				name: "学术论文"
+				name: ""
 				// studentList: [
 				// ],
 				// teacherList: [
@@ -360,6 +364,7 @@ export default {
 				if (valid) {
 					let data1 = JSON.stringify(that.newdataform)
 					let token = sessionStorage.getItem('token')
+					console.log(data1)
 					that.$axios({
 						method: "post",//请求方式
 						url: 'http://81.70.56.45:8083/menuItem/addMenuDetail',//请求接口
@@ -369,11 +374,11 @@ export default {
 						},//请求头参数
 						data: data1//数据
 					})
-						.then(function (res) {
+					.then(function (res) {
 							console.log(res)
 							if (res.data.status == 200) {
 								that.$message.success('增加成功')
-								that.$router.push('/Paper')
+								that.$router.push('/Notice')
 							}
 							else {
 								that.$message.error('增加失败');
@@ -421,33 +426,42 @@ export default {
 		// 	}
 		// 	return isJPG && isLt2M;
 		// },
-		// handleRemove2(file) {
-		// 	console.log(file);
-		// },
-		// handlePictureCardPreview2(file) {
-		// 	this.dialogImageUrl = file.url;
-		// 	this.dialogVisible = true;
-		// },
-		// handleAvatarErr2(err, file, fileList) {
-		// 	this.$message.error('图片上传失败')
-		// },
-		// handleAvatarSuccess2(res, file) {
-		// 	this.newdataform.project.badgeUrl = res.data.url
-		// 	this.$message.success('图片上传成功')
-		// 	this.submitForm('newdataform.project')
-		// },
-		// beforeAvatarUpload2(file) {
-		// 	const isJPG = file.type === 'image/jpeg';
-		// 	const isLt2M = file.size / 1024 / 1024 < 2;
+		handleRemove2(file) {
+			const uploadFiles = this.$refs.upload2.uploadFiles
+			      console.log(uploadFiles)
+			      for (let i = 0; i < uploadFiles.length; i++) {
+			        if (uploadFiles[i]['url'] === file.url) {
+			          uploadFiles.splice(i, 1)
+			        }
+			      }
+		},
+		handlePictureCardPreview2(file) {
+			this.dialogImageUrl = file.url;
+			this.dialogVisible = true;
+		},
+		handleAvatarErr2(err, file, fileList) {
+			this.$message.error('图片上传失败')
+		},
+		submitbefore(){
+				this.$refs.upload2.submit()
+		},
+		handleAvatarSuccess2(res, file) {
+			this.newdataform.name = res.data.url
+			this.$message.success('图片上传成功')
+			this.submitForm('newdataform')
+		},
+		beforeAvatarUpload2(file) {
+			const isJPG = file.type === 'image/jpeg';
+			const isLt2M = file.size / 1024 / 1024 < 2;
 
-		// 	if (!isJPG) {
-		// 		this.$message.error('上传图片只能是 JPG 格式!');
-		// 	}
-		// 	if (!isLt2M) {
-		// 		this.$message.error('上传图片大小不能超过 2MB!');
-		// 	}
-		// 	return isJPG && isLt2M;
-		// },
+			if (!isJPG) {
+				this.$message.error('上传图片只能是 JPG 格式!');
+			}
+			if (!isLt2M) {
+				this.$message.error('上传图片大小不能超过 2MB!');
+			}
+			return isJPG && isLt2M;
+		},
 		// handleEdit1(index, row) {
 		// 	console.log(index, row);
 		// 	this.editstuItem = row

@@ -12,12 +12,12 @@
 		  </div>
 	  </span>
 	  <span style="width: 80%;margin-left: 5%;">
-		  <div>
+		  <div >
 		  		<div
 		  			class="boxWrap"
 		  			v-for="(item) in noticeData"
 		  			:key="item.id"
-		  			@click="viewDetail(item.id)"
+		  			@click="viewDetail(item.id,item.content,item.title)"
 		  		  >
 		  				    <div class="newsBoxOne newsBox">
 		  				      <div class="date">
@@ -26,7 +26,7 @@
 		  				      </div>
 		  				      <div class="news">
 		  				        <span class="newsTitle">{{ item.title }}</span>
-		  				        <span class="newsContent">请查看附件</span>
+		  				        <span class="newsContent">{{item.description}}</span>
 		  				      </div>
 		  				    </div>
 		  		</div>
@@ -43,20 +43,29 @@ export default {
     };
   },
   methods: {
-    viewDetail(id) {
-      this.$router.push({path:'/NoticeDetail',query:{id:id}})
-    },
+	viewDetail (id,content,title) {
+	  this.$store.commit('itemChange',{content,title})
+	  console.log('跳转')
+	  this.$router.push({ path: '/ItemDetail', query: { id: id } })
+	},
+    // viewDetail(id) {
+    //   this.$router.push({path:'/NoticeDetail',query:{id:id}})
+    // },
   },
   mounted() {
+	  // this.$axios.get("http://81.70.56.45:8083/menuItem/getSecMenu/3").then((res) => {
+	  // 	console.log(res);
+	  // 	this.notices = res.data.data.menuItemList.slice(0,3)
+	  // 	this.changeDateForm()
+	  // });
     this.$axios
-      .get("/notice/getAll")
+      .get("http://81.70.56.45:8083/menuItem/getSecMenu/3")
       .then((response) => {
-        this.noticeData = response.data.data.records;
+        this.noticeData = response.data.data.menuItemList;
         console.log(this.noticeData);
       })
       .catch((error) => {
         console.log(error);
-        alert("网络错误，不能访问");
       });
       console.log(this.noticeData);
   },

@@ -16,7 +16,7 @@
         <router-link to="/Show2"
                      active-class="linkActive">
           <div style="height: 50px;padding: 5px;margin: top 10px;">
-            创新创业展示项目
+            创新创业交流项目
           </div>
         </router-link>
         <router-link to="/Show3"
@@ -54,7 +54,7 @@ export default {
       })
       .catch((error) => {
         console.log(error);
-        alert("网络错误，不能访问");
+        // alert("网络错误，不能访问");
       });
     console.log(this.noticeData);
   },

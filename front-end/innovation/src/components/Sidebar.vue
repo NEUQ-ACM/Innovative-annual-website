@@ -24,7 +24,7 @@
       </el-menu-item>
       <el-menu-item index="Reform">
         <i class="el-icon-setting"></i>
-        <span slot="title">创新创业展示项目</span>
+        <span slot="title">创新创业交流项目</span>
       </el-menu-item>
       <el-menu-item index="annex">
         <i class="el-icon-setting"></i>

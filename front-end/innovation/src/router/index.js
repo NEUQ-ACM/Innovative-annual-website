@@ -36,6 +36,7 @@ import Navmenu from '../views/Backstage/Navmenu.vue'
 import Addtplt from '../views/Backstage/Addtplt.vue'
 import Template from '../views/Template.vue'
 import VoteBack from '../views/Backstage/VoteBack.vue'
+import NoticeNew from '../views/Backstage/NoticeNew.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -79,6 +80,11 @@ const routes = [
     path: '/Organizer',
     name: 'Organizer',
     component: Organizer
+  },
+  {
+    path: '/NoticeNew',
+    name: 'NoticeNew',
+    component: NoticeNew
   },
   {
     path: '/Login',
