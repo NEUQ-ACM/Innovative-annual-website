@@ -123,6 +123,7 @@ export default {
 div.Mmain {
   z-index: 1;
   position: relative;
+  height: 50px;
   top: 39px;
 }
 /deep/.el-submenu__title {
