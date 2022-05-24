@@ -1,5 +1,8 @@
 <template>
-  <div style="margin-top:3%">
+  <div style="margin-top:1%">
+    <el-page-header @back="goBack"
+                    class="goback">
+    </el-page-header>
     <div>
       <span style="font-size:22px">{{title}}</span>
     </div>
@@ -7,17 +10,15 @@
             :offset="6">
       <el-divider></el-divider>
     </el-col>
-    <mavon-editor
-      style="width:60%;left:50%;transform: translateX(-50%);"
-        class="md"
-        :value="content"
-        :subfield="false"
-        :defaultOpen="'preview'"
-        :toolbarsFlag="false"
-        :editable="false"
-        :scrollStyle="true"
-        :ishljs="true"
-      />
+    <mavon-editor style="width:60%;left:50%;transform: translateX(-50%);"
+                  class="md"
+                  :value="content"
+                  :subfield="false"
+                  :defaultOpen="'preview'"
+                  :toolbarsFlag="false"
+                  :editable="false"
+                  :scrollStyle="true"
+                  :ishljs="true" />
   </div>
 
   <!-- <div style="margin-top: 1%;">
@@ -124,8 +125,8 @@ export default {
   name: "",
   data () {
     return {
-      title:'',
-      content:'',
+      title: '',
+      content: '',
       newdataform: {
         project: {
           projectId: "",
@@ -193,6 +194,9 @@ export default {
     };
   },
   methods: {
+    goBack () {
+      this.$router.go(-1);
+    }
     // 请求作品信息
     // async getProject () {
     //   let id = this.$route.query.id
@@ -205,13 +209,17 @@ export default {
   },
   mounted () {
     // this.getProject()
-    this.content=this.$store.state.itemContent
-    this.title=this.$store.state.itemTitle
+    this.content = this.$store.state.itemContent
+    this.title = this.$store.state.itemTitle
   },
 };
 </script>
 
 <style scoped>
+.goback {
+  padding-left: 70%;
+  padding-bottom: 1%;
+}
 .el-breadcrumb {
   margin-top: 10px;
 }

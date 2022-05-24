@@ -10,7 +10,7 @@
         </div>
         <div class="news">
           <span class="newsTitle">{{ item.title }}</span>
-          <span class="newsContent">{{ item.createTime }}</span>
+          <span class="newsContent">{{ item.description }}</span>
         </div>
       </div>
     </div>
@@ -85,8 +85,8 @@ export default {
     };
   },
   methods: {
-    viewDetail (id,content,title) {
-      this.$store.commit('itemChange',{content,title})
+    viewDetail (id, content, title) {
+      this.$store.commit('itemChange', { content, title })
       this.$router.push({ path: '/ItemDetail', query: { id: id } })
     },
     pageChange (val) {
@@ -143,8 +143,8 @@ export default {
 } */
 
 div.boxWrap {
-  padding: 30px 20px;
-  margin-bottom: 20px;
+  padding: 10px 5px;
+  /* margin-bottom: 20px; */
   transition: 0.5s;
 }
 .boxWrap:hover {
@@ -176,10 +176,10 @@ div.date {
 
 span.day {
   color: #004ea1;
-  font-size: 24px;
-  line-height: 40px;
+  font-size: 30px;
+  line-height: 30px;
   margin-bottom: 5px;
-   min-width: 6.25rem;
+  min-width: 6.25rem;
 }
 
 span.year {
