@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="realMain">
     <div class="navMain">
       <!-- <div style="color: white;margin-left: 15%;text-align: center;height: 70%;line-height: 80px;font-size: 28px;font-weight: 500;margin-top: 1%;">第七届河北省大学生创新创业年会</div> -->
       <span>第七届河北省大学生创新创业年会</span>
     </div>
-    <div style="display: flex; float: right; width: 100%"
+    <div style=""
          class="Mmain">
-      <div style="margin-left: 50%">
+      <div >
         <el-menu router
                  :default-active="activeIndex"
                  class="el-menu-demo"
@@ -111,12 +111,18 @@ export default {
   font-family: "kaiti";
   src: url(../assets/font/STKAITI.TTF);
 }
+.realMain{
+  display: flex;
+  background: url("../assets/images/logo_bg.png") 800px center no-repeat;
+  background-color: #004ea1;
+  justify-content: space-around;
+}
 .el-menu-demo {
   width: 100%;
 }
 div.Mmain {
   z-index: 1;
-  position: absolute;
+  position: relative;
   top: 39px;
 }
 /deep/.el-submenu__title {
@@ -126,8 +132,7 @@ div.Mmain {
   height: 61px !important;
 }
 .navMain {
-  background: url("../assets/images/logo_bg.png") 800px center no-repeat;
-  background-color: #004ea1;
+  
   height: 100px;
   display: flex;
   align-items: center;
