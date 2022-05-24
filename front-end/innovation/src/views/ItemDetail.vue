@@ -1,6 +1,6 @@
 <template>
   <div style="margin-top:1%">
-    <el-page-header @back="goBack"
+    <el-page-header @back="goBack()"
                     class="goback">
     </el-page-header>
     <div>
@@ -195,7 +195,15 @@ export default {
   },
   methods: {
     goBack () {
-      this.$router.go(-1);
+      if(this.$route.query.type==1){
+        this.$router.push({path:'/Show1',query:{current:this.$route.query.current}})
+      }
+      if(this.$route.query.type==2){
+        this.$router.push({path:'/Show2',query:{current:this.$route.query.current}})
+      }
+      if(this.$route.query.type==3){
+        this.$router.push({path:'/Show3',query:{current:this.$route.query.current}})
+      }
     }
     // 请求作品信息
     // async getProject () {

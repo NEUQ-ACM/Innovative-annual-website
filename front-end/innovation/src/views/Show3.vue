@@ -3,7 +3,7 @@
     <div class="boxWrap"
          v-for="(item) in noticeData"
          :key="item.id"
-         @click="viewDetail(item.id,item.content,item.title)">
+         @click="viewDetail(item.id,item.content,item.title,current)">
       <div class="newsBoxOne newsBox">
         <div class="date">
           <span class="day">{{item.projectId}}</span>
@@ -85,9 +85,9 @@ export default {
     };
   },
   methods: {
-    viewDetail (id, content, title) {
+    viewDetail (id, content, title,current) {
       this.$store.commit('itemChange', { content, title })
-      this.$router.push({ path: '/ItemDetail', query: { id: id } })
+      this.$router.push({ path: '/ItemDetail', query: { id: id,current,type:3 } })
     },
     pageChange (val) {
       this.current = val
@@ -105,6 +105,10 @@ export default {
     }
   },
   mounted () {
+    if(this.$route.query.current)
+    {
+      this.current=this.$route.query.current
+    }
     this.$axios
       .get("http://81.70.56.45:8083/menuItem/getbyName/创业推荐项目?currentPage=" + this.current)
       .then((response) => {
