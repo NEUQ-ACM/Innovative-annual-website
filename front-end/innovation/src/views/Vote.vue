@@ -1,10 +1,12 @@
 <template>
+
   <div class="voteWrap" style="position: relative;">
+    <!-- <span v-for="i in data1" :key="i">{{i    }}</span> -->
     <h2 style="text-align: center; margin: 10px 0 20px">选择作品投票</h2>
     <h3 style="text-align: center; margin: 10px 0 10px;color: red;">您最多可以为10个项目投票，提交后将不能更改选择</h3>
     <div style="text-align: center">
       <el-transfer style="text-align: left; display: inline-block" v-model="value" filterable
-        :props="{ key: 'id', label: 'title' }" :render-content="renderFunc" :titles="['所有作品', '选择作品']"
+        :props="{ key: 'projectId', label: 'title' }" :render-content="renderFunc" :titles="['所有作品', '选择作品']"
         :button-texts="['删除', '添加']" :format="{
           noChecked: '${total}',
           hasChecked: '${checked}/${total}'
@@ -13,7 +15,6 @@
     </div>
     <div class="btnBox">
       <el-button type="primary" @click="submitVote">确认</el-button>
-
     </div>
     <!-- <el-pagination
 	  background
@@ -34,7 +35,7 @@ export default {
       current: 1,
       value: [],
       renderFunc(h, option) {
-        return <span>{option.id} - {option.title}</span>;
+        return <span>{option.projectId} - {option.title}</span>;
       },
       total: 0,
       pages: 0,
@@ -50,12 +51,15 @@ export default {
       this.$axios.get("http://81.70.56.45:8083/menuItem/getbyName/创新创业展示项目?currentPage=" + this.current).then(res => {
         this.pages = res.data.data.pages
         // this.data = res.data.data.records
+        console.log(this.data.length)
+        console.log("------------")
         res.data.data.records.forEach(element => {
           this.data.push(element)
         });
         let pages = res.data.data.pages;
         let cur = this.current;
         for (let i = cur + 1; i <= pages; i++) {
+          // console.log(this.data.length)
           this.$axios.get("http://81.70.56.45:8083/menuItem/getbyName/创新创业展示项目?currentPage=" + i).then(res => {
             res.data.data.records.forEach(element => {
               this.data.push(element)
@@ -72,7 +76,8 @@ export default {
     // 		this.value=newvalue
     //       },
 
-    submitVote() {
+    async submitVote() {
+      // console.log(this.data.length)
       let that = this
       if (that.value.length > 10) {
         this.$message({
@@ -84,9 +89,10 @@ export default {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(() => {
+        }).then(async () => {
+          let that = this
           let token = window.sessionStorage.getItem('token')
-          this.value.forEach(key => {
+          that.value.forEach(key => {
             that.proId.push(key)
           })
           that.$axios({
@@ -96,18 +102,19 @@ export default {
               'Content-Type': 'application/json',
               'token': token
             },//请求头参数
-            data: proId
+            data: JSON.stringify(this.proId)
           }).then(function (res) {
+            console.log(res)
             if (res.data.status == 200) {
+              
               that.$message.success('投票成功')
-			  that.$router.push('/home')
-			  that.$message.success('投票成功')
             }
             else {
               that.$message.error('投票失败');
             }
           })
             .catch(function (err) {
+              // return "fail"
               that.$message.error('投票失败');
             })
         }).catch(() => {
@@ -115,11 +122,27 @@ export default {
             type: 'info',
             message: '已取消提交'
           });
+
         });
       }
 
 
-    }
+    },
+
+    sortData(){
+      // this.data.forEach(i => {
+      //   console.log(i.id)
+      // })
+      this.data.sort(function(a,b){
+        return a.id-b.id
+      })
+      // console.log("-------------")
+      // this.data.forEach(i => {
+      //   console.log(i.id)
+      // })
+      // console.log("sort被调用了-----------")
+      // console.log(this.data.length)
+    },
   },
   mounted() {
     this.getProject()
