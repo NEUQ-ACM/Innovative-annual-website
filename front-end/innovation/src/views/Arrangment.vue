@@ -1,61 +1,45 @@
 <template>
- <div style="margin-top: 20px;">
-	 <el-card class="box-card">
-	   <div class="block">
-	     <el-timeline>
-	       <el-timeline-item timestamp="2022/6"
-	                         placement="top"
-	                         type="warning"
-	                         size="large"
-	                         class="dayTime">
-	       </el-timeline-item>
-	       <el-timeline-item timestamp="08:00-19:00"
-	                         placement="top">
-	         <div class="member">嘉宾及专家报到</div>
-	         <div class="location">东北大学秦皇岛分校</div>
-	       </el-timeline-item>
-	       <el-timeline-item timestamp="08:00-19:00"
-	                         placement="top">
-	         <div class="member">师生代表报到</div>
-	         <div class="location">东北大学秦皇岛分校</div>
-	       </el-timeline-item>
-	       <el-timeline-item timestamp="2022/6"
-	                         placement="top"
-	                         type="warning"
-	                         size="large"
-	                         class="dayTime">
-	       </el-timeline-item>
-	       <el-timeline-item timestamp="08:00-19:00"
-	                         placement="top">
-	         <div class="member">嘉宾及专家报到</div>
-	         <div class="location">东北大学秦皇岛分校</div>
-	       </el-timeline-item>
-	       <el-timeline-item timestamp="08:00-19:00"
-	                         placement="top">
-	         <div class="member">师生代表报到</div>
-	         <div class="location">东北大学秦皇岛分校</div>
-	       </el-timeline-item>
-	       <el-timeline-item timestamp="2022/6"
-	                         placement="top"
-	                         type="warning"
-	                         size="large"
-	                         class="dayTime">
-	       </el-timeline-item>
-	       <el-timeline-item timestamp="08:00-19:00"
-	                         placement="top">
-	         <div class="member">嘉宾及专家报到</div>
-	         <div class="location">东北大学秦皇岛分校</div>
-	 
-	       </el-timeline-item>
-	       <el-timeline-item timestamp="08:00-19:00"
-	                         placement="top">
-	         <div class="member">师生代表报到</div>
-	         <div class="location">东北大学秦皇岛分校</div>
-	       </el-timeline-item>
-	     </el-timeline>
-	   </div>
-	 </el-card>
- </div>
+  <div style="margin-top: 20px;">
+    <el-card class="box-card">
+      <div class="block">
+        <el-timeline>
+          <el-timeline-item timestamp="2022/5/27"
+                            placement="top"
+                            type="warning"
+                            size="large"
+                            class="dayTime">
+          </el-timeline-item>
+          <el-timeline-item timestamp="09:00-9:30"
+                            placement="top">
+            <div class="member">开幕式</div>
+            <div class="location">东北大学秦皇岛分校</div>
+          </el-timeline-item>
+          <el-timeline-item timestamp="09:30-10:30"
+                            placement="top">
+            <div class="member">交流分享</div>
+            <div class="location">东北大学秦皇岛分校</div>
+          </el-timeline-item>
+          <el-timeline-item timestamp="13:30-18:00"
+                            placement="top">
+            <div class="member">作品评审</div>
+            <div class="location">东北大学秦皇岛分校</div>
+          </el-timeline-item>
+          <el-timeline-item timestamp="2022/5/28"
+                            placement="top"
+                            type="warning"
+                            size="large"
+                            class="dayTime">
+          </el-timeline-item>
+          <el-timeline-item timestamp="09:00-11:00"
+                            placement="top">
+            <div class="member">推国家年会作品评审</div>
+            <div class="location">东北大学秦皇岛分校</div>
+          </el-timeline-item>
+
+        </el-timeline>
+      </div>
+    </el-card>
+  </div>
 
 </template>
 
@@ -95,17 +79,17 @@ export default {
   color: #afc0d6;
   width: 400px;
 }
-@media screen and (max-width:768px ){
-  .box-card{
+@media screen and (max-width: 768px) {
+  .box-card {
     position: relative;
-   /*top: -68px;
+    /*top: -68px;
     left: -64px;*/
     width: 100%;
   }
-  .el-timeline{
+  .el-timeline {
     padding: 0px;
   }
-  .block .el-timeline .location{
+  .block .el-timeline .location {
     width: 300px;
   }
 }
