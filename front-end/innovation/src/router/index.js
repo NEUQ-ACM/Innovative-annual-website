@@ -37,6 +37,7 @@ import Addtplt from '../views/Backstage/Addtplt.vue'
 import Template from '../views/Template.vue'
 import VoteBack from '../views/Backstage/VoteBack.vue'
 import NoticeNew from '../views/Backstage/NoticeNew.vue'
+import VoteSettings from '../views/Backstage/VoteSettings.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -115,11 +116,11 @@ const routes = [
     path: '/Notice',
     name: 'Notice',
     component: Notice,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/NoticeDetail',
@@ -130,73 +131,73 @@ const routes = [
     path: '/NoticeEdit',
     name: 'NoticeEdit',
     component: NoticeEdit,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/annex',
     name: 'annex',
     component: annex,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/Paper',
     name: 'Paper',
     component: Paper,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/Recommend',
     name: 'Recommend',
     component: Recommend,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
 
   {
     path: '/Reform',
     name: 'Reform',
     component: Reform,
-	beforeRouteEnter(to, from, next) {
-		console.log('路由守卫生效')
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      console.log('路由守卫生效')
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/Rotation',
     name: 'Rotation',
     component: Rotation,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/Timeline',
     name: 'Timeline',
     component: Timeline,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/IndexManage',
@@ -207,70 +208,70 @@ const routes = [
     path: '/Team',
     name: 'Team',
     component: Team,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   }, {
     path: '/RecommendDt',
     name: 'RecommendDt',
     component: RecommendDt,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/RecommendNew',
     name: 'RecommendNew',
     component: RecommendNew,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/ReformDt',
     name: 'ReformDt',
     component: ReformDt,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/ReformNew',
     name: 'ReformNew',
     component: ReformNew,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/PaperDt',
     name: 'PaperDt',
     component: PaperDt,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/PaperNew',
     name: 'PaperNew',
     component: PaperNew,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/showvote',
@@ -291,21 +292,21 @@ const routes = [
     path: '/Navmenu',
     name: 'Navmenu',
     component: Navmenu,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/Addtplt',
     name: 'Addtplt',
     component: Addtplt,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   },
   {
     path: '/Template',
@@ -316,11 +317,21 @@ const routes = [
     path: '/VoteBack',
     name: 'VoteBack',
     component: VoteBack,
-	beforeRouteEnter(to, from, next) {
-	    if (to.name !== 'Login' && !window.sessionStorage.token) {next({ name: 'Login' })}
-	  // 如果用户未能验证身份，则 `next` 会被调用两次
-	else {next()}
-	  },
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
+  },
+  {
+    path: '/VoteSettings',
+    name: 'VoteSettings',
+    component: VoteSettings,
+    beforeRouteEnter (to, from, next) {
+      if (to.name !== 'Login' && !window.sessionStorage.token) { next({ name: 'Login' }) }
+      // 如果用户未能验证身份，则 `next` 会被调用两次
+      else { next() }
+    },
   }
 ]
 
