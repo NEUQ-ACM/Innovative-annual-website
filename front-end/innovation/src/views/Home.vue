@@ -1,41 +1,50 @@
 <template>
   <div class="home">
-    <el-carousel :interval="3000" arrow="hover" :height="this.bannerHeight+'px'" trigger="click">
-      <el-carousel-item v-for="r in rotations.rotationList" :key="r.id">
+    <el-carousel :interval="3000"
+                 arrow="hover"
+                 :height="this.bannerHeight+'px'"
+                 trigger="click">
+      <el-carousel-item v-for="r in rotations.rotationList"
+                        :key="r.id">
         <a :href="r.routerUrl">
-          <img :src="r.url" alt=""/>
+          <img :src="r.url"
+               alt="" />
         </a>
       </el-carousel-item>
     </el-carousel>
     <section class="sectionThree-new">
       <div class="announment">
-      <!--  <div class="announmentSider">
+        <!--  <div class="announmentSider">
           <span class="announmentTitle">通知公告</span>
           <i class="el-icon-arrow-right"></i>
         </div> -->
 
-        <div class="announmentItemList"  >
-          <div class="announmentItem"  v-for="notice in notices" :key="notice.id">
+        <div class="announmentItemList">
+          <div class="announmentItem"
+               v-for="notice in notices"
+               :key="notice.id">
             <!-- <div class="announmentText"></div> -->
             <!-- <router-link :to="`/ItemDetail?id=${notice.id}`"> -->
-              <div @click="viewDetail(notice.id,notice.content,notice.title)">
-				  <div class="announmentWrap" :style="{backgroundImage: 'url('+notice.name+')'}">
-				    <div class="announmentText" style="overflow: hidden">
-				      <div class="date">
-				        <span class="day">{{notice.updateTime[2]}}</span>
-				        <span class="year">{{notice.updateTime[0]}}.{{notice.updateTime[1]}}</span>
-				      </div>
-				      <div class="news">
-				        <span class="newsTitle">
-				          {{notice.title}}
-				        </span>
-				        <span class="newsContent">
-				          {{notice.description}}
-				        </span>
-				      </div>
-				    </div>
-				  </div>
-			  </div>
+            <div @click="viewDetail(notice.id,notice.content,notice.title)">
+              <div class="announmentWrap"
+                   :style="{backgroundImage: 'url('+notice.name+')'}">
+                <div class="announmentText"
+                     style="overflow: hidden">
+                  <div class="date">
+                    <span class="day">{{notice.description[8]}}{{notice.description[9]}}</span>
+                    <span class="year">{{notice.description[0]}}{{notice.description[1]}}{{notice.description[2]}}{{notice.description[3]}}{{notice.description[4]}}{{notice.description[5]}}{{notice.description[6]}}</span>
+                  </div>
+                  <div class="news">
+                    <span class="newsTitle">
+                      {{notice.title}}
+                    </span>
+                    <span class="newsContent">
+                      <!-- {{notice.description}} -->
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- </router-link> -->
           </div>
         </div>
@@ -48,10 +57,10 @@
 import axios from 'axios'
 export default {
   name: "Home",
-  data() {
+  data () {
     return {
-      screenWidth:450,
-      bannerHeight:450,
+      screenWidth: 450,
+      bannerHeight: 450,
       notices: [
         {
           id: 1,
@@ -83,23 +92,23 @@ export default {
     };
   },
   methods: {
-	viewDetail (id,content,title) {
-	  this.$store.commit('itemChange',{content,title})
-	  console.log('跳转')
-	  this.$router.push({ path: '/ItemDetail', query: { id: id } })
-	},
-    handlePreClick(tab, event) {
+    viewDetail (id, content, title) {
+      this.$store.commit('itemChange', { content, title })
+      console.log('跳转')
+      this.$router.push({ path: '/ItemDetail', query: { id: id } })
+    },
+    handlePreClick (tab, event) {
       console.log(tab, event);
     },
-    handleThisClick(tab, event) {
+    handleThisClick (tab, event) {
       console.log(tab, event);
     },
-    queryNotice(){
-		this.$axios.get("http://81.70.56.45:8083/menuItem/getSecMenu/3").then((res) => {
-			console.log(res);
-			this.notices = res.data.data.menuItemList.slice(0,3)
-			this.changeDateForm()
-		});
+    queryNotice () {
+      this.$axios.get("http://81.70.56.45:8083/menuItem/getSecMenu/3").then((res) => {
+        console.log(res);
+        this.notices = res.data.data.menuItemList.slice(0, 3)
+        this.changeDateForm()
+      });
       // axios.get('http://81.70.56.45:8082/notice/getAll').then(
       //   res => {
       //     this.notices = res.data.data.records
@@ -108,7 +117,7 @@ export default {
       //   }
       // )
     },
-    queryRotation(){
+    queryRotation () {
       axios.get('http://81.70.56.45:8083/rotation/getAll').then(
         res => {
           this.rotations.rotationList = res.data.data.records
@@ -116,14 +125,14 @@ export default {
         }
       )
     },
-    changeDateForm(){
+    changeDateForm () {
       this.notices.forEach(item => {
         let tempStr = item.updateTime
         item.updateTime = tempStr.split("-")
       })
     }
   },
-  mounted(){
+  mounted () {
     this.queryNotice()
     this.queryRotation()
     this.screenWidth = window.innerWidth
@@ -131,17 +140,17 @@ export default {
     // 窗口大小发生改变
     window.onresize = () => {
       this.screenWidth = window.innerWidth
-      this.bannerHeight = 750 / 2500* this.screenWidth
+      this.bannerHeight = 750 / 2500 * this.screenWidth
     }
   }
 };
 </script>
 
 <style scoped>
-	.home{
-		width: 80%;
-		margin-left: 10%;
-	}
+.home {
+  width: 80%;
+  margin-left: 10%;
+}
 .el-carousel img {
   width: 100%;
   height: 100%;
@@ -322,6 +331,7 @@ span.newsTitle {
   min-width: 0;
   height: 28px;
   text-align: left;
+  margin-top: 12%;
 }
 
 span.newsContent {
