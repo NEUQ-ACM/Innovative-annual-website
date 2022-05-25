@@ -17,8 +17,8 @@
              @click="viewDetail(item.id,item.content,item.title)">
           <div class="newsBoxOne newsBox">
             <div class="date">
-              <span class="day">{{item.updateTime.substring(8,10)}}</span>
-              <span class="year">{{item.updateTime.substring(0,7)}}</span>
+              <span class="day">{{item.description}}</span>
+              <!-- <span class="year">{{item.updateTime.substring(0,7)}}</span> -->
             </div>
             <div class="news">
               <span class="newsTitle">{{ item.title }}</span>
@@ -102,7 +102,7 @@ div.boxWrap {
   color: #004ea1;
 }
 span.newsTitle {
-  margin-top: 16px;
+  margin-top: 1%;
 }
 
 .newsBox {
@@ -117,7 +117,7 @@ div.newsbox span {
 }
 
 div.date {
-  min-width: 80px;
+  min-width: 100px;
   display: flex;
   flex-wrap: wrap;
   border-right: 1px solid #ddd;
@@ -127,8 +127,8 @@ div.date {
 
 span.day {
   color: #004ea1;
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 15px;
+  line-height: 30px;
   margin-bottom: 5px;
 }
 
