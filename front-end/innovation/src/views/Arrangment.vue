@@ -1,6 +1,9 @@
 <template>
   <div style="margin-top: 20px;">
-    <el-card class="box-card">
+    <img src="../assets/第七届河北省大学生创新创业年会会议日程_00(1).jpg"
+         alt=""
+         style="width:50%">
+    <!-- <el-card class="box-card">
       <div class="block">
         <el-timeline>
           <el-timeline-item timestamp="2022/5/27"
@@ -38,7 +41,7 @@
 
         </el-timeline>
       </div>
-    </el-card>
+    </el-card> -->
   </div>
 
 </template>
