@@ -19,13 +19,16 @@
                   :editable="false"
                   :scrollStyle="true"
                   :ishljs="true" />
+    <el-button type="primary"
+               @click="goBack()"
+               style="margin-top:1%">返回</el-button>
   </div>
 
   <!-- <div style="margin-top: 1%;">
     <el-row>
       <el-col :span="14"
               :offset="5">
-        <!-- 面包屑导航区域 -->
+         面包屑导航区域 -->
   <!-- <el-breadcrumb separator="/" class="breadcrumb">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>作品展示</el-breadcrumb-item>
@@ -195,14 +198,17 @@ export default {
   },
   methods: {
     goBack () {
-      if(this.$route.query.type==1){
-        this.$router.push({path:'/Show1',query:{current:this.$route.query.current}})
+      if (this.$route.query.type == 1) {
+        this.$router.push({ path: '/Show1', query: { current: this.$route.query.current } })
       }
-      if(this.$route.query.type==2){
-        this.$router.push({path:'/Show2',query:{current:this.$route.query.current}})
+      else if (this.$route.query.type == 2) {
+        this.$router.push({ path: '/Show2', query: { current: this.$route.query.current } })
       }
-      if(this.$route.query.type==3){
-        this.$router.push({path:'/Show3',query:{current:this.$route.query.current}})
+      else if (this.$route.query.type == 3) {
+        this.$router.push({ path: '/Show3', query: { current: this.$route.query.current } })
+      }
+      else {
+        this.$router.go(-1)
       }
     }
     // 请求作品信息
