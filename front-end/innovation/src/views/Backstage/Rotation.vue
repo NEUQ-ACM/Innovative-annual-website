@@ -113,9 +113,15 @@ export default {
       console.log(index, row);
     },
     handleDelete (index, row) {
+      let token = sessionStorage.getItem('token');
       console.log(index, row);
-      this.$axios.get("/rotation/delRotation/" + row.id)
+      this.$axios.get("/rotation/delRotation/" + row.id, {
+        headers: {
+          'token': token,
+        }
+      })
         .then((response) => {
+          console.log(response);
           this.totationNum = response.pageNumber;
           this.rotationDate = response.data;
           this.$message.success("删除成功");

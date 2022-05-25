@@ -5,30 +5,26 @@
       <el-col :span="4">
         <Sidebar></Sidebar>
       </el-col>
-      <el-col :span="10"
-              class="input">
-        <div style="width:200px;margin-top:10px">用户最大投票数：</div>
-        <el-input v-model="input"
-                  :placeholder="'当前投票数'"></el-input>
-        <el-button type="primary"
-                   size="mini"
-                   style="margin-left:1%"
-                   @click="updateUserVoteNum()">提交</el-button>
-      </el-col>
       <el-col :span="19"
               class="table">
         <el-table :data="voteDataRecommend"
                   style="width: 100%"
                   border
-                  highlight-current-row>
-          <el-table-column prop="menuItem.id"
+                  highlight-current-row
+                  :default-sort="{prop: 'menuItem.projectId', order: 'ascending'}">
+          <el-table-column prop="menuItem.projectId"
                            label="ID"
                            width="100"
                            align="center">
           </el-table-column>
+          <el-table-column prop="menuItem.description"
+                           label="学校"
+                           width="200"
+                           align="center">
+          </el-table-column>
           <el-table-column prop="menuItem.title"
                            label="项目名称"
-                           width="720"
+                           width="600"
                            align="center">
           </el-table-column>
           <el-table-column prop="voteNum"
@@ -85,11 +81,12 @@ export default {
     getVoteNum () {
       if (this.tableDataRecommend.length > 0) {
         this.tableDataRecommend.forEach(item => {
-          console.log(item.id);
+          console.log(item);
           this.$axios
             .get("http://81.70.56.45:8083/menuItem/getMenuDetail/" + item.id)
             .then((res) => {
               console.log(res);
+              res.data.data.menuItem.description = res.data.data.menuItem.description.split('\t')[1]
               this.voteDataRecommend.push(res.data.data)
             });
         })
