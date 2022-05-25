@@ -30,18 +30,19 @@
         <i class="el-icon-setting"></i>
         <span slot="title">附件管理</span>
       </el-menu-item>
-      <el-menu-item index="Navmenu">
+      <!-- <el-menu-item index="Navmenu">
         <i class="el-icon-setting"></i>
         <span slot="title">导航管理</span>
+      </el-menu-item> -->
+      <el-menu-item index="VoteSettings">
+        <i class="el-icon-setting"></i>
+        <span slot="title">投票设置</span>
       </el-menu-item>
       <el-menu-item index="VoteBack">
         <i class="el-icon-setting"></i>
         <span slot="title">票数统计</span>
       </el-menu-item>
-      <el-menu-item index="VoteSettings">
-        <i class="el-icon-setting"></i>
-        <span slot="title">投票设置</span>
-      </el-menu-item>
+
     </el-menu>
   </div>
 </template>
