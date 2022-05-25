@@ -10,10 +10,6 @@
         <i class="el-icon-menu"></i>
         <span slot="title">首页轮播图</span>
       </el-menu-item>
-      <el-menu-item index="Recommend">
-        <i class="el-icon-menu"></i>
-        <span slot="title">创业推荐项目</span>
-      </el-menu-item>
       <el-menu-item index="Notice">
         <i class="el-icon-menu"></i>
         <span slot="title">通知公告</span>
@@ -23,8 +19,12 @@
         <span slot="title">学术论文</span>
       </el-menu-item>
       <el-menu-item index="Reform">
-        <i class="el-icon-setting"></i>
+        <i class="el-icon-document"></i>
         <span slot="title">创新创业交流项目</span>
+      </el-menu-item>
+      <el-menu-item index="Recommend">
+        <i class="el-icon-document"></i>
+        <span slot="title">创业推荐项目</span>
       </el-menu-item>
       <el-menu-item index="annex">
         <i class="el-icon-setting"></i>
@@ -37,6 +37,10 @@
       <el-menu-item index="VoteBack">
         <i class="el-icon-setting"></i>
         <span slot="title">票数统计</span>
+      </el-menu-item>
+      <el-menu-item index="VoteSettings">
+        <i class="el-icon-setting"></i>
+        <span slot="title">投票设置</span>
       </el-menu-item>
     </el-menu>
   </div>
