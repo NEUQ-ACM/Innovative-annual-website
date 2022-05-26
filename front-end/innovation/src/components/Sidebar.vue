@@ -24,7 +24,7 @@
       </el-menu-item>
       <el-menu-item index="Recommend">
         <i class="el-icon-document"></i>
-        <span slot="title">创业推荐项目</span>
+        <span slot="title">创业推介项目</span>
       </el-menu-item>
       <el-menu-item index="annex">
         <i class="el-icon-setting"></i>
