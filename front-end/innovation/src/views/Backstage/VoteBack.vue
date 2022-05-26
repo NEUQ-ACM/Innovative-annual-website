@@ -5,6 +5,20 @@
       <el-col :span="4">
         <Sidebar></Sidebar>
       </el-col>
+      <el-col :span="2"
+              style="margin-top:1%">
+        <a :href="'http://81.70.56.45:8083/voteState/downloadResult/?token='+headers.token">
+          <el-button type="primary"
+                     @click="downloadResult">导出投票结果</el-button>
+        </a>
+      </el-col>
+      <el-col :span="3"
+              style="margin-top:1%">
+        <a :href="'http://81.70.56.45:8083/voteState/downloadProcess/?token='+headers.token">
+          <el-button type="primary"
+                     @click="downloadProcess">导出投票记录</el-button>
+        </a>
+      </el-col>
       <el-col :span="19"
               class="table">
         <el-table :data="voteDataRecommend"
@@ -59,7 +73,7 @@ export default {
       tableDataRecommend: [],
       voteDataRecommend: [],
       headers: {
-        token: "b196a83e-2e3e-4d04-be19-6bc5aceb0caf"
+        token: ""
       }
     }
   },
@@ -129,12 +143,37 @@ export default {
           console.log(res);
           this.$message.success('更新成功')
         })
+    },
+    downloadResult () {
+      this.$axios
+        .get("http://81.70.56.45:8083/voteState/downloadResult", {
+          headers: {
+            "token": this.headers.token
+          }
+        })
+        .then((res) => {
+          console.log(res);
+          this.$message.success('导出成功')
+        })
+    },
+    downloadProcess () {
+      this.$axios
+        .get("http://81.70.56.45:8083/voteState/downloadProcess", {
+          headers: {
+            "token": this.headers.token
+          }
+        })
+        .then((res) => {
+          console.log(res);
+          this.$message.success('导出成功')
+        })
     }
   },
   mounted () {
     this.getData()
     this.getUserVoteNum()
     this.headers.token = sessionStorage.getItem('token')
+    console.log(this.headers.token);
   }
 }
 </script>
