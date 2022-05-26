@@ -27,7 +27,7 @@
             <el-menu-item index="4-2"
                           route="/Show2">创新创业展示项目</el-menu-item>
             <el-menu-item index="4-3"
-                          route="/Show3">创业推荐项目</el-menu-item>
+                          route="/Show3">创业推介项目</el-menu-item>
           </el-submenu>
           <el-menu-item index="5"
                         route="/userlogin">投票入口 </el-menu-item>

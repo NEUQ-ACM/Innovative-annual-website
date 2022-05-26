@@ -22,7 +22,7 @@
         <router-link to="/Show3"
                      active-class="linkActive">
           <div style="height: 50px;padding: 5px;margin: 10 0px;">
-            创业推荐项目
+            创业推介项目
           </div>
         </router-link>
       </div>

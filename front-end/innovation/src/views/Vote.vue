@@ -168,11 +168,11 @@ export default {
           _this.$message.error("投票结果保存失败，原因：投票已结束")
         }
       })
-      if (chooseLen > _this.quantity) {
+      if (chooseLen != _this.quantity) {
         this.$message({
           showClose: true,
           type: 'error',
-          message: '您选择了' + chooseLen + '个项目进行投票，超过了系统允许投票的最大值（' + _this.quantity + '个），请返回修改后再确认投票！'
+          message: '您选择了' + chooseLen + '个项目进行投票，未符合系统规定的投票数（' + _this.quantity + '个），请返回修改后再确认投票！'
         })
       } else {
         this.$confirm('投票系统允许您最多为' + _this.quantity + '个项目投票，您已选择了' + chooseLen + '个项目，请您再次确认要为所选项目投票！', '投票确认', {
