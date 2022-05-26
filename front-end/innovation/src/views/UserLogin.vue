@@ -48,15 +48,15 @@ export default {
     async login() {
       console.log('函数调用')
       const _this = this
-
+      window.sessionStorage.setItem('username', _this.loginForm.username)
       const { data: res } = await _this.$axios.post('http://81.70.56.45:8083/user/login?satoken=2210ee6c-f98d-43f2-92ee-a286f82c7c6f', this.loginForm)
       if (res.status !== 200) {
         return _this.$message.error(res.msg)
       }
       else {
-        // console.log(res)
+        console.log(res)
         window.sessionStorage.setItem('token', res.data)
-
+        // window.sessionStorage.setItem('token', res.data)
         /**
          * -向后端获取投票功能的状态
          *    -1，可以投票，跳转

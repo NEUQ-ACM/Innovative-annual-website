@@ -63,7 +63,7 @@ export default {
     getProject() {
       const _this = this
       let token = window.sessionStorage.getItem('token')
-
+      let username = window.sessionStorage.getItem('username')
       _this.$axios({
         method: "get",
         url: 'http://81.70.56.45:8083/menuItem/getbyName1/创新创业展示项目',
@@ -82,13 +82,13 @@ export default {
 
       _this.$axios({
         method: "get",
-        url: 'http://81.70.56.45:8083/user/getVote/admin',
+        url: 'http://81.70.56.45:8083/user/getVote/'+username,
         headers: {
           'Content-Type': 'application/json',
           'token': token
         }
       }).then(res => {
-        // console.log(res)
+        console.log(res)
         if (res.data.status == 200) {
           _this.userData = res.data.data
           console.log(_this.userData)
@@ -161,6 +161,7 @@ export default {
       const _this = this
       let chooseLen = _this.value.length
       let leftLen = _this.quantity - chooseLen
+      let username = window.sessionStorage.getItem('username')
       _this.$axios.get('http://81.70.56.45:8083/voteState/get').then(res => {
         console.log(res)
         _this.status = res.data.data.status
@@ -181,9 +182,10 @@ export default {
           type: 'warning'
         }).then(() => {
           let token = window.sessionStorage.getItem('token')
+          
           _this.$axios({
             method: "post",//请求方式
-            url: '/user/doVote/admin',//请求接口
+            url: '/user/doVote/'+username,//请求接口
             headers: {
               'Content-Type': 'application/json',
               'token': token
@@ -194,7 +196,12 @@ export default {
               _this.$message.success('投票成功')
             }
             else {
-              _this.$message.error('投票失败，原因是：' + res.data.msg)
+              console.log(res)
+              let msg = ""
+              if(res.data.msg.search("Token无效") != -1) {
+                msg = "登陆过期，请重新登录"
+              }
+              _this.$message.error('投票失败，原因是：' + msg)
               // _this.$message.error(res.msg)
             }
           })
